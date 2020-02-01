@@ -1,0 +1,32 @@
+GET http://localhost:5000/jobapply
+###
+POST http://localhost:5000/jobapply
+Content-Type: application/json
+
+{   
+    "company":"Google2",
+    "product":"Youtube",
+    "status": "Pending",
+    "cvversion":"Full Stack",
+    "tech":"node express js",
+    "isAnswered":"false"
+}
+
+###
+PUT http://localhost:5000/jobapply/5e35281bb2afc52fd8f587ed
+Content-Type: application/json
+
+{   
+    "company":"Facebook",
+    "product":"Whatsup",
+    "status": "Pending",
+    "cvversion":"Full Stack",
+    "tech":"node express js",
+    "isAnswered":"true"
+}
+###
+
+DELETE  http://localhost:5000/jobapply/5e35281bb2afc52fd8f587ed
+Content-Type: application/json
+
+###
