@@ -10,7 +10,6 @@ const getApplyHandler = (req,res)=>{
 
 
 const postApplyHandler = (req,res)=>{
-    
     const {company,location,product,status,cvversion,tech,isAnswered} = req.body
     //todo Add Validation
     const apply = new Apply({
@@ -36,8 +35,8 @@ const updateApplyHandler = (req,res)=>{
 }
 
 const deleteApplyHandler = (req,res)=>{
-    const {id} = req.params;    
-    return Apply.findOneAndDelete(id,req.body)
+    const {id} = req.params;  
+    return Apply.findOneAndDelete(id)
     .then(respone=> res.status(200).send('Deleted'))
     .catch(err=>{console.log(err); res.status(500).send(`server problem - ${err}`)})
 }

@@ -1,0 +1,18 @@
+.ApplyTable span{
+    cursor: pointer;
+    transition: all .7s;
+}
+.ApplyTable span:nth-child(1):hover{
+    background-color: rgb(129, 188, 236);
+}
+.ApplyTable span:nth-child(2):hover{
+    background-color: rgb(240, 72, 6);
+}
+
+.ApplyTable_delete{
+    background-color: #ef3300f0;
+    border: 2px dotted yellow;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 100%);
+}

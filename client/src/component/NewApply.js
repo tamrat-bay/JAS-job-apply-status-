@@ -54,8 +54,9 @@ export default class NewApply extends Component {
     render() {
         return (
             <div className="NewApply"> 
-            <Container>
-         <Form onSubmit={(e)=>this.submitData(e)}>
+         <Container>
+         <h1>New Job Apply</h1>
+             <Form onSubmit={(e)=>this.submitData(e)}>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridText">
                     <Form.Label>Company Name</Form.Label>
@@ -108,13 +109,8 @@ export default class NewApply extends Component {
                         </Form.Control>
                      </Form.Group> 
                 </Form.Row>
-
-                <Form.Group id="formGridCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-
                 <Button variant="primary" type="submit">
-                    Add
+                    SAVE
                 </Button>
             </Form>
             </Container>

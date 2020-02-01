@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const applySchema = new mongoose.Schema({
-    date: {type:Date, default: new Date().toDateString()},
+    date: {type:String, default: new Date().toDateString()},
     company:String,
     location:String,
     product:String,
