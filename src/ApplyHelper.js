@@ -10,10 +10,12 @@ const getApplyHandler = (req,res)=>{
 
 
 const postApplyHandler = (req,res)=>{
-    const {company,product,status,cvversion,tech,isAnswered} = req.body
+    
+    const {company,location,product,status,cvversion,tech,isAnswered} = req.body
     //todo Add Validation
     const apply = new Apply({
         company,
+        location,
         product,
         status,
         cvversion,

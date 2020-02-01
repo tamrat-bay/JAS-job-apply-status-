@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const PublicPath = path.join(__dirname,'..','public');
 const port = 5000;
-const Apply = require('./model/applyModel').Apply;
+// const Apply = require('./model/applyModel').Apply;
 const ApplyHelper = require('./ApplyHelper')
 
 app.use(express.json());
@@ -20,6 +20,8 @@ mongoose.connect('mongodb://localhost:27017/jas', {useNewUrlParser: true,useUnif
 
 
 app.post('/jobapply',(req,res)=>{
+    console.log(req.body);
+
     return ApplyHelper.postApplyHandler(req,res);
 });
 

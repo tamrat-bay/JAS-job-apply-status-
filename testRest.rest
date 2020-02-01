@@ -5,6 +5,7 @@ Content-Type: application/json
 
 {   
     "company":"Google2",
+    "location":"Tel Aviv",
     "product":"Youtube",
     "status": "Pending",
     "cvversion":"Full Stack",

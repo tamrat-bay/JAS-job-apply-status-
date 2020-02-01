@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const applySchema = new mongoose.Schema({
-    date: {type:Date, default: Date.now},
+    date: {type:Date, default: new Date().toDateString()},
     company:String,
+    location:String,
     product:String,
     status: String,
     cvversion:String,
