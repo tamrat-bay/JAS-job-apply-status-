@@ -22,7 +22,6 @@ export default class UpdateApply extends Component {
 
       getInputsData = (e)=>{
         if(e.target.name === 'company') return this.UpdateApply.company = e.target.value;
-        if(e.target.name === 'date') return this.UpdateApply.date = e.target.value;
         if(e.target.name === 'product') return this.UpdateApply.product = e.target.value ;
         if(e.target.name === 'location') return this.UpdateApply.location = e.target.value;
         if(e.target.name === 'status') return this.UpdateApply.status = e.target.value ;
@@ -34,6 +33,8 @@ export default class UpdateApply extends Component {
         e.preventDefault();
             console.log(this.UpdateApply);
         const id = this.props.data.id;
+        console.log(id,'this is uodate id');
+        
         const index = this.props.data.index;
         axios.put(`/jobapply/${id}`, this.UpdateApply)
         .then((response)=> {
@@ -62,13 +63,7 @@ export default class UpdateApply extends Component {
                      name="company" type="text" required placeholder="Company Name" />
                     </Form.Group>
 
-                    <Form.Row>
-                    <Form.Group as={Col} controlId="formGridText">
-                    <Form.Label>Date</Form.Label>
-                    <Form.Control onChange={(e)=>this.getInputsData(e)} defaultValue={data.date}
-                     name="date" type="date" required />
-                   </Form.Group>
-                 </Form.Row>
+                
                 </Form.Row>
 
                 <Form.Row>                 

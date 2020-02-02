@@ -11,7 +11,7 @@ const getApplyHandler = (req,res)=>{
 
 const postApplyHandler = (req,res)=>{
     const {company,location,product,status,cvversion,tech,isAnswered} = req.body
-    //todo Add Validation
+    //todo-- need to Add Validation
     const apply = new Apply({
         company,
         location,
@@ -29,6 +29,8 @@ const postApplyHandler = (req,res)=>{
 
 const updateApplyHandler = (req,res)=>{
     const {id} = req.params;    
+    console.log(id,'update id');
+    
     return Apply.findByIdAndUpdate(id,req.body)
     .then(respone=> res.status(200).send(respone))
     .catch(err=>{console.log(err); res.status(500).send(`server problem - ${err}`)})

@@ -91,6 +91,15 @@ export default class ApplyTable extends Component {
         )
     }
     componentDidMount(){
+
+        // axios.get('/jobapply')
+        // .then(jobApplies=>{
+        //     console.log(jobApplies); this.setState({jobApplies})
+        // })
+        // .catch( error =>
+        //   console.log(error)
+        // )
+
         fetch('/jobapply')
         .then((response) => {
           return response.json()
