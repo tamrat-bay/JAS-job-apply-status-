@@ -17,7 +17,7 @@ export default class UpdateApply extends Component {
         status:this.props.data.status,
         cvversion:this.props.data.cvversion,
         tech:this.props.data.tech,
-        isAnswered:false
+        isAnswered:this.props.data.isAnswered
     }
 
       getInputsData = (e)=>{
@@ -27,20 +27,21 @@ export default class UpdateApply extends Component {
         if(e.target.name === 'status') return this.UpdateApply.status = e.target.value ;
         if(e.target.name === 'cvversion') return this.UpdateApply.cvversion = e.target.value ;
         if(e.target.name === 'tech') return this.UpdateApply.tech = e.target.value ;
-        if(e.target.name === 'isAnswered') return this.UpdateApply.isAnswered = e.target.value === 'Yes' ? true : false;
+        if(e.target.name === 'isAnswered') return this.UpdateApply.isAnswered = e.target.value;
       }
       submitData = (e)=>{
         e.preventDefault();
-            console.log(this.UpdateApply);
-        const id = this.props.data.id;
-        console.log(id,'this is uodate id');
+        this.UpdateApply.isAnswered === 'Yes' ?
+         this.UpdateApply.isAnswered = true : this.UpdateApply.isAnswered = false;
+        const id = this.props.data._id;
+        console.log(id,'This is Id from Updatae ');
         
-        const index = this.props.data.index;
-        axios.put(`/jobapply/${id}`, this.UpdateApply)
+        const index = this.props.data.index;   
+
+        axios.put(`/jobapply/${id}`,this.UpdateApply)
         .then((response)=> {
-            if (response.status === 200) {   
-                console.log(response);
-                this.props.updateApply(this.UpdateApply,index);
+            if (response.status === 200) {                   
+                this.props.updateApply(response.data,index);
             }
             })
             .catch((error)=> {
@@ -49,7 +50,8 @@ export default class UpdateApply extends Component {
         }      
       
     render() {
-        const {data} = this.props; 
+        const {data} = this.props;         
+     console.log(this.props.data);
      
         return (
             <div className="UpdateApply"> 
@@ -65,9 +67,8 @@ export default class UpdateApply extends Component {
 
                 
                 </Form.Row>
-
                 <Form.Row>                 
-                   <Form.Group as={Col} controlId="formGridPassword">
+                   <Form.Group as={Col} controlId="formGridPassword5">
                     <Form.Label>Product</Form.Label>
                     <Form.Control onChange={(e)=>this.getInputsData(e)} defaultValue={data.product}
                     name="product" type="text" placeholder="Product" />
@@ -75,13 +76,13 @@ export default class UpdateApply extends Component {
                 </Form.Row>
 
                 <Form.Row>                 
-                   <Form.Group as={Col} controlId="formGridPassword">
+                   <Form.Group as={Col} controlId="formGridPassword0">
                     <Form.Label>Technology</Form.Label>
                     <Form.Control onChange={(e)=>this.getInputsData(e)} defaultValue={data.tech}
                      name="tech" type="text" placeholder="Technology" />
                     </Form.Group> 
 
-                    <Form.Group as={Col} controlId="formGridPassword">
+                    <Form.Group as={Col} controlId="formGridPassword1">
                     <Form.Label>Cv Version</Form.Label>
                     <Form.Control onChange={(e)=>this.getInputsData(e)} defaultValue={data.cvversion}
                     name="cvversion" type="text" placeholder="FullStack Version / Front-End Version" />
@@ -95,7 +96,7 @@ export default class UpdateApply extends Component {
                 </Form.Group>
 
                 <Form.Row>                 
-                   <Form.Group as={Col} controlId="formGridPassword">
+                   <Form.Group as={Col} controlId="formGridPassword2">
                     <Form.Label>Status</Form.Label>
                     <Form.Control  onChange={(e)=>this.getInputsData(e)} defaultValue={data.status}
                     name="status" type="text" placeholder="Pending / Called / Waiting for Interview" />
@@ -104,8 +105,8 @@ export default class UpdateApply extends Component {
                     <Form.Group as={Col} controlId="formGridState">
                     <Form.Label>Answerd</Form.Label>
                         <Form.Control onChange={(e)=>this.getInputsData(e)} name="isAnswered" as="select">
-                            <option defaultValue>No</option>
-                            <option>Yes</option>
+                            <option defaultValue>{data.isAnswered ? 'Yes' : 'No'}</option>
+                            <option>{data.isAnswered ? 'No' : 'Yes'}</option>
                         </Form.Control>
                      </Form.Group> 
                 </Form.Row>

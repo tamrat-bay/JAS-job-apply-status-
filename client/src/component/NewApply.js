@@ -104,24 +104,17 @@ export default class NewApply extends Component {
 
     submitData = (e) => {
         e.preventDefault();
-        console.log(this.newApply);
-
+    
         axios.post('/jobapply', this.newApply)
             .then((response) => {
                 // console.log(response.data,'resdata');
-                if (response.status === 201) {
-                    console.log(response);
-                    this.props.newApplyAdded(this.newApply);
+                if (response.status === 201) {                     
+                    this.props.newApplyAdded(response.data);
                 }
             })
             .catch((error) => {
                 console.log(error);
             });
     }
-
-
-
-
-
 
 }

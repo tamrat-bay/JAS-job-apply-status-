@@ -18,20 +18,22 @@ export default class ApplyTable extends Component {
     singleApplyData = {}
 
     newApplyAdded = (data) => {
-        const temp = this.state.jobApplies;
+        const temp = [...this.state.jobApplies];
         temp.push(data);
         this.setState({jobApplies:temp,addNewFlag:false})
     }
-    updateApply = (data, i) => {
-        let temp = [...this.state.jobApplies];
-        temp[i] = data;
+    updateApply = (data, i) => {    
+            
+        let temp = [...this.state.jobApplies];        
+        temp[i] = {...data};
+        // console.log(temp[i]);
+        
         this.setState({jobApplies:temp,updateFlag:false})
     }
     deleteApply = () => {
         const { id, index } = this.singleApplyData;
 
-        axios.delete(`/jobapply/${id}`, {
-           })
+        axios.delete(`/jobapply/${id}`,{})
            .then(res=> {
                if (res.status === 200) {
                 const temp = this.state.jobApplies;
@@ -42,6 +44,7 @@ export default class ApplyTable extends Component {
            .catch(err=>console.log(err))
     }
     render() {
+        
         return (
             <div className="ApplyTable">
             
@@ -51,7 +54,9 @@ export default class ApplyTable extends Component {
                 <button onClick={()=>this.setState({addNewFlag:!this.state.addNewFlag})}>
                    {!this.state.addNewFlag ?'Add New Apply ' : 'Close Window'} 
                 </button>
+
                 {this.state.addNewFlag ? <NewApply newApplyAdded={this.newApplyAdded} /> : ''}
+
                 {this.state.updateFlag ?   <UpdateApply data={this.singleApplyData} updateApply={this.updateApply}  /> : ''}
                 {this.state.deleteFlag ? <div className="ApplyTable_delete">
                     <h2>Are you sure you want to delete</h2>
@@ -86,13 +91,15 @@ export default class ApplyTable extends Component {
                         <td>{j.cvversion}</td>
                         <td>{j.tech}</td>
                         <td>{j.isAnswered ? 'YES' : 'NO'}</td>
-                        <td> <span onClick={()=>{this.singleApplyData = this.state.jobApplies[i];
-                        this.singleApplyData.index = i;
-                        this.singleApplyData.id = j._id;
+                        <td> <span onClick={()=>{this.singleApplyData = {...j};
+                        console.log( this.singleApplyData,'this is single App');
+                        
+                            this.singleApplyData.index = i;
                             this.setState({updateFlag:!this.state.updateFlag})}}>
                             <span role="img" aria-label="handwrite">✍</span>Update</span>
+
                            | <span onClick={()=> {this.setState({deleteFlag:!this.state.deleteFlag});
-                             this.singleApplyData= {company:j.company, id:j._id, index:i};
+                             this.singleApplyData = {company:j.company, id:j._id, index:i};
                         } }>
                             <span role="img" aria-label="sciccors">✂</span> Delete</span>
                          </td>
@@ -117,7 +124,6 @@ export default class ApplyTable extends Component {
         axios.get('/jobapply')
         .then(res=>{
             if (res.status === 200) {
-            console.log(res.data); 
             this.setState({jobApplies : res.data})}
                 })
         .catch( error =>
