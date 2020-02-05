@@ -1,0 +1,21 @@
+{
+  "name": "JAS-job-apply-status-",
+  "version": "1.0.0",
+  "description": "job apply status manger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamrat-bay/JAS-job-apply-status-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamrat-bay/JAS-job-apply-status-/issues"
+  },
+  "homepage": "https://github.com/tamrat-bay/JAS-job-apply-status-#readme"
+}

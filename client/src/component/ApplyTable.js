@@ -30,6 +30,7 @@ export default class ApplyTable extends Component {
         
         this.setState({jobApplies:temp,updateFlag:false})
     }
+    
     deleteApply = () => {
         const { id, index } = this.singleApplyData;
 
@@ -90,7 +91,7 @@ export default class ApplyTable extends Component {
                         <td>{j.status}</td>
                         <td>{j.cvversion}</td>
                         <td>{j.tech}</td>
-                        <td>{j.isAnswered ? 'YES' : 'NO'}</td>
+                        <td>{j.isAnswered ? 'YeS' : 'No'}</td>
                         <td> <span onClick={()=>{this.singleApplyData = {...j};
                         console.log( this.singleApplyData,'this is single App');
                         

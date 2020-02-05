@@ -24,16 +24,19 @@ export default class NewApply extends Component {
         return (
             <div className="NewApply">
                 <Container>
-                    <h1>New Job Apply</h1>
-                    <Form onSubmit={(e) => this.submitData(e)}>
+                    <Form.Row className="">
+                        <h1>New Job Apply</h1>
+                        <button style={{right:"5px",position:"absolute"}}onClick={this.props.closeMe}>X</button>
+                    </Form.Row>
+                        <Form onSubmit={(e) => this.submitData(e)}>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridText">
+                            <Form.Group as={Col}>
                                 <Form.Label>Company Name</Form.Label>
                                 <Form.Control onChange={(e) => this.getInputsData(e)} name="company" type="text" required placeholder="Company Name" />
                             </Form.Group>
 
                             <Form.Row>
-                                <Form.Group as={Col} controlId="formGridText">
+                                <Form.Group as={Col}>
                                     <Form.Label>Date</Form.Label>
                                     <Form.Control onChange={(e) => this.getInputsData(e)} name="date" type="date" required />
                                 </Form.Group>
@@ -41,7 +44,7 @@ export default class NewApply extends Component {
                         </Form.Row>
 
                         <Form.Row>
-                        <Form.Group as={Col} controlId="formGridState">
+                            <Form.Group as={Col}>
                                 <Form.Label>Company</Form.Label>
                                 <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="isAnswered" >
                                     <option>Startup</option>
@@ -51,24 +54,24 @@ export default class NewApply extends Component {
                         </Form.Row>
 
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Group as={Col}>
                                 <Form.Label>Technology</Form.Label>
                                 <Form.Control onChange={(e) => this.getInputsData(e)} name="tech" type="text" placeholder="Technology" />
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Group as={Col}>
                                 <Form.Label>Cv Version</Form.Label>
                                 <Form.Control onChange={(e) => this.getInputsData(e)} name="cvversion" type="text" placeholder="FullStack Version / Front-End Version" />
                             </Form.Group>
                         </Form.Row>
 
-                        <Form.Group controlId="formGridAddress1">
+                        <Form.Group>
                             <Form.Label>Address</Form.Label>
                             <Form.Control onChange={(e) => this.getInputsData(e)} name="location" placeholder="Dizingof 12 Tel Aviv" />
                         </Form.Group>
 
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridState">
+                            <Form.Group as={Col}>
                                 <Form.Label>Status</Form.Label>
                                 <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="status">
                                     <option>Phone interview</option>
