@@ -1,0 +1,7 @@
+1) Add select options for the status bar - Phone int - HR - int - Tech - Int - Home Work
+2)If answered is yes (true) open contact input
+3) Need to add the following fields : 
+startup or big company / comment for each status /
+delete technology Input
+
+4) popout window with more details

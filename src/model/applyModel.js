@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
 const applySchema = new mongoose.Schema({
-    date: {type:String, default: new Date().toDateString()},
+    date: {
+    type:String, default: new Date().toDateString()},
     company:String,
+    companySize: String,
     location:String,
-    product:String,
+    jobDescription:String,
     status: String,
     cvversion:String,
     tech:String,

@@ -4,19 +4,28 @@ import NewApply from './NewApply';
 import './ApplyTable.css'
 import UpdateApply from './UpdateApply';
 import axios from 'axios';
+import MoreDetails from './MoreDetails';
 
 export default class ApplyTable extends Component {
-    state={jobApplies:[] ,addNew:false,update:false,delete:false}
+    state={
+        jobApplies:[{}],
+        addNewFlag:false,
+        updateFlag:false,
+        deleteFlag:false,
+        moreDetailsFlag:false
+}
+
+    singleApplyData = {}
 
     newApplyAdded = (data)=>{
         const temp = this.state.jobApplies;
         temp.push(data);
-        this.setState({jobApplies:temp,addNew:false})
+        this.setState({jobApplies:temp,addNewFlag:false})
     }
     updateApply = (data,i) =>{
         let temp = [...this.state.jobApplies];
         temp[i] = data;
-        this.setState({jobApplies:temp,update:false})
+        this.setState({jobApplies:temp,updateFlag:false})
     }
     deleteApply = ()=>{
         const {id,index} = this.singleApplyData;
@@ -27,25 +36,28 @@ export default class ApplyTable extends Component {
                if (res.status === 200) {
                 const temp = this.state.jobApplies;
                 temp.splice(index,1)
-                this.setState({jobApplies:temp,delete:false})
+                this.setState({jobApplies:temp,deleteFlag:false})
                }
            })
            .catch(err=>console.log(err))
     }
-    singleApplyData = {}
     render() {
         return (
             <div className="ApplyTable">
-                <button onClick={()=>this.setState({addNew:!this.state.addNew})}>
-                   {!this.state.addNew ?'Add New Apply ' : 'Close Window'} 
+            
+            {this.state.moreDetailsFlag ? <MoreDetails data={this.singleApplyData} 
+            close = {()=>this.setState({moreDetailsFlag:false})} />  : ''}
+
+                <button onClick={()=>this.setState({addNewFlag:!this.state.addNewFlag})}>
+                   {!this.state.addNewFlag ?'Add New Apply ' : 'Close Window'} 
                 </button>
-                {this.state.addNew ? <NewApply newApplyAdded={this.newApplyAdded} /> : ''}
-                {this.state.update ?   <UpdateApply data={this.singleApplyData} updateApply={this.updateApply}  /> : ''}
-                {this.state.delete ? <div className="ApplyTable_delete">
+                {this.state.addNewFlag ? <NewApply newApplyAdded={this.newApplyAdded} /> : ''}
+                {this.state.updateFlag ?   <UpdateApply data={this.singleApplyData} updateApply={this.updateApply}  /> : ''}
+                {this.state.deleteFlag ? <div className="ApplyTable_delete">
                     <h2>Are you sure you want to delete</h2>
                     <h4>{this.singleApplyData.company}</h4>
                     <div><button onClick={()=>this.deleteApply()}>YES</button></div>
-                    <div><button onClick={()=>this.setState({delete:false})}>No</button></div>
+                    <div><button onClick={()=>this.setState({deleteFlag:false})}>No</button></div>
                 </div>: ''}
 
                 <Table striped bordered hover variant="dark">
@@ -60,6 +72,7 @@ export default class ApplyTable extends Component {
                         <th>Technology</th>
                         <th>Answered ?</th>
                         <th>Update / Delete</th>
+                        <th>More Details</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,13 +89,16 @@ export default class ApplyTable extends Component {
                         <td> <span onClick={()=>{this.singleApplyData = this.state.jobApplies[i];
                         this.singleApplyData.index = i;
                         this.singleApplyData.id = j._id;
-                            this.setState({update:!this.state.update})}}>
+                            this.setState({updateFlag:!this.state.updateFlag})}}>
                             <span role="img" aria-label="handwrite">✍</span>Update</span>
-                           | <span onClick={()=> {this.setState({delete:!this.state.delete});
+                           | <span onClick={()=> {this.setState({deleteFlag:!this.state.deleteFlag});
                              this.singleApplyData= {company:j.company, id:j._id, index:i};
                         } }>
                             <span role="img" aria-label="sciccors">✂</span> Delete</span>
                          </td>
+                         
+                         <td onClick={()=>{this.getMoreDetails(j)}} >More Details</td>
+
                      </tr>
                      )}
                     </tbody>
@@ -90,24 +106,23 @@ export default class ApplyTable extends Component {
             </div>
         )
     }
+    
+    getMoreDetails = (singleAppyObj)=>{
+        this.setState({moreDetailsFlag:true});
+        this.singleApplyData = singleAppyObj;
+    }
+
     componentDidMount(){
 
-        // axios.get('/jobapply')
-        // .then(jobApplies=>{
-        //     console.log(jobApplies); this.setState({jobApplies})
-        // })
-        // .catch( error =>
-        //   console.log(error)
-        // )
+        axios.get('/jobapply')
+        .then(res=>{
+            if (res.status === 200) {
+            console.log(res.data); 
+            this.setState({jobApplies : res.data})}
+                })
+        .catch( error =>
+          console.log(error)
+        );
+}
 
-        fetch('/jobapply')
-        .then((response) => {
-          return response.json()
-          .then(jobApplies => {console.log(jobApplies); this.setState({jobApplies})})
-          .catch(err=>console.log(err));
-        })
-        .then((myJson) => {
-          console.log(myJson);
-        });
-    }
 }
