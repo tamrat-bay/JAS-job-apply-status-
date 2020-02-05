@@ -25,6 +25,7 @@ export default class ApplyTable extends Component {
         return (
             <div className="ApplyTable">
 
+
                 {this.state.moreDetailsFlag ? <MoreDetails data={this.singleApplyData}
                     close={() => this.setState({ moreDetailsFlag: false })} /> : ''}
                 <div style={{height:"20px",margin:"15px"}}>

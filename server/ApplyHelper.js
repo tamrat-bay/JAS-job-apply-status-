@@ -31,7 +31,7 @@ const updateApplyHandler = (req,res)=>{
     const {id} = req.params;    
     console.log(id,'update id');
     
-    return Apply.findByIdAndUpdate(id,req.body)
+    return Apply.findByIdAndUpdate(id,req.body,{new:true})
     .then(respone=> res.status(200).send(respone))
     .catch(err=>{console.log(err); res.status(500).send(`server problem - ${err}`)})
 }
