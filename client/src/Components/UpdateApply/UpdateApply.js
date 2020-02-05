@@ -11,14 +11,14 @@ import './UpdateApply.css'
 export default class UpdateApply extends Component {
 
     UpdateApply = {
-        date: this.props.data.date,
-        company: this.props.data.company,
-        product: this.props.data.product,
-        location: this.props.data.location,
-        status: this.props.data.status,
-        cvversion: this.props.data.cvversion,
-        tech: this.props.data.tech,
-        isAnswered: false
+        date:this.props.data.date,
+        company:this.props.data.company,
+        product:this.props.data.product,
+        location:this.props.data.location,
+        status:this.props.data.status,
+        cvversion:this.props.data.cvversion,
+        tech:this.props.data.tech,
+        isAnswered:this.props.data.isAnswered
     }
 
     render() {
@@ -98,34 +98,33 @@ export default class UpdateApply extends Component {
         )
     }
 
-    getInputsData = (e) => {
-        if (e.target.name === 'company') return this.UpdateApply.company = e.target.value;
-        if (e.target.name === 'product') return this.UpdateApply.product = e.target.value;
-        if (e.target.name === 'location') return this.UpdateApply.location = e.target.value;
-        if (e.target.name === 'status') return this.UpdateApply.status = e.target.value;
-        if (e.target.name === 'cvversion') return this.UpdateApply.cvversion = e.target.value;
-        if (e.target.name === 'tech') return this.UpdateApply.tech = e.target.value;
-        if (e.target.name === 'isAnswered') return this.UpdateApply.isAnswered = e.target.value === 'Yes' ? true : false;
-    }
+    getInputsData = (e)=>{
+        if(e.target.name === 'company') return this.UpdateApply.company = e.target.value;
+        if(e.target.name === 'product') return this.UpdateApply.product = e.target.value ;
+        if(e.target.name === 'location') return this.UpdateApply.location = e.target.value;
+        if(e.target.name === 'status') return this.UpdateApply.status = e.target.value ;
+        if(e.target.name === 'cvversion') return this.UpdateApply.cvversion = e.target.value ;
+        if(e.target.name === 'tech') return this.UpdateApply.tech = e.target.value ;
+        if(e.target.name === 'isAnswered') return this.UpdateApply.isAnswered = e.target.value;
+      }
 
-    submitData = (e) => {
+      submitData = (e)=>{
         e.preventDefault();
-        console.log(this.UpdateApply);
-        const id = this.props.data.id;
-        console.log(id, 'this is uodate id');
-
-        const index = this.props.data.index;
-        axios.put(`/jobapply/${id}`, this.UpdateApply)
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log(response);
-                    this.props.updateApply(this.UpdateApply, index);
-                }
+        this.UpdateApply.isAnswered === 'Yes' ?
+         this.UpdateApply.isAnswered = true : 
+         this.UpdateApply.isAnswered = false;
+        const id = this.props.data._id; 
+        const index = this.props.data.index;   
+        axios.put(`/jobapply/${id}`,this.UpdateApply)
+        .then((response)=> {
+            if (response.status === 200) {                   
+                this.props.updateApply(response.data,index);
+            }
             })
-            .catch((error) => {
-                console.log(error);
+            .catch((error)=> {
+            console.log(error);
             });
-    }
+        }  
 
 
 }
