@@ -102,12 +102,15 @@ export default class NewApply extends Component {
         if (e.target.name === 'status') return this.newApply.status = e.target.value;
         if (e.target.name === 'cvversion') return this.newApply.cvversion = e.target.value;
         if (e.target.name === 'tech') return this.newApply.tech = e.target.value;
-        if (e.target.name === 'isAnswered') return this.newApply.isAnswered = e.target.value === 'Yes' ? true : false;
+        if (e.target.name === 'isAnswered') return this.newApply.isAnswered = e.target.value;
     }
 
     submitData = (e) => {
         e.preventDefault();
-    
+        this.newApply.isAnswered === 'Yes' ?
+        this.newApply.isAnswered = true : 
+        this.newApply.isAnswered = false;
+        
         axios.post('/jobapply', this.newApply)
             .then((response) => {
                 // console.log(response.data,'resdata');
