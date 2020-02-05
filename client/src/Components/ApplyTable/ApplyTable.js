@@ -71,7 +71,7 @@ export default class ApplyTable extends Component {
                                 <td>{j.status}</td>
                                 <td>{j.cvversion}</td>
                                 <td>{j.tech}</td>
-                                <td>{j.isAnswered ? 'YeS' : 'No'}</td>
+                                <td>{j.isAnswered ? 'Yes' : 'No'}</td>
                                     <td> <span onClick={()=>{this.singleApplyData = {...j};                                    
                                         this.singleApplyData.index = i;
                                         this.setState({updateFlag:!this.state.updateFlag})}}>
