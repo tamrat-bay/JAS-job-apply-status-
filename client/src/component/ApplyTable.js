@@ -17,18 +17,18 @@ export default class ApplyTable extends Component {
 
     singleApplyData = {}
 
-    newApplyAdded = (data)=>{
+    newApplyAdded = (data) => {
         const temp = this.state.jobApplies;
         temp.push(data);
         this.setState({jobApplies:temp,addNewFlag:false})
     }
-    updateApply = (data,i) =>{
+    updateApply = (data, i) => {
         let temp = [...this.state.jobApplies];
         temp[i] = data;
         this.setState({jobApplies:temp,updateFlag:false})
     }
-    deleteApply = ()=>{
-        const {id,index} = this.singleApplyData;
+    deleteApply = () => {
+        const { id, index } = this.singleApplyData;
 
         axios.delete(`/jobapply/${id}`, {
            })
@@ -102,7 +102,7 @@ export default class ApplyTable extends Component {
                      </tr>
                      )}
                     </tbody>
-                 </Table>
+                </Table>
             </div>
         )
     }

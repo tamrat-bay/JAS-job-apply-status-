@@ -2,11 +2,11 @@
   "name": "JobRequestStatusApp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node src/app.js",
     "server": "nodemon src/app.js",
-    "client":"npm start --prefix client",
+    "client": "cd.. && cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
