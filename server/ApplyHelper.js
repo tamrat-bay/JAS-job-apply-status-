@@ -4,7 +4,7 @@ const Apply = require('./model/applyModel').Apply;
 
 const getApplyHandler = (req,res)=>{
    return Apply.find({})
-    .then(respone=> res.status(200).send(respone))
+    .then(response=> res.status(200).send(response))
     .catch(err=>{console.log(err); res.status(500).send(`server problem - ${err}`)})
 }
 
@@ -22,24 +22,23 @@ const postApplyHandler = (req,res)=>{
         isAnswered
     });
     return apply.save()
-    .then(respone=> res.status(201).send(respone))
+    .then(response=> res.status(201).send(response))
     .catch(err=>{console.log(err); res.status(500).send(`server problem - ${err}`)})
 }
 
 
 const updateApplyHandler = (req,res)=>{
     const {id} = req.params;    
-    console.log(id,'update id');
-    
-    return Apply.findByIdAndUpdate(id,req.body)
-    .then(respone=> res.status(200).send(respone))
+    return Apply.findByIdAndUpdate(id,req.body,{new:true})
+    .then(response=> {res.status(200).send(response) ; console.log(response,'db response');
+    })
     .catch(err=>{console.log(err); res.status(500).send(`server problem - ${err}`)})
 }
 
 const deleteApplyHandler = (req,res)=>{
     const {id} = req.params;  
     return Apply.findOneAndDelete(id)
-    .then(respone=> res.status(200).send('Deleted'))
+    .then(response=> res.status(200).send('Deleted'))
     .catch(err=>{console.log(err); res.status(500).send(`server problem - ${err}`)})
 }
 
