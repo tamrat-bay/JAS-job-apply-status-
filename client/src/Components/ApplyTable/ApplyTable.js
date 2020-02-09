@@ -45,7 +45,9 @@ export default class ApplyTable extends Component {
                     <div><button onClick={() => this.deleteApply()}>YES</button></div>
                     <div><button onClick={() => this.setState({ deleteFlag: false })}>No</button></div>
                 </div> : ''}
-                 <SearchBar />
+
+                 <SearchBar applies={this.state.jobApplies}/>
+
                 <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
