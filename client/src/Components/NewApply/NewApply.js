@@ -18,12 +18,12 @@ export default class NewApply extends Component {
         jobDescription: '',
         isAnswered: false,
         status: {
-            "current": {},
-            "Pending": {},
-            "Phone interview": {},
-            "HR interview": {},
-            "Technical interview": {},
-            "Assignment": {}
+            current: '',
+            Pending: '',
+            Assignment: '',
+            "HR interview": '',
+            "Phone interview": '',
+            "Technical interview": ''
         },
     }
 
@@ -108,7 +108,7 @@ export default class NewApply extends Component {
                                     <option>Assignment</option>
                                 </Form.Control>
                             </Form.Group>
-                            <div style={{ border: "1px solid", padding: "5px" }}>
+                            <div className="statusDetails" style={{ border: "1px solid", padding: "5px" }}>
                                 <h1>status details</h1>
                                 <div style={{ float: "left" }}>
                                     <input onChange={(e) => this.getInputsData(e)} name="contactName" placeholder="Name"></input>
@@ -130,24 +130,38 @@ export default class NewApply extends Component {
         )
     }
     getInputsData = (e) => {
-        this.newApply[e.target.name] = e.target.value;
+
+
+
+        if (e.target.parentElement.parentElement.className === "statusDetails") {
+            this.statusDeatiles[e.target.name] = e.target.value;
+
+        } else if (e.target.name === "status") {
+            this.newApply[e.target.name].current = e.target.value;
+        } else {
+            this.newApply[e.target.name] = e.target.value;
+        }
+
+
     }
 
     submitData = (e) => {
 
         e.preventDefault();
-       
+
+        //add statusDeatils to relevent status
+        this.newApply.status[this.newApply.status.current] = { ...this.statusDeatiles }
         console.log(this.newApply);
-        
-                
-    //     axios.post('/jobapply', this.newApply)
-    //         .then((response) => {
-    //             if (response.status === 201) {                     
-    //                 this.props.newApplyAdded(response.data);
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-     }
+
+
+            axios.post('/jobapply', this.newApply)
+                .then((response) => {
+                    if (response.status === 201) {                     
+                        this.props.newApplyAdded(response.data);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+    }
 }
