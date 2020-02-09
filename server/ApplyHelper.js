@@ -10,15 +10,15 @@ const getApplyHandler = (req,res)=>{
 
 
 const postApplyHandler = (req,res)=>{
-    const {company,location,product,status,cvversion,tech,isAnswered} = req.body
+    const {company,location,companySize,status,cvversion,jobDescription,isAnswered} = req.body
     //todo-- need to Add Validation
     const apply = new Apply({
         company,
         location,
-        product,
+        companySize,
         status,
         cvversion,
-        tech,
+        jobDescription,
         isAnswered
     });
     return apply.save()

@@ -1,5 +1,6 @@
 1)
 2) If answered is yes (true) open contact input
+<<<<<<< HEAD
 3) Need to add the following fields : 
     comment for each status in more details window
     delete technology Input and replace with job desc
@@ -9,3 +10,15 @@
 7)add default values to status
 8)show only {date,company,status,del/up,more details}
 9)style more details
+=======
+3) Need to add the following fields :
+    comment for each status in more details window
+    delete technology Input and replace with job desc
+4)add comment to each status
+5)when answered is yes addd contact{name,phone,position}
+--6)add pending to status
+--7)add default values to status
+8)show only {date,company,status,del/up,more details}
+9)style more details
+
+>>>>>>> 487df9ba06c78a3fb79a9d0f69a10309c6acd28f

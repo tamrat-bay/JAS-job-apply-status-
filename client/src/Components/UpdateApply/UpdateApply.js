@@ -13,11 +13,11 @@ export default class UpdateApply extends Component {
     UpdateApply = {
         date:this.props.data.date,
         company:this.props.data.company,
-        product:this.props.data.product,
+        companySize:this.props.data.companySize,
         location:this.props.data.location,
         status:this.props.data.status,
         cvversion:this.props.data.cvversion,
-        tech:this.props.data.tech,
+        jobDescription:this.props.data.jobDescription,
         isAnswered:this.props.data.isAnswered
     }
 
@@ -45,7 +45,7 @@ export default class UpdateApply extends Component {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Company</Form.Label>
-                                <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="isAnswered" >
+                                <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="companySize" >
                                     <option>Startup</option>
                                     <option>Big Company</option>
                                 </Form.Control>
@@ -54,9 +54,9 @@ export default class UpdateApply extends Component {
 
                         <Form.Row>
                             <Form.Group as={Col}>
-                                <Form.Label>Technology</Form.Label>
-                                <Form.Control onChange={(e) => this.getInputsData(e)} defaultValue={data.tech}
-                                    name="tech" type="text" placeholder="Technology" />
+                                <Form.Label>Job Description</Form.Label>
+                                <Form.Control onChange={(e) => this.getInputsData(e)} defaultValue={data.jobDescription}
+                                    name="jobDescription" type="text" placeholder="jobDescription" />
                             </Form.Group>
 
                             <Form.Group as={Col}>
@@ -76,6 +76,7 @@ export default class UpdateApply extends Component {
                             <Form.Group as={Col}>
                                 <Form.Label>Status</Form.Label>
                                 <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="status">
+                                    <option>Pending</option>
                                     <option>Phone interview</option>
                                     <option>HR interview</option>
                                     <option>Technical interview</option>
@@ -86,8 +87,8 @@ export default class UpdateApply extends Component {
                             <Form.Group as={Col}>
                                 <Form.Label>Answerd</Form.Label>
                                 <Form.Control onChange={(e) => this.getInputsData(e)} name="isAnswered" as="select">
-                                    <option defaultValue>No</option>
-                                    <option>Yes</option>
+                                    <option defaultValue>{this.props.data.isAnswered ? 'Yes' :'No'}</option>
+                                    <option>{this.props.data.isAnswered ? 'No' :'Yes'}</option>
                                 </Form.Control>
                             </Form.Group>
                         </Form.Row>
@@ -99,13 +100,7 @@ export default class UpdateApply extends Component {
     }
 
     getInputsData = (e)=>{
-        if(e.target.name === 'company') return this.UpdateApply.company = e.target.value;
-        if(e.target.name === 'product') return this.UpdateApply.product = e.target.value ;
-        if(e.target.name === 'location') return this.UpdateApply.location = e.target.value;
-        if(e.target.name === 'status') return this.UpdateApply.status = e.target.value ;
-        if(e.target.name === 'cvversion') return this.UpdateApply.cvversion = e.target.value ;
-        if(e.target.name === 'tech') return this.UpdateApply.tech = e.target.value ;
-        if(e.target.name === 'isAnswered') return this.UpdateApply.isAnswered = e.target.value;
+        this.UpdateApply[e.target.name] = e.target.value;
       }
 
       submitData = (e)=>{
@@ -113,6 +108,10 @@ export default class UpdateApply extends Component {
         this.UpdateApply.isAnswered === 'Yes' ?
          this.UpdateApply.isAnswered = true : 
          this.UpdateApply.isAnswered = false;
+        
+         console.log(this.UpdateApply);
+         
+
         const id = this.props.data._id; 
         const index = this.props.data.index;   
         axios.put(`/jobapply/${id}`,this.UpdateApply)

@@ -1,6 +1,13 @@
 .MoreDetails{
-    background-color: brown;
+    background-color: #ababab;
     height: 500px;
     position: fixed;
     width: 70%;
+    box-shadow: 2px 3px 6px;
+    border-radius: 10px;
+    padding: 1%;
+}
+.MoreDetails h4{
+font-size: 1.5rem;
+cursor: pointer;
 }
