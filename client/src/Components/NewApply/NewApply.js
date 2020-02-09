@@ -14,11 +14,26 @@ export default class NewApply extends Component {
         company: '',
         companySize: '',
         location: '',
-        status: 'Pending',
         cvversion: '',
         jobDescription: '',
-        isAnswered: false
+        isAnswered: false,
+        status: {
+            current: '',
+            Pending: '',
+            Assignment: '',
+            "HR interview": '',
+            "Phone interview": '',
+            "Technical interview": ''
+        },
     }
+
+    statusDeatiles = {
+        contactName: '',
+        contactPhone: '',
+        contactPosition: '',
+        statusDescription: ''
+    }
+
 
     render() {
         return (
@@ -26,9 +41,9 @@ export default class NewApply extends Component {
                 <Container>
                     <Form.Row className="">
                         <h1>New Job Apply</h1>
-                        <button style={{right:"5px",position:"absolute"}}onClick={this.props.closeMe}>X</button>
+                        <button style={{ right: "5px", position: "absolute" }} onClick={this.props.closeMe}>X</button>
                     </Form.Row>
-                        <Form onSubmit={(e) => this.submitData(e)}>
+                    <Form onSubmit={(e) => this.submitData(e)}>
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Company Name</Form.Label>
@@ -46,7 +61,7 @@ export default class NewApply extends Component {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Company</Form.Label>
-                                <Form.Control as="select" value="Choose" onChange={(e) => this.getInputsData(e)} required name="companySize" >
+                                <Form.Control as="select" defaultValue="Choose" onChange={(e) => this.getInputsData(e)} required name="companySize" >
                                     <option disabled value="Choose" >Choose</option>
                                     <option>Startup</option>
                                     <option>Big Company</option>
@@ -72,24 +87,42 @@ export default class NewApply extends Component {
                         </Form.Group>
 
                         <Form.Row>
+
+                            <Form.Group as={Col} controlId="formGridState">
+                                <Form.Label>Answerd</Form.Label>
+                                <Form.Control defaultValue={false} as="select" onChange={(e) => this.getInputsData(e)} name="isAnswered" >
+                                    <option value={false}>No</option>
+                                    <option value={true}>Yes</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Form.Row>
+                        {/*  */}
+                        <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Status</Form.Label>
                                 <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="status">
-                                    <option defaultValue >Pending</option>
+                                    <option defaultValue>Pending</option>
                                     <option>Phone interview</option>
                                     <option>HR interview</option>
                                     <option>Technical interview</option>
                                     <option>Assignment</option>
                                 </Form.Control>
                             </Form.Group>
-                            <Form.Group as={Col} controlId="formGridState">
-                                <Form.Label>Answerd</Form.Label>
-                                <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="isAnswered" >
-                                    <option defaultValue>No</option>
-                                    <option>Yes</option>
-                                </Form.Control>
-                            </Form.Group>
+                            <div className="statusDetails" style={{ border: "1px solid", padding: "5px" }}>
+                                <h1>status details</h1>
+                                <div style={{ float: "left" }}>
+                                    <input onChange={(e) => this.getInputsData(e)} name="contactName" placeholder="Name"></input>
+                                    <br />
+                                    <input onChange={(e) => this.getInputsData(e)} name="contactPhone" placeholder="Phone"></input>
+                                    <br />
+                                    <input onChange={(e) => this.getInputsData(e)} name="contactPosition" placeholder="Position"></input>
+                                </div>
+                                <div style={{ float: "right" }}>
+                                    <textarea onChange={(e) => this.getInputsData(e)} name="statusDescription" placeholder="How did it go?"></textarea>
+                                </div>
+                            </div>
                         </Form.Row>
+                        {/*  */}
                         <Button variant="primary" type="submit">SAVE</Button>
                     </Form>
                 </Container>
@@ -97,24 +130,38 @@ export default class NewApply extends Component {
         )
     }
     getInputsData = (e) => {
-        this.newApply[e.target.name] = e.target.value;
+
+
+
+        if (e.target.parentElement.parentElement.className === "statusDetails") {
+            this.statusDeatiles[e.target.name] = e.target.value;
+
+        } else if (e.target.name === "status") {
+            this.newApply[e.target.name].current = e.target.value;
+        } else {
+            this.newApply[e.target.name] = e.target.value;
+        }
+
+
     }
 
     submitData = (e) => {
 
         e.preventDefault();
-        this.newApply.isAnswered === 'Yes' ?
-        this.newApply.isAnswered = true : 
-        this.newApply.isAnswered = false;
-                
-        axios.post('/jobapply', this.newApply)
-            .then((response) => {
-                if (response.status === 201) {                     
-                    this.props.newApplyAdded(response.data);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+
+        //add statusDeatils to relevent status
+        this.newApply.status[this.newApply.status.current] = { ...this.statusDeatiles }
+        console.log(this.newApply);
+
+
+            axios.post('/jobapply', this.newApply)
+                .then((response) => {
+                    if (response.status === 201) {                     
+                        this.props.newApplyAdded(response.data);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
     }
 }

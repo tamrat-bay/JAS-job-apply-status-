@@ -12,7 +12,7 @@ export default class ApplyTable extends Component {
 
     state = {
 
-        jobApplies: [{}],
+        jobApplies: [{status:{}}],
         addNewFlag: false,
         updateFlag: false,
         deleteFlag: false,
@@ -23,12 +23,14 @@ export default class ApplyTable extends Component {
 
 
     render() {
+        console.log(this.state.jobApplies);
+        
         return (
             <div className="ApplyTable">
 
                 {this.state.moreDetailsFlag ? <MoreDetails data={this.singleApplyData}
                     close={() => this.setState({ moreDetailsFlag: false })} /> : ''}
-                <div style={{height:"20px",margin:"15px"}}>
+                <div style={{ height: "20px", margin: "15px" }}>
                     {!this.state.addNewFlag && !this.state.updateFlag ?
                         <button onClick={() => this.setState({ addNewFlag: true })}>Add New Apply</button> : ""}
                 </div>
@@ -61,11 +63,12 @@ export default class ApplyTable extends Component {
                     </thead>
                     <tbody>
                         {this.state.jobApplies.map((j, i) =>
+                        
                             <tr key={i} >
                                 <td>{j.date}</td>
                                 <td>{j.company}</td>
                                 <td>{j.location}</td>
-                                <td>{j.status}</td>
+                                <td>{j.status.current}</td>
                                     <td> <span onClick={()=>{this.singleApplyData = {...j};                                    
                                         this.singleApplyData.index = i;
                                         this.setState({updateFlag:!this.state.updateFlag})}}>
@@ -75,12 +78,12 @@ export default class ApplyTable extends Component {
                                         this.singleApplyData = {company:j.company, id:j._id, index:i};
                                     } }>
                                         <span role="img" aria-label="sciccors">✂</span> Delete</span>
-                                    </td>
-                                    
-                                    <td onClick={()=>{this.getMoreDetails(j)}} >More Details</td>
+                                </td>
 
-                                </tr>
-                                )}
+                                <td onClick={() => { this.getMoreDetails(j) }} >More Details</td>
+
+                            </tr>
+                        )}
                     </tbody>
                 </Table>
             </div>
@@ -103,7 +106,7 @@ export default class ApplyTable extends Component {
 
     updateApply = (data, i) => {
         let temp = [...this.state.jobApplies];
-        temp[i] = {...data};
+        temp[i] = { ...data };
         this.setState({ jobApplies: temp, updateFlag: false })
     }
 
