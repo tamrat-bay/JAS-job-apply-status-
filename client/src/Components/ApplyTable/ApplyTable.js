@@ -5,6 +5,7 @@ import NewApply from '../NewApply/NewApply';
 import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import './ApplyTable.css'
+import SearchBar from '../SearchBar/SearchBar';
 
 
 export default class ApplyTable extends Component {
@@ -25,7 +26,6 @@ export default class ApplyTable extends Component {
         return (
             <div className="ApplyTable">
 
-
                 {this.state.moreDetailsFlag ? <MoreDetails data={this.singleApplyData}
                     close={() => this.setState({ moreDetailsFlag: false })} /> : ''}
                 <div style={{height:"20px",margin:"15px"}}>
@@ -45,18 +45,14 @@ export default class ApplyTable extends Component {
                     <div><button onClick={() => this.deleteApply()}>YES</button></div>
                     <div><button onClick={() => this.setState({ deleteFlag: false })}>No</button></div>
                 </div> : ''}
-
+                 <SearchBar />
                 <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
                             <th>Date</th>
                             <th>Company</th>
                             <th>Location</th>
-                            <th>Product</th>
                             <th>Status</th>
-                            <th>Cv Version</th>
-                            <th>Technology</th>
-                            <th>Answered ?</th>
                             <th>Update / Delete</th>
                             <th>More Details</th>
                         </tr>
@@ -67,11 +63,7 @@ export default class ApplyTable extends Component {
                                 <td>{j.date}</td>
                                 <td>{j.company}</td>
                                 <td>{j.location}</td>
-                                <td>{j.product}</td>
                                 <td>{j.status}</td>
-                                <td>{j.cvversion}</td>
-                                <td>{j.tech}</td>
-                                <td>{j.isAnswered ? 'Yes' : 'No'}</td>
                                     <td> <span onClick={()=>{this.singleApplyData = {...j};                                    
                                         this.singleApplyData.index = i;
                                         this.setState({updateFlag:!this.state.updateFlag})}}>
@@ -139,6 +131,8 @@ export default class ApplyTable extends Component {
         axios.get('/jobapply')
             .then(res => {
                 if (res.status === 200) {
+                    console.log(res.data, 'data from server');
+                    
                     this.setState({ jobApplies: res.data })
                 }
             })

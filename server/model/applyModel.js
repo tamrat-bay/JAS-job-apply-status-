@@ -6,10 +6,9 @@ const applySchema = new mongoose.Schema({
     company:String,
     companySize: String,
     location:String,
-    jobDescription:String,
-    status: String,
+    status: Object,
     cvversion:String,
-    tech:String,
+    jobDescription:String,
     isAnswered:Boolean
 });
 

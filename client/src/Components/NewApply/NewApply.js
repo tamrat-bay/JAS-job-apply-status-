@@ -12,11 +12,11 @@ export default class NewApply extends Component {
     newApply = {
         date: '',
         company: '',
-        product: '',
+        companySize: '',
         location: '',
-        status: '',
+        status: 'Pending',
         cvversion: '',
-        tech: '',
+        jobDescription: '',
         isAnswered: false
     }
 
@@ -46,7 +46,8 @@ export default class NewApply extends Component {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Company</Form.Label>
-                                <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="isAnswered" >
+                                <Form.Control as="select" value="Choose" onChange={(e) => this.getInputsData(e)} required name="companySize" >
+                                    <option disabled value="Choose" >Choose</option>
                                     <option>Startup</option>
                                     <option>Big Company</option>
                                 </Form.Control>
@@ -55,8 +56,8 @@ export default class NewApply extends Component {
 
                         <Form.Row>
                             <Form.Group as={Col}>
-                                <Form.Label>Technology</Form.Label>
-                                <Form.Control onChange={(e) => this.getInputsData(e)} name="tech" type="text" placeholder="Technology" />
+                                <Form.Label>Job Description</Form.Label>
+                                <Form.Control onChange={(e) => this.getInputsData(e)} name="jobDescription" type="text" placeholder="jobDescription" />
                             </Form.Group>
 
                             <Form.Group as={Col}>
@@ -74,6 +75,7 @@ export default class NewApply extends Component {
                             <Form.Group as={Col}>
                                 <Form.Label>Status</Form.Label>
                                 <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="status">
+                                    <option defaultValue >Pending</option>
                                     <option>Phone interview</option>
                                     <option>HR interview</option>
                                     <option>Technical interview</option>
@@ -95,25 +97,18 @@ export default class NewApply extends Component {
         )
     }
     getInputsData = (e) => {
-        if (e.target.name === 'company') return this.newApply.company = e.target.value;
-        if (e.target.name === 'date') return this.newApply.date = e.target.value;
-        if (e.target.name === 'product') return this.newApply.product = e.target.value;
-        if (e.target.name === 'location') return this.newApply.location = e.target.value;
-        if (e.target.name === 'status') return this.newApply.status = e.target.value;
-        if (e.target.name === 'cvversion') return this.newApply.cvversion = e.target.value;
-        if (e.target.name === 'tech') return this.newApply.tech = e.target.value;
-        if (e.target.name === 'isAnswered') return this.newApply.isAnswered = e.target.value;
+        this.newApply[e.target.name] = e.target.value;
     }
 
     submitData = (e) => {
+
         e.preventDefault();
         this.newApply.isAnswered === 'Yes' ?
         this.newApply.isAnswered = true : 
         this.newApply.isAnswered = false;
-        
+                
         axios.post('/jobapply', this.newApply)
             .then((response) => {
-                // console.log(response.data,'resdata');
                 if (response.status === 201) {                     
                     this.props.newApplyAdded(response.data);
                 }
@@ -122,5 +117,4 @@ export default class NewApply extends Component {
                 console.log(error);
             });
     }
-
 }
