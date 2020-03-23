@@ -15,13 +15,15 @@ export default class UpdateApply extends Component {
         company:this.props.data.company,
         companySize:this.props.data.companySize,
         location:this.props.data.location,
-        status:this.props.data.status,
+        status:{current: this.props.data.status},
         cvversion:this.props.data.cvversion,
         jobDescription:this.props.data.jobDescription,
         isAnswered:this.props.data.isAnswered
     }
 
     render() {
+        console.log(this.props);
+        
         const { data } = this.props;
 
         return (

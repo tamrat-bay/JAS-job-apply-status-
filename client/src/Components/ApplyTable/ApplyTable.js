@@ -1,167 +1,158 @@
-import React, { Component } from 'react'
+import React, { useState , useEffect } from 'react'
 import Table from 'react-bootstrap/Table'
-import axios from 'axios';
 import NewApply from '../NewApply/NewApply';
 import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
-import './ApplyTable.css'
 import SearchBar from '../SearchBar/SearchBar';
+import TableRowData from './TableRowData';
+import useToggle from '../hooks/useToggleState'
+import './ApplyTable.css';
+import axios from 'axios';
 
+function ApplyTable() {
+  const [jobApplies , setJobApplies] = useState( [{status:{}}] );
+  const [filterdApplies , setFilterdApplies] = useState( [{status:{}}] );
 
-export default class ApplyTable extends Component {
+  const [singleApplyData , setSingleApplyData] = useState( {status:{current:''}} );
 
-    state = {
+   const [filterFlag , setFilterFlag ] = useToggle (false)
+   const [addNewFlag , setAddNewFlag ] = useToggle (false)
+   const [updateFlag , setUpdateFlag ] = useToggle (false)
+   const [deleteFlag , setDeleteFlag ] = useToggle (false)
+   const [moreDetailsFlag , setMoreDetailsFlag ] = useToggle (false)
 
-        jobApplies: [{status:{}}],
-        filterdApplies: [{status:{}}],
-        filterFlag:false,
-        addNewFlag: false,
-        updateFlag: false,
-        deleteFlag: false,
-        moreDetailsFlag: false
-    }
-
-    singleApplyData = {}
-
-
-    render() {        
-        return (
-            <div className="ApplyTable">
-                {this.state.moreDetailsFlag ? <MoreDetails data={this.singleApplyData}
-                    close={() => this.setState({ moreDetailsFlag: false })} /> : ''}
-                <div style={{ height: "20px", margin: "15px" }}>
-                    {!this.state.addNewFlag && !this.state.updateFlag ?
-                        <button onClick={() => this.setState({ addNewFlag: true })}>Add New Apply</button> : ""}
-                </div>
-                {
-                    this.state.addNewFlag ?
-                        <NewApply newApplyAdded={this.newApplyAdded}
-                            closeMe={this.closeAddNewApplyPopup} />
-                        : ''
-                }
-                {this.state.updateFlag ? <UpdateApply data={this.singleApplyData} updateApply={this.updateApply} closeMe={this.closeUpdateApplyPopup} /> : ''}
-                {this.state.deleteFlag ? <div className="ApplyTable_delete">
-                    <h2>Are you sure you want to delete</h2>
-                    <h4>{this.singleApplyData.company}</h4>
-                    <div><button onClick={() => this.deleteApply()}>YES</button></div>
-                    <div><button onClick={() => this.setState({ deleteFlag: false })}>No</button></div>
-                </div> : ''}
-
-                 <SearchBar applies={this.state.jobApplies} displayFilterdData={this.displayFilterdData} />
-
-                <Table striped bordered hover variant="dark">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Company</th>
-                            <th>Location</th>
-                            <th>Status</th>
-                            <th>Update / Delete</th>
-                            <th>More Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.filterFlag ? 
-                        this.state.filterdApplies.map((j, i) =>
-                        
-                        <tr key={i} >
-                            <td>{j.date}</td>
-                            <td>{j.company}</td>
-                            <td>{j.location}</td>
-                            <td>{j.status.current}</td>
-                                <td> <span onClick={()=>{this.singleApplyData = {...j};                                    
-                                    this.singleApplyData.index = i;
-                                    this.setState({updateFlag:!this.state.updateFlag})}}>
-                                    <span role="img" aria-label="handwrite">✍</span>Update</span>
-                                | <span onClick={()=> {this.setState({deleteFlag:!this.state.deleteFlag});
-                                    this.singleApplyData = {company:j.company, id:j._id, index:i};
-                                } }>
-                                    <span role="img" aria-label="sciccors">✂</span> Delete</span>
-                            </td>
-                            <td onClick={() => { this.getMoreDetails(j) }} >More Details</td>
-                        </tr>
-                        )
-                         : 
-                         this.state.jobApplies.map((j, i) =>
-                            <tr key={i} >
-                                <td>{j.date}</td>
-                                <td>{j.company}</td>
-                                <td>{j.location}</td>
-                                <td>{j.status.current}</td>
-                                    <td> <span onClick={()=>{this.singleApplyData = {...j};                                    
-                                        this.singleApplyData.index = i;
-                                        this.setState({updateFlag:!this.state.updateFlag})}}>
-                                        <span role="img" aria-label="handwrite">✍</span>Update</span>
-                                    | <span onClick={()=> {this.setState({deleteFlag:!this.state.deleteFlag});
-                                        this.singleApplyData = {company:j.company, id:j._id, index:i};
-                                    } }>
-                                        <span role="img" aria-label="sciccors">✂</span> Delete</span>
-                                </td>
-                                <td onClick={() => { this.getMoreDetails(j) }} >More Details</td>
-                            </tr>
-                        )
-                         }
-                    </tbody>
-                </Table>
-            </div>
-        )
-    }
-
-    closeAddNewApplyPopup = () => {
-        this.setState({ addNewFlag: false })
-    }
-
-    closeUpdateApplyPopup = () => {
-        this.setState({ updateFlag: false })
-    }
-
-    displayFilterdData = (filtData,bolean)=>{
-        this.setState({filterdApplies : filtData ,filterFlag:bolean})
-    }
-    newApplyAdded = (data) => {
-        const temp = this.state.jobApplies;
-        temp.push(data);
-        this.setState({ jobApplies: temp, addNewFlag: false })
-    }
-
-    updateApply = (data, i) => {
-        let temp = [...this.state.jobApplies];
-        temp[i] = { ...data };
-        this.setState({ jobApplies: temp, updateFlag: false })
-    }
-
-    deleteApply = () => {
-        const { id, index } = this.singleApplyData;
-
-        axios.delete(`/jobapply/${id}`, {
-        })
+//    let singleApplyData = {}
+    useEffect(() => {
+            axios.get('/jobapply')
             .then(res => {
                 if (res.status === 200) {
-                    const temp = this.state.jobApplies;
-                    temp.splice(index, 1)
-                    this.setState({ jobApplies: temp, deleteFlag: false })
-                }
-            })
-            .catch(err => console.log(err))
-    }
-
-
-    getMoreDetails = (singleApplyObj) => {
-        this.setState({ moreDetailsFlag: true });
-        this.singleApplyData = singleApplyObj;
-    }
-
-    componentDidMount() {
-
-        axios.get('/jobapply')
-            .then(res => {
-                if (res.status === 200) {
-                    this.setState({ jobApplies: res.data })
+                    setJobApplies( res.data )
+                    // console.log('jobApplies',res.data);
                 }
             })
             .catch(error =>
                 console.log(error)
             );
-    }
+    }, []);
 
+       const closeAddNewApplyPopup = () => {
+                setAddNewFlag()
+            }
+        
+       const  closeUpdateApplyPopup = () => {
+                setUpdateFlag()
+            }
+        
+        const  displayFilterdData = (filtData)=>{
+            console.log('filtData',filtData);
+            
+                setFilterdApplies( filtData )
+                setFilterFlag()
+            }
+        const  newApplyAdded = (data) => {
+                const temp = jobApplies;
+                temp.push(data);
+                setJobApplies( temp )
+                setAddNewFlag()
+            }
+        
+            const    updateApply = (data, i) => {
+                let temp = [...jobApplies];
+                temp[i] = { ...data };
+                setJobApplies( temp )
+                setUpdateFlag()
+            }
+        
+            const   deleteApply = () => {
+                const { id, index } = singleApplyData;
+                axios.delete(`/jobapply/${id}`, {
+                })
+                    .then(res => {
+                        if (res.status === 200) {
+                            const temp = jobApplies;
+                            temp.splice(index, 1)
+                            setJobApplies( temp )
+                            setDeleteFlag()
+                        }
+                    })
+                    .catch(err => console.log(err))
+            }
+        
+        
+           const getMoreDetails = (singleApplyObj) => {
+            //    console.log(singleApplyObj,'more details');
+                 setSingleApplyData( singleApplyObj );
+                 console.log(singleApplyData,'more details');
+                 
+                setMoreDetailsFlag();
+                
+            }
+
+    return (
+        <div className="ApplyTable">
+            {moreDetailsFlag ? <MoreDetails data={singleApplyData}
+                close={() => setMoreDetailsFlag() } /> : ''}
+            <div style={{ height: "20px", margin: "15px" }}>
+                {!addNewFlag && !updateFlag ?
+                    <button onClick={() =>setAddNewFlag() }>Add New Apply</button> : ""}
+            </div>
+            {
+                addNewFlag ?
+                    <NewApply newApplyAdded={newApplyAdded}
+                        closeMe={closeAddNewApplyPopup} />
+                    : ''
+            }
+            {updateFlag ? <UpdateApply data={singleApplyData} updateApply={updateApply} closeMe={closeUpdateApplyPopup} /> : ''}
+            {deleteFlag ? <div className="ApplyTable_delete">
+                <h2>Are you sure you want to delete</h2>
+                <h4>{singleApplyData.company}</h4>
+                <div><button onClick={() => deleteApply()}>YES</button></div>
+                <div><button onClick={() => setDeleteFlag()}>No</button></div>
+            </div> : ''}
+
+                <SearchBar jobApplies={jobApplies} displayFilterdData={displayFilterdData} />
+
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Update / Delete</th>
+                        <th>More Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filterFlag ? 
+                    filterdApplies.map((j, i) =>
+                    <TableRowData 
+                        key={i}
+                        job={j} index={i}
+                        setDeleteFlag={setDeleteFlag}
+                        setUpdateFlag={setUpdateFlag}
+                        // singleApplyData={singleApplyData}
+                        setSingleApplyData={setSingleApplyData}
+                        getMoreDetails={getMoreDetails}
+                         />
+                    )
+                        : 
+                        jobApplies.map((j, i) =>
+                        <TableRowData 
+                        key={i}
+                        job={j} index={i}
+                        setDeleteFlag={setDeleteFlag}
+                        setUpdateFlag={setUpdateFlag}
+                        // singleApplyData={singleApplyData}
+                        setSingleApplyData={setSingleApplyData}
+                        getMoreDetails={getMoreDetails}
+                         />
+                    )
+                        }
+                </tbody>
+            </Table>
+        </div>
+    )
 }
+
+export default ApplyTable

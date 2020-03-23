@@ -1,79 +1,81 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './SearchBar.css'
 
-export default class SearchBar extends Component {
-
-    searchBy = {
-        status: '',
-        statusCheck:'',
+function SearchBar(props) {
+    console.log('search bar',props);
+const { jobApplies,displayFilterdData } = props
+   let searchBy = {
+        status: 'Pending', //default Val
+        statusCheck:false,
         company: '',
-        companyCheck:''
+        companyCheck:false
     }
+  const  getInputsData = (e) => {
+        searchBy[e.target.name] = e.target.value;
+       if (e.target.type === 'checkbox') {
+           console.log('check Box',e.target.checked);
+          return searchBy[e.target.name] = e.target.checked    
+       }
+   }
 
-    render() {
-        
-        return (
-            <div className="SearchBar">
-                <h3>Search Applys</h3>
+   const fillterdDataDisplay = (e) => {
+       
+       e.preventDefault();
 
-                <form className="form-inline" onSubmit={(e) => this.fillterdDataDisplay(e)}>
-                    <label htmlFor='company'> <input type="checkbox" onChange={this.getInputsData} name="companyCheck" />
-                     Search by Company Name
-                    <input id="company"  className="form-control form-control-sm ml-3" onChange={this.getInputsData}
-                        name="company" type="text" placeholder="company name"
-                        aria-label="Search" />
-                         </label>
+       if (searchBy.companyCheck) {
+           console.log('inside company',searchBy.company);
 
-                    <label htmlFor="status" > <input type="checkbox" onChange={this.getInputsData} name="statusCheck"/>
-                         Search by Status
-                        <select id="status" name="status" onChange={this.getInputsData} >
-                            <option defaultValue >Pending</option>
-                            <option>Phone interview</option>
-                            <option>HR interview</option>
-                            <option>Technical interview</option>
-                            <option>Assignment</option>
-                        </select>
-                    </label>
-                    <button type="submit">
-                        Submit
-                </button>   
-            
-                </form>
-                 <button onClick={()=> this.props.displayFilterdData(this.props.applies,false) }>
-                        Show All
-                </button>
+           let companies = jobApplies.filter(j => j.company === searchBy.company)
+           console.log(companies);
+           displayFilterdData(companies,true)
+       }
+      else if (searchBy.statusCheck) {
+           console.log('inside status');
+           console.log('inside status');
+           
+           let status = jobApplies.filter(j => j.status.current === searchBy.status )
+           console.log(status);
+           displayFilterdData(status,true)
+       }
+       else{
+           console.log('Please Select Search Method');
+           
+       }
 
-            </div>
-        )
-    }
-    getInputsData = (e) => {
-         this.searchBy[e.target.name] = e.target.value;
-        if (e.target.type === 'checkbox') {
-            console.log('check Box',e.target.checked);
-           return this.searchBy[e.target.name] = e.target.checked    
-        }
-    }
+   }
+    return (
+        <div className="SearchBar">
+        <h3>Search Applys</h3>
 
-    fillterdDataDisplay = (e) => {
-        const { applies,displayFilterdData } = this.props
-        e.preventDefault();
+        <form className="form-inline" onSubmit={(e) => fillterdDataDisplay(e)}>
+            <label htmlFor='company'> <input type="checkbox" onChange={getInputsData} name="companyCheck" />
+             Search by Company Name
+            <input id="company"  className="form-control form-control-sm ml-3" onChange={getInputsData}
+                name="company" type="text" placeholder="company name"
+                aria-label="Search" />
+                 </label>
 
-        if (this.searchBy.companyCheck) {
-            console.log('inside company',this.searchBy.company);
+            <label htmlFor="status" > <input type="checkbox" onChange={getInputsData} name="statusCheck"/>
+                 Search by Status
+                <select id="status" name="status" onChange={getInputsData} >
+                    <option defaultValue >Pending</option>
+                    <option>Phone interview</option>
+                    <option>HR interview</option>
+                    <option>Technical interview</option>
+                    <option>Assignment</option>
+                </select>
+            </label>
+            <button type="submit">
+                Submit
+        </button>   
+    
+        </form>
+         <button onClick={()=> displayFilterdData(jobApplies) }>
+                Show All
+        </button>
 
-            let companies = applies.filter(j => j.company === this.searchBy.company)
-            console.log(companies);
-            displayFilterdData(companies,true)
-        }
-        if (this.searchBy.statusCheck) {
-            console.log('inside status');
-            
-            let status = applies.filter(j => j.status.current === this.searchBy.status )
-            console.log(status);
-            displayFilterdData(status,true)
-            
-        }
-
-    }
-
+    </div>
+    )
 }
+
+export default SearchBar
