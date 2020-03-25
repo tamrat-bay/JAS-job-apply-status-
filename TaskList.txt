@@ -1,21 +1,5 @@
-1)
-2) If answered is yes (true) open contact input
-3) Need to add the following fields : 
-    comment for each status in more details window
-    delete technology Input and replace with job desc
-4)add comment to each status
-5)when answerd is yes addd contact{name,phone,position}
-6)add pending to status
-7)add default values to status
-8)show only {date,company,status,del/up,more details}
-9)style more details
-3) Need to add the following fields :
-    comment for each status in more details window
-    delete technology Input and replace with job desc
-4)add comment to each status
-5)when answered is yes addd contact{name,phone,position}
---6)add pending to status
---7)add default values to status
-8)show only {date,company,status,del/up,more details}
-9)style more details
-
+1) add status details to update apply.-AVSH
+2) fix bug with the search bar checkbox.-TAM
+3) remove location from main table. -TAM
+4) JWT AUTH. -AVSH
+5) Add login and register pages. -TAM

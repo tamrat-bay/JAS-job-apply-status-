@@ -11,19 +11,19 @@ import './UpdateApply.css'
 export default class UpdateApply extends Component {
 
     UpdateApply = {
-        date:this.props.data.date,
-        company:this.props.data.company,
-        companySize:this.props.data.companySize,
-        location:this.props.data.location,
-        status:{current: this.props.data.status},
-        cvversion:this.props.data.cvversion,
-        jobDescription:this.props.data.jobDescription,
-        isAnswered:this.props.data.isAnswered
+        date: this.props.data.date,
+        company: this.props.data.company,
+        companySize: this.props.data.companySize,
+        location: this.props.data.location,
+        status: { current: this.props.data.status },
+        cvversion: this.props.data.cvversion,
+        jobDescription: this.props.data.jobDescription,
+        isAnswered: this.props.data.isAnswered
     }
 
     render() {
         console.log(this.props);
-        
+
         const { data } = this.props;
 
         return (
@@ -89,8 +89,8 @@ export default class UpdateApply extends Component {
                             <Form.Group as={Col}>
                                 <Form.Label>Answerd</Form.Label>
                                 <Form.Control onChange={(e) => this.getInputsData(e)} name="isAnswered" as="select">
-                                    <option defaultValue>{this.props.data.isAnswered ? 'Yes' :'No'}</option>
-                                    <option>{this.props.data.isAnswered ? 'No' :'Yes'}</option>
+                                    <option defaultValue>{this.props.data.isAnswered ? 'Yes' : 'No'}</option>
+                                    <option>{this.props.data.isAnswered ? 'No' : 'Yes'}</option>
                                 </Form.Control>
                             </Form.Group>
                         </Form.Row>
@@ -101,31 +101,31 @@ export default class UpdateApply extends Component {
         )
     }
 
-    getInputsData = (e)=>{
+    getInputsData = (e) => {
         this.UpdateApply[e.target.name] = e.target.value;
-      }
+    }
 
-      submitData = (e)=>{
+    submitData = (e) => {
         e.preventDefault();
         this.UpdateApply.isAnswered === 'Yes' ?
-         this.UpdateApply.isAnswered = true : 
-         this.UpdateApply.isAnswered = false;
-        
-         console.log(this.UpdateApply);
-         
+            this.UpdateApply.isAnswered = true :
+            this.UpdateApply.isAnswered = false;
 
-        const id = this.props.data._id; 
-        const index = this.props.data.index;   
-        axios.put(`/jobapply/${id}`,this.UpdateApply)
-        .then((response)=> {
-            if (response.status === 200) {                   
-                this.props.updateApply(response.data,index);
-            }
+        console.log(this.UpdateApply);
+
+
+        const id = this.props.data._id;
+        const index = this.props.data.index;
+        axios.put(`/jobapply/${id}`, this.UpdateApply)
+            .then((response) => {
+                if (response.status === 200) {
+                    this.props.updateApply(response.data, index);
+                }
             })
-            .catch((error)=> {
-            console.log(error);
+            .catch((error) => {
+                console.log(error);
             });
-        }  
+    }
 
 
 }
