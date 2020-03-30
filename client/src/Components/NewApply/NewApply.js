@@ -18,11 +18,11 @@ function NewApply(props) {
         isAnswered: false,
         status: {
             current: 'Pending',//! default value
-            Pending: '',
-            Assignment: '',
-            "HR interview": '',
-            "Phone interview": '',
-            "Technical interview": ''
+            Pending: {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''},
+            Assignment: {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''},
+            "HR interview": {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''},
+            "Phone interview": {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''},
+            "Technical interview": {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''}
         },
     };
 
@@ -77,7 +77,7 @@ function NewApply(props) {
     return (
         <div className="NewApply">
             <Container>
-                <Form.Row className="">
+                <Form.Row className=''>
                     <h1>New Job Apply</h1>
                     <button style={{ right: "5px", position: "absolute" }} onClick={props.closeMe}>X</button>
                 </Form.Row>

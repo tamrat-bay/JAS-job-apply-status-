@@ -1,5 +1,5 @@
-1) add status details to update apply.-AVSH
+1) add status details to update apply.-AVSH --- DONE
 2) fix bug with the search bar checkbox.-TAM ----- almost done
 3) remove location from main table. -TAM done
-4) JWT AUTH. -AVSH
-5) Add login and register pages. -TAM
+4) JWT AUTH. -AVSH --- almost done, need to check about refresh tokens
+5) Add login and register pages. -TAM 

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import './Login.css'
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -7,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert'
 import useToggle from '../hooks/useToggleState'
+import './Login.css'
 
 
 function Login() {

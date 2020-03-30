@@ -10,21 +10,11 @@ import './UpdateApply.css'
 
 export default class UpdateApply extends Component {
 
-    UpdateApply = {
-        date: this.props.data.date,
-        company: this.props.data.company,
-        companySize: this.props.data.companySize,
-        location: this.props.data.location,
-        status: { current: this.props.data.status },
-        cvversion: this.props.data.cvversion,
-        jobDescription: this.props.data.jobDescription,
-        isAnswered: this.props.data.isAnswered
-    }
+    state = { updateApply: { ...this.props.data } };
 
     render() {
-        console.log(this.props);
 
-        const { data } = this.props;
+        const { updateApply: data } = this.state;
 
         return (
             <div className="UpdateApply">
@@ -40,8 +30,6 @@ export default class UpdateApply extends Component {
                                 <Form.Control onChange={(e) => this.getInputsData(e)} defaultValue={data.company}
                                     name="company" type="text" required placeholder="Company Name" />
                             </Form.Group>
-
-
                         </Form.Row>
 
                         <Form.Row>
@@ -75,9 +63,19 @@ export default class UpdateApply extends Component {
                         </Form.Group>
 
                         <Form.Row>
+                            <Form.Group as={Col} controlId="formGridState">
+                                <Form.Label>Answerd</Form.Label>
+                                <Form.Control value={data.isAnswered} as="select" onChange={(e) => this.getInputsData(e)} name="isAnswered" >
+                                    <option value={false}>No</option>
+                                    <option value={true}>Yes</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Form.Row>
+                        {/*  */}
+                        <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Status</Form.Label>
-                                <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="status">
+                                <Form.Control as="select" onChange={(e) => this.getInputsData(e)} defaultValue={data.status.current} name="status">
                                     <option>Pending</option>
                                     <option>Phone interview</option>
                                     <option>HR interview</option>
@@ -85,41 +83,57 @@ export default class UpdateApply extends Component {
                                     <option>Assignment</option>
                                 </Form.Control>
                             </Form.Group>
-
-                            <Form.Group as={Col}>
-                                <Form.Label>Answerd</Form.Label>
-                                <Form.Control onChange={(e) => this.getInputsData(e)} name="isAnswered" as="select">
-                                    <option defaultValue>{this.props.data.isAnswered ? 'Yes' : 'No'}</option>
-                                    <option>{this.props.data.isAnswered ? 'No' : 'Yes'}</option>
-                                </Form.Control>
-                            </Form.Group>
+                            <div className="statusDetails" style={{ border: "1px solid", padding: "5px" }}>
+                                <h1>status details</h1>
+                                <div style={{ float: "left" }}>
+                                    <input onChange={(e) => this.getInputsData(e)} value={data.status[data.status.current].contactName} name="contactName" placeholder="Name"></input>
+                                    <br />
+                                    <input onChange={(e) => this.getInputsData(e)} value={data.status[data.status.current].contactPhone} name="contactPhone" placeholder="Phone"></input>
+                                    <br />
+                                    <input onChange={(e) => this.getInputsData(e)} value={data.status[data.status.current].contactPosition} name="contactPosition" placeholder="Position"></input>
+                                </div>
+                                <div style={{ float: "right" }}>
+                                    <textarea onChange={(e) => this.getInputsData(e)} value={data.status[data.status.current].statusDescription} name="statusDescription" placeholder="How did it go?"></textarea>
+                                </div>
+                            </div>
                         </Form.Row>
+                        {/*  */}
                         <Button variant="primary" type="submit">Add</Button>
                     </Form>
                 </Container>
             </div>
         )
-    }
+    };
 
     getInputsData = (e) => {
-        this.UpdateApply[e.target.name] = e.target.value;
-    }
+
+        if (e.target.parentElement.parentElement.className === "statusDetails") {
+            const tmpObj = { ...this.state.updateApply };
+            tmpObj.status[this.state.updateApply.status.current][e.target.name] = e.target.value;
+            this.setState({ updateApply: { ...tmpObj } });
+
+
+        } else if (e.target.name === "status") {
+            const tmpObj = { ...this.state.updateApply };
+            tmpObj.status.current = e.target.value;
+            this.setState({ updateApply: { ...tmpObj } });
+
+        } else {
+            const tmpObj = { ...this.state.updateApply };
+            tmpObj[e.target.name] = e.target.value;
+            this.setState({ updateApply: { ...tmpObj } });
+        }
+    };
 
     submitData = (e) => {
         e.preventDefault();
-        this.UpdateApply.isAnswered === 'Yes' ?
-            this.UpdateApply.isAnswered = true :
-            this.UpdateApply.isAnswered = false;
-
-        console.log(this.UpdateApply);
-
 
         const { _id, index } = this.props.data;
         const { token } = JSON.parse(localStorage.jas_login);
 
         axios({
             method: 'put',
-            data: this.UpdateApply,
+            data: this.state.updateApply,
             url: `/jobapply/${_id}`,
             headers: {
                 Authorization: `Bearer ${token}`
@@ -133,7 +147,5 @@ export default class UpdateApply extends Component {
             .catch((error) => {
                 console.log(error);
             });
-    }
-
-
-}
+    };
+};
