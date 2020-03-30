@@ -44,7 +44,7 @@ function ApplyTable() {
     }
 
     const displayFilterdData = (filtData) => {
-        console.log('filtData', filtData);
+        // console.log('filtData', filtData);
 
         setFilterdApplies(filtData)
         setFilterFlag()
@@ -117,7 +117,6 @@ function ApplyTable() {
                     <tr>
                         <th>Date</th>
                         <th>Company</th>
-                        <th>Location</th>
                         <th>Status</th>
                         <th>Update / Delete</th>
                         <th>More Details</th>

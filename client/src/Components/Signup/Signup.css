@@ -1,0 +1,68 @@
+.signup {
+    padding: 50px;
+    width: 60%;
+    margin: 0 auto;
+    min-height: 100vh;
+} 
+
+.signup > form {
+    width: 50%;
+}
+
+.signupdiv h2 {
+    text-align: center;
+    background-color: inherit;
+}
+
+.signupdiv {
+    padding: 50px;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://cdn.pixabay.com/photo/2017/10/31/09/55/dream-job-2904780__340.jpg);
+    /* background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://cdn.pixabay.com/photo/2016/11/14/03/38/achieve-1822503_1280.jpg); */
+    /* background-attachment: fixed; */
+    background-size: cover;
+    color: white;
+}
+.alert-warning {
+    color: #856404;
+    background-color: #f4db8ef2;
+    border-color: #ffeeba;
+    width: 60%;
+    font-size: 1.1em;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.buttons {
+    margin: 2px;
+}
+.signupdiv .btn-primary {
+    color: #fff;
+    background-color: #1d1c1c;
+    width: 120px;
+    font-size: 1.5em;
+    border-color: #289c119d;
+    border-radius: 9px;
+}
+.signupdiv .btn-primary:hover {
+    color: #fff;
+    background-color: #000000;
+    border-color: #1b9b00e8;
+    box-shadow: 2px 2px 5px #1b9b00e8;
+}
+
+@media only screen and (max-width: 750px) {
+    .signup {
+        padding: 50px;
+        width: 85%;
+        margin: 0 auto;
+    }
+    
+    }
+    @media only screen and (max-width: 450px) {
+       .signup {
+        padding: 50px;
+        width: 95%;
+        margin: 0 auto;
+    }
+    
+    }

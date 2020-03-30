@@ -18,5 +18,7 @@
     "url": "https://github.com/tamrat-bay/JAS-job-apply-status-/issues"
   },
   "homepage": "https://github.com/tamrat-bay/JAS-job-apply-status-#readme",
-  "dependencies": {}
+  "dependencies": {
+    "react-router-dom": "^5.1.2"
+  }
 }
