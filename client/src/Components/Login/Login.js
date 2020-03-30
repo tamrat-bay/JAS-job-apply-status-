@@ -6,49 +6,43 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert'
+import useToggle from '../hooks/useToggleState'
 
-class Login extends Component {
-    state = { validationFlag: false}
+
+function Login() {
+ const [validationFlag, setValidationFlag] = useToggle(false);
+
+let loginData = {email:'', password:''}
+
+ const getInputsData = (e,type)=>{
+    return type === 'email' ? loginData.email = e.target.value :
+    loginData.password = e.target.value 
+  }
+  const loginRequest = (e) => {
+    e.preventDefault();
+    console.log(loginData);
     
-    loginData = {email:'', password:''}
+    axios.post('/users/login/', loginData)
+      .then((response)=> {
+        if (response.status === 200) {   
+            const { name , id , email , image , token } = response.data;
+            const user = { name , id  ,email ,image ,token };
+                  console.log(response.data);
+                  
+        }else{
+            setValidationFlag()
+        }
+      })
+      .catch((error)=> {
+        setValidationFlag()
+        console.log(error);
+      });  
+}
 
-    getInputsData = (e,type)=>{
-      return type === 'email' ? this.loginData.email = e.target.value :
-      this.loginData.password = e.target.value 
-    }
- 
-    loginRequest = (e) => {
-        e.preventDefault();
-        axios.post('/users/login/', this.loginData)
-          .then((response)=> {
-            if (response.status === 200) {   
-                const { name , id , email , image , token } = response.data;
-                // localStorage.name = response.data.name;
-                // localStorage.id = response.data.id;
-                // localStorage.email = response.data.email;
-                // localStorage.image =response.data.image;
-                // localStorage.token =response.data.token;
-                const user = { name , id  ,email ,image ,token };
-                localStorage.setItem("user",JSON.stringify(user))
-                localStorage.guest = false;
-            //    this.setState({ user: localStorage });
-               this.props.history.push("/Forum");
-               this.props.loginHandler(true)
-            }else{
-                this.setState({validationFlag:true})      
-            }
-          })
-          .catch((error)=> {
-            this.setState({validationFlag:true})      
-            console.log(error);
-          });
-          
-    }
-    render() {    
-        return (
-            <div className='Login'>
-                    {this.state.validationFlag ?
-                   <Alert variant='warning' onClick={()=>this.setState({validationFlag:false})}>  
+    return (
+        <div className='Login'>
+                    {validationFlag ?
+                   <Alert variant='warning' onClick={setValidationFlag}>  
                         Please try again. 
                         <p>Make sure user Email and Password are correct</p>
                         <p>
@@ -56,13 +50,13 @@ class Login extends Component {
                         </p>
                     </Alert> : ''} 
                 <h2>Login</h2>
-                <Form onSubmit={(e)=>this.loginRequest(e)} className="Login_form">
+                <Form onSubmit={(e)=>loginRequest(e)} className="Login_form">
                     <Form.Group as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={2}>
                         Email
                         </Form.Label>
                         <Col sm={10}>
-                        <Form.Control type="email" onChange={(e)=>this.getInputsData(e,'email')} placeholder="Email" />
+                        <Form.Control type="email" onChange={(e)=>getInputsData(e,'email')} placeholder="Email" />
                         </Col>
                     </Form.Group>
 
@@ -71,7 +65,7 @@ class Login extends Component {
                         Password
                         </Form.Label>
                         <Col sm={10}>
-                        <Form.Control type="password" onChange={(e)=>this.getInputsData(e,'password')} placeholder="Password" />
+                        <Form.Control type="password" onChange={(e)=>getInputsData(e,'password')} placeholder="Password" />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}>
@@ -82,8 +76,11 @@ class Login extends Component {
                     </Form.Group>
                     </Form>
             </div>
-        );
-    }
+    )
 }
+
+
+
+
 
 export default Login;
