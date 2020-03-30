@@ -54,16 +54,25 @@ function NewApply(props) {
         console.log(newApply);
 
 
-        axios.post('/jobapply', newApply)
-            .then((response) => {
-                if (response.status === 201) {
-                    props.newApplyAdded(response.data);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        const { id, token } = JSON.parse(localStorage.jas_login);
+        axios({
+            method: 'post',
+            data: newApply,
+            url: `/jobapply/${id}`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((response) => {
+            if (response.status === 201) {
+                props.newApplyAdded(response.data);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
+
 
     return (
         <div className="NewApply">

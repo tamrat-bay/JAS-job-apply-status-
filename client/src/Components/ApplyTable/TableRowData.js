@@ -2,7 +2,9 @@ import React from 'react'
 
 function TableRowData(props) {
     const { job, index, setDeleteFlag, setUpdateFlag, getMoreDetails, setSingleApplyData } = props
+    
 
+    console.log(job);
 
     return (
         <tr >

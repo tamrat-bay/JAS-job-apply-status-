@@ -1,11 +1,12 @@
 import React from 'react'
 import Nav from 'react-bootstrap/Nav';
-import { Navbar, Button, NavDropdown, Form, FormControl } from 'react-bootstrap';
+// import { Navbar, Button, NavDropdown, Form, FormControl } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 
 function NavbarComp() {
-  const signOut = () => {
-    localStorage.clear();
-  }
+  // const signOut = () => {
+  //   localStorage.clear();
+  // }
   return (
     <div>
       <Navbar bg="light" expand="lg">

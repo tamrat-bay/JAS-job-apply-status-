@@ -23,15 +23,23 @@ function ApplyTable() {
 
     //    let singleApplyData = {}
     useEffect(() => {
-        axios.get('/jobapply')
+        const { id, token } = JSON.parse(localStorage.jas_login);
+        axios({
+            method: 'get',
+            url: `/jobapply/${id}`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(res => {
                 if (res.status === 200) {
+                    console.log('jobApplies'.toLocaleUpperCase());
+                    console.log(res.data);
                     setJobApplies(res.data)
-                    // console.log('jobApplies',res.data);
                 }
             })
             .catch(error =>
-                console.log(error)
+                console.log(error.response.data)
             );
     }, []);
 

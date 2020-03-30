@@ -114,9 +114,17 @@ export default class UpdateApply extends Component {
         console.log(this.UpdateApply);
 
 
-        const id = this.props.data._id;
-        const index = this.props.data.index;
-        axios.put(`/jobapply/${id}`, this.UpdateApply)
+        const { _id, index } = this.props.data;
+        const { token } = JSON.parse(localStorage.jas_login);
+
+        axios({
+            method: 'put',
+            data: this.UpdateApply,
+            url: `/jobapply/${_id}`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then((response) => {
                 if (response.status === 200) {
                     this.props.updateApply(response.data, index);

@@ -35,16 +35,15 @@ function login(req, res) {
     User.findOne({ email }, (err, user) => {
         if (err) return res.status(400).send(err);
         if (user) {
+            const { name, id, email } = user;
             //check if password is correct
             bcrypt.compare(password, user.password)
                 .then(result => {
                     if (result) {
                         //create and assign token
                         let TOKEN_SECRET = "anythingiwant" //todo - make this an env var later
-                        const token = jwt.sign({ _id: user._id }, TOKEN_SECRET);
-                        res.header('auth-token', token).send(token);
-                        // const { name, email } = user;
-                        // return res.status(200).send({ name, email });
+                        const token = jwt.sign({ _id: id }, TOKEN_SECRET);
+                        res.header('auth-token', token).send({ name, id, email, image: 'What?', token });
                     } else {
                         return res.status(403).send('incorrect password');
                     };
