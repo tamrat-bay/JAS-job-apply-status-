@@ -1,0 +1,60 @@
+.Login {
+    margin-top: 15px;
+    padding: 50px;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://cdn.pixabay.com/photo/2018/03/17/10/51/bulletin-board-3233653_960_720.jpg);
+    /* background-attachment: fixed; */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 70vh;
+    margin: 0;
+}
+.Login h2 {
+    text-align: center;
+    background-color: inherit;
+}
+.Login_form{
+    padding: 50px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.Login button {
+    cursor: pointer;
+}
+
+
+
+.Login .btn-primary {
+    color: #fff;
+    background-color: #1d1c1c;
+    width: 120px;
+    font-size: 1.5em;
+    border-color: #289c119d;
+    border-radius: 9px;
+}
+.Login .btn-primary:hover {
+    color: #fff;
+    background-color: #000000;
+    border-color: #1b9b00e8;
+    box-shadow: 2px 2px 5px #1b9b00e8;
+}
+
+
+/* ? Media Query */
+@media only screen and (max-width: 750px) {
+.Login_form {
+    padding: 50px;
+    width: 85%;
+    margin: 0 auto;
+}
+
+}
+@media only screen and (max-width: 450px) {
+.Login_form {
+    padding: 50px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+}
