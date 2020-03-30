@@ -27,7 +27,7 @@ export default class UpdateApply extends Component {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Company Name</Form.Label>
-                                <Form.Control onChange={(e) => this.getInputsData(e)} defaultValue={data.company}
+                                <Form.Control onChange={(e) => this.getInputsData(e)} value={data.company}
                                     name="company" type="text" required placeholder="Company Name" />
                             </Form.Group>
                         </Form.Row>
@@ -35,7 +35,7 @@ export default class UpdateApply extends Component {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Company</Form.Label>
-                                <Form.Control as="select" onChange={(e) => this.getInputsData(e)} name="companySize" >
+                                <Form.Control as="select" onChange={(e) => this.getInputsData(e)} value={data.companySize} name="companySize" >
                                     <option>Startup</option>
                                     <option>Big Company</option>
                                 </Form.Control>
@@ -45,20 +45,20 @@ export default class UpdateApply extends Component {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Job Description</Form.Label>
-                                <Form.Control onChange={(e) => this.getInputsData(e)} defaultValue={data.jobDescription}
+                                <Form.Control onChange={(e) => this.getInputsData(e)} value={data.jobDescription}
                                     name="jobDescription" type="text" placeholder="jobDescription" />
                             </Form.Group>
 
                             <Form.Group as={Col}>
                                 <Form.Label>Cv Version</Form.Label>
-                                <Form.Control onChange={(e) => this.getInputsData(e)} defaultValue={data.cvversion}
+                                <Form.Control onChange={(e) => this.getInputsData(e)} value={data.cvversion}
                                     name="cvversion" type="text" placeholder="FullStack Version / Front-End Version" />
                             </Form.Group>
                         </Form.Row>
 
                         <Form.Group controlId="formGridAddress1">
                             <Form.Label>Address</Form.Label>
-                            <Form.Control onChange={(e) => this.getInputsData(e)} defaultValue={data.location}
+                            <Form.Control onChange={(e) => this.getInputsData(e)} value={data.location}
                                 name="location" placeholder="Dizingof 12 Tel Aviv" />
                         </Form.Group>
 
