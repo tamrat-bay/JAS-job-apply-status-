@@ -39,7 +39,7 @@ const getApplyHandler = (req, res) => {
 
 //new version
 const postApplyHandler = (req, res) => {
-    const { company, location, companySize, status, cvversion, jobDescription, isAnswered } = req.body
+    const newApply = { company, location, companySize, status, cvversion, jobDescription, isAnswered } = req.body
     const { userId } = req.params;
     //todo-- need to Add Validation
     Apply.create({
@@ -57,7 +57,7 @@ const postApplyHandler = (req, res) => {
             foundUser.applies.push(apply);
             foundUser.save(function (err, data) {
                 if (err) return res.status(500).send(`server problem - ${err}`);
-                return res.status(201).send(data);
+                return res.status(201).send(apply);
             })
         })
     });

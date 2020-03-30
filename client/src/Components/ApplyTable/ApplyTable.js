@@ -10,10 +10,10 @@ import './ApplyTable.css';
 import axios from 'axios';
 
 function ApplyTable() {
-    const [jobApplies, setJobApplies] = useState([{ status: {} }]);
-    const [filterdApplies, setFilterdApplies] = useState([{ status: {} }]);
+    const [jobApplies, setJobApplies] = useState([]);
+    const [filterdApplies, setFilterdApplies] = useState([]);
 
-    const [singleApplyData, setSingleApplyData] = useState({ status: { current: '' } });
+    const [singleApplyData, setSingleApplyData] = useState({});
 
     const [filterFlag, setFilterFlag] = useToggle(false)
     const [addNewFlag, setAddNewFlag] = useToggle(false)
@@ -33,8 +33,8 @@ function ApplyTable() {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log('jobApplies'.toLocaleUpperCase());
-                    console.log(res.data);
+                    // console.log('jobApplies'.toLocaleUpperCase());
+                    // console.log(res.data);
                     setJobApplies(res.data)
                 }
             })
@@ -73,7 +73,14 @@ function ApplyTable() {
 
     const deleteApply = () => {
         const { id, index } = singleApplyData;
-        axios.delete(`/jobapply/${id}`, {
+        const { token } = JSON.parse(localStorage.jas_login);
+        
+        axios({
+            method: 'delete',
+            url: `/jobapply/${id}`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         })
             .then(res => {
                 if (res.status === 200) {

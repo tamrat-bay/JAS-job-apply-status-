@@ -2,9 +2,7 @@ import React from 'react'
 
 function TableRowData(props) {
     const { job, index, setDeleteFlag, setUpdateFlag, getMoreDetails, setSingleApplyData } = props
-    
 
-    console.log(job);
 
     return (
         <tr >
@@ -15,7 +13,7 @@ function TableRowData(props) {
                 let applyInfo = { ...job, index: index };
                 setSingleApplyData(applyInfo);
 
-                setUpdateFlag()
+                setUpdateFlag();
             }}>
                 <span role="img" aria-label="handwrite">✍</span> Update </span>
                 | <span onClick={() => {
@@ -27,6 +25,5 @@ function TableRowData(props) {
             <td onClick={() => { getMoreDetails(job) }}>More Details</td>
         </tr>
     )
-}
-
-export default TableRowData
+};
+export default TableRowData;
