@@ -1,15 +1,15 @@
 import React from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ApplyTable from './Components/ApplyTable/ApplyTable';
 import Container from 'react-bootstrap/Container';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import NavbarComp from './Components/NavbarComp/NavbarComp';
-import Login from './Components/Login/Login';
-import Signup from './Components/Signup/Signup';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
+import ApplyTable from './components/ApplyTable/ApplyTable';
+import NavbarComp from './components/NavbarComp/NavbarComp';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
@@ -25,6 +25,6 @@ function App() {
       </BrowserRouter>
     </div>
   )
-}
-
+};
 export default App;
+

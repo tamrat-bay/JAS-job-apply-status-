@@ -5,11 +5,11 @@ import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import SearchBar from '../SearchBar/SearchBar';
 import TableRowData from './TableRowData';
-import useToggle from '../hooks/useToggleState'
-import './ApplyTable.css';
+import useToggle from '../../hooks/useToggleState'
 import axios from 'axios';
+import './ApplyTable.css';
 
-function ApplyTable() {
+const ApplyTable = () => {
     const [jobApplies, setJobApplies] = useState([]);
     const [filterdApplies, setFilterdApplies] = useState([]);
 
@@ -21,7 +21,6 @@ function ApplyTable() {
     const [deleteFlag, setDeleteFlag] = useToggle(false)
     const [moreDetailsFlag, setMoreDetailsFlag] = useToggle(false)
 
-    //    let singleApplyData = {}
     useEffect(() => {
         const { id, token } = JSON.parse(localStorage.jas_login);
         axios({
@@ -33,8 +32,7 @@ function ApplyTable() {
         })
             .then(res => {
                 if (res.status === 200) {
-                    // console.log('jobApplies'.toLocaleUpperCase());
-                    // console.log(res.data);
+
                     setJobApplies(res.data)
                 }
             })
@@ -43,38 +41,34 @@ function ApplyTable() {
             );
     }, []);
 
-    const closeAddNewApplyPopup = () => {
-        setAddNewFlag()
-    }
+    const closeAddNewApplyPopup = () => setAddNewFlag();
 
-    const closeUpdateApplyPopup = () => {
-        setUpdateFlag()
-    }
+    const closeUpdateApplyPopup = () => setUpdateFlag();
 
     const displayFilterdData = (filtData) => {
-        // console.log('filtData', filtData);
 
         setFilterdApplies(filtData)
         setFilterFlag()
-    }
+    };
+
     const newApplyAdded = (data) => {
         const temp = jobApplies;
         temp.push(data);
         setJobApplies(temp)
         setAddNewFlag()
-    }
+    };
 
     const updateApply = (data, i) => {
         let temp = [...jobApplies];
         temp[i] = { ...data };
-        setJobApplies(temp)
-        setUpdateFlag()
-    }
+        setJobApplies(temp);
+        setUpdateFlag();
+    };
 
     const deleteApply = () => {
         const { id, index } = singleApplyData;
         const { token } = JSON.parse(localStorage.jas_login);
-        
+
         axios({
             method: 'delete',
             url: `/jobapply/${id}`,
@@ -85,20 +79,19 @@ function ApplyTable() {
             .then(res => {
                 if (res.status === 200) {
                     const temp = jobApplies;
+                    //ask tamrat about this ^^
                     temp.splice(index, 1)
                     setJobApplies(temp)
                     setDeleteFlag()
                 }
             })
             .catch(err => console.log(err))
-    }
-
+    };
 
     const getMoreDetails = (singleApplyObj) => {
-        //    console.log(singleApplyObj,'more details');
+
         setSingleApplyData(singleApplyObj);
         console.log(singleApplyData, 'more details');
-
         setMoreDetailsFlag();
 
     }
@@ -167,6 +160,5 @@ function ApplyTable() {
             </Table>
         </div>
     )
-}
-
-export default ApplyTable
+};
+export default ApplyTable;

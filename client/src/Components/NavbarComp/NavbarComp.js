@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 // import { Navbar, Button, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
 
-function NavbarComp() {
+const NavbarComp = () => {
   // const signOut = () => {
   //   localStorage.clear();
   // }
@@ -32,12 +32,5 @@ function NavbarComp() {
       </Navbar>
     </div>
   )
-}
-
+};
 export default NavbarComp;
-
-
-
-
-
-

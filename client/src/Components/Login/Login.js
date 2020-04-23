@@ -5,19 +5,21 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert'
-import useToggle from '../hooks/useToggleState'
+import useToggle from '../../hooks/useToggleState';
 import './Login.css'
 
 
-function Login() {
+const Login = () => {
+
     const [validationFlag, setValidationFlag] = useToggle(false);
 
-    let loginData = { email: '', password: '' }
+    let loginData = { email: '', password: '' };
 
     const getInputsData = (e, type) => {
         return type === 'email' ? loginData.email = e.target.value :
             loginData.password = e.target.value
-    }
+    };
+
     const loginRequest = (e) => {
         e.preventDefault();
         console.log(loginData);
@@ -37,7 +39,7 @@ function Login() {
                 setValidationFlag()
                 console.log(error);
             });
-    }
+    };
 
     return (
         <div className='Login'>
