@@ -1,5 +1,5 @@
-1) add status details to update apply.-AVSH --- DONE
+1) add status details to update apply / change to hooks .-AVSH ----- almost done
 2) fix bug with the search bar checkbox.-TAM ----- almost done
-3) remove location from main table. -TAM done
-4) JWT AUTH. -AVSH --- almost done, need to check about refresh tokens
-5) Add login and register pages. -TAM 
+3) Add login and register pages. -TAM -- double check
+4) Home page - TAM
+6) Forgat password option via email
