@@ -1,17 +1,23 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert'
-import useToggle from '../hooks/useToggleState'
-import './Login.css'
+import useToggle from '../hooks/useToggleState';
+import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
 
+import './Login.css'
 
 function Login() {
     const [validationFlag, setValidationFlag] = useToggle(false);
+    const [loginFlag, setloginFlag] = useToggle(false);
+    const { isUserLogged, setisUserLogged } = useContext(IsUserLoggedContext);
 
+    console.log("isUserLogged",isUserLogged);
+    
     let loginData = { email: '', password: '' }
 
     const getInputsData = (e, type) => {
@@ -28,7 +34,9 @@ function Login() {
                     const { name, id, email, image, token } = response.data;
                     const user = { name, id, email, image, token };
                     localStorage.jas_login = JSON.stringify(user);
-
+                    // setisUserLogged( true )
+                       setisUserLogged( true )
+                    setloginFlag()
                 } else {
                     setValidationFlag()
                 }
@@ -38,7 +46,7 @@ function Login() {
                 console.log(error);
             });
     }
-
+    if (loginFlag) return <Redirect to="/applies" />;
     return (
         <div className='Login'>
             {validationFlag ?

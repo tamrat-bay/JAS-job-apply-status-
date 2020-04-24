@@ -10,7 +10,7 @@ import useToggle from '../hooks/useToggleState'
 import './Signup.css';
 
 function Signup() {
-  const [signInFlag, setSignInFlag] = useToggle(false);
+  const [signupFlag, setsignupFlag] = useToggle(false);
   const [validationFlag, setValidationFlag] = useToggle(false);
   let signUpData = {
     name: '',
@@ -30,7 +30,7 @@ function Signup() {
       axios.post('/users/register', signUpData)
         .then((response) => {
           if (response.status === 201) {
-            setSignInFlag()
+            setsignupFlag()
           }
         })
         .catch((error) => {
@@ -42,7 +42,7 @@ function Signup() {
     }
   }
 
-  if (signInFlag) return <Redirect to="Login" />;
+  if (signupFlag) return <Redirect to="Login" />;
 
   return (
     <div className='Signup'>

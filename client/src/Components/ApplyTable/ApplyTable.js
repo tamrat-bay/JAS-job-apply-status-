@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect ,useContext } from 'react'
 import Table from 'react-bootstrap/Table'
 import NewApply from '../NewApply/NewApply';
 import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import SearchBar from '../SearchBar/SearchBar';
 import TableRowData from './TableRowData';
-import useToggle from '../hooks/useToggleState'
+import useToggle from '../hooks/useToggleState';
+import { Redirect } from 'react-router-dom';
 import './ApplyTable.css';
 import axios from 'axios';
+import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+
 
 function ApplyTable() {
     const [jobApplies, setJobApplies] = useState([]);
     const [filterdApplies, setFilterdApplies] = useState([]);
-
     const [singleApplyData, setSingleApplyData] = useState({});
+    const [filterFlag, setFilterFlag] = useState( (sessionStorage.status || sessionStorage.company) ? true : false)
+    const [addNewFlag, setAddNewFlag] = useToggle(false);
+    const [updateFlag, setUpdateFlag] = useToggle(false);
+    const [deleteFlag, setDeleteFlag] = useToggle(false);
+    const [moreDetailsFlag, setMoreDetailsFlag] = useToggle(false);
+    const { isUserLogged  } = useContext(IsUserLoggedContext);
 
-    const [filterFlag, setFilterFlag] = useToggle(false)
-    const [addNewFlag, setAddNewFlag] = useToggle(false)
-    const [updateFlag, setUpdateFlag] = useToggle(false)
-    const [deleteFlag, setDeleteFlag] = useToggle(false)
-    const [moreDetailsFlag, setMoreDetailsFlag] = useToggle(false)
 
-    //    let singleApplyData = {}
     useEffect(() => {
         const { id, token } = JSON.parse(localStorage.jas_login);
         axios({
@@ -51,11 +53,11 @@ function ApplyTable() {
         setUpdateFlag()
     }
 
-    const displayFilterdData = (filtData) => {
+    const displayFilterdData = (filterdData, bolean) => {
         // console.log('filtData', filtData);
 
-        setFilterdApplies(filtData)
-        setFilterFlag()
+        setFilterdApplies(filterdData)
+        setFilterFlag(bolean)
     }
     const newApplyAdded = (data) => {
         const temp = jobApplies;
@@ -102,6 +104,7 @@ function ApplyTable() {
         setMoreDetailsFlag();
 
     }
+if (!isUserLogged) return <Redirect to="/" />
 
     return (
         <div className="ApplyTable">
@@ -125,7 +128,10 @@ function ApplyTable() {
                 <div><button onClick={() => setDeleteFlag()}>No</button></div>
             </div> : ''}
 
-            <SearchBar jobApplies={jobApplies} displayFilterdData={displayFilterdData} />
+            <SearchBar 
+            jobApplies={jobApplies} 
+            displayFilterdData={displayFilterdData} 
+            filterFlag={filterFlag} />
 
             <Table striped bordered hover variant="dark">
                 <thead>
