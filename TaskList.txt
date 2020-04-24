@@ -1,7 +1,7 @@
-1) add status details to update apply / change to hooks. - AVSH ---> DONE
-2) fix bug with the search bar checkbox.-TAM ----- almost done
-3) Add login and register pages. - TAM -- double check
-4) Home page - TAM
-6) Forgat password option via email - TAM
-7) add form component to handle both update and new apply - AVSH
-8) add hook to handle change - AVSH
+1) Handle update of apply after search --- filter by id -AVSH
+2) Protect /applies route - when user is logged off - TAM
+3) Home page - TAM 
+4) Forgat password option via email - TAM
+6) add form component to handle both update and new apply - AVSH
+7) add hook to handle change - AVSH
+
