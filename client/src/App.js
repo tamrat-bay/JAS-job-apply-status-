@@ -1,17 +1,16 @@
 import React from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ApplyTable from './Components/ApplyTable/ApplyTable';
 import Container from 'react-bootstrap/Container';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavbarComp from './Components/NavbarComp/NavbarComp';
 import Home from './Components/Home/Home';
+import ApplyTable from './Components/ApplyTable/ApplyTable';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import { IsUserLoggedProvider } from './context/IsUserLoggedContext'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function App() {
+const App = () => {
 
 
   return (
@@ -31,6 +30,6 @@ function App() {
       </BrowserRouter>
     </div>
   )
-}
-
+};
 export default App;
+

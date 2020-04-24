@@ -5,14 +5,14 @@ import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import SearchBar from '../SearchBar/SearchBar';
 import TableRowData from './TableRowData';
-import useToggle from '../hooks/useToggleState';
 import { Redirect } from 'react-router-dom';
+import useToggle from '../../hooks/useToggleState'
 import './ApplyTable.css';
 import axios from 'axios';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
 
 
-function ApplyTable() {
+const ApplyTable = () => {
     const [jobApplies, setJobApplies] = useState([]);
     const [filterdApplies, setFilterdApplies] = useState([]);
     const [singleApplyData, setSingleApplyData] = useState({});
@@ -35,8 +35,7 @@ function ApplyTable() {
         })
             .then(res => {
                 if (res.status === 200) {
-                    // console.log('jobApplies'.toLocaleUpperCase());
-                    // console.log(res.data);
+
                     setJobApplies(res.data)
                 }
             })
@@ -45,13 +44,9 @@ function ApplyTable() {
             );
     }, []);
 
-    const closeAddNewApplyPopup = () => {
-        setAddNewFlag()
-    }
+    const closeAddNewApplyPopup = () => setAddNewFlag();
 
-    const closeUpdateApplyPopup = () => {
-        setUpdateFlag()
-    }
+    const closeUpdateApplyPopup = () => setUpdateFlag();
 
     const displayFilterdData = (filterdData, bolean) => {
         // console.log('filtData', filtData);
@@ -64,19 +59,19 @@ function ApplyTable() {
         temp.push(data);
         setJobApplies(temp)
         setAddNewFlag()
-    }
+    };
 
     const updateApply = (data, i) => {
         let temp = [...jobApplies];
         temp[i] = { ...data };
-        setJobApplies(temp)
-        setUpdateFlag()
-    }
+        setJobApplies(temp);
+        setUpdateFlag();
+    };
 
     const deleteApply = () => {
         const { id, index } = singleApplyData;
         const { token } = JSON.parse(localStorage.jas_login);
-        
+
         axios({
             method: 'delete',
             url: `/jobapply/${id}`,
@@ -87,20 +82,19 @@ function ApplyTable() {
             .then(res => {
                 if (res.status === 200) {
                     const temp = jobApplies;
+                    //ask tamrat about this ^^
                     temp.splice(index, 1)
                     setJobApplies(temp)
                     setDeleteFlag()
                 }
             })
             .catch(err => console.log(err))
-    }
-
+    };
 
     const getMoreDetails = (singleApplyObj) => {
-        //    console.log(singleApplyObj,'more details');
+
         setSingleApplyData(singleApplyObj);
         console.log(singleApplyData, 'more details');
-
         setMoreDetailsFlag();
 
     }
@@ -173,6 +167,5 @@ if (!isUserLogged) return <Redirect to="/" />
             </Table>
         </div>
     )
-}
-
-export default ApplyTable
+};
+export default ApplyTable;

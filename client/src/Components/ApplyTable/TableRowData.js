@@ -1,7 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-function TableRowData(props) {
-    const { job, index, setDeleteFlag, setUpdateFlag, getMoreDetails, setSingleApplyData } = props
+
+const TableRowData = (props) => {
+
+    const {
+        job,
+        index,
+        setDeleteFlag,
+        setUpdateFlag,
+        getMoreDetails,
+        setSingleApplyData
+    } = props;
 
 
     return (
@@ -10,7 +19,7 @@ function TableRowData(props) {
             <td>{job.company}</td>
             <td>{job.status.current}</td>
             <td> <span onClick={() => {
-                let applyInfo = { ...job, index: index };
+                let applyInfo = { ...job, index };
                 setSingleApplyData(applyInfo);
 
                 setUpdateFlag();

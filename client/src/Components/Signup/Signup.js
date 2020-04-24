@@ -6,12 +6,14 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert'
 import { Redirect } from "react-router-dom";
-import useToggle from '../hooks/useToggleState'
+import useToggle from '../../hooks/useToggleState';
 import './Signup.css';
 
-function Signup() {
+const Signup = () => {
+
   const [signupFlag, setsignupFlag] = useToggle(false);
   const [validationFlag, setValidationFlag] = useToggle(false);
+  
   let signUpData = {
     name: '',
     email: '',
@@ -40,7 +42,7 @@ function Signup() {
       setValidationFlag()
       e.preventDefault()
     }
-  }
+  };
 
   if (signupFlag) return <Redirect to="Login" />;
 
@@ -63,7 +65,7 @@ function Signup() {
         <Form.Group as={Row} controlId="formHorizontalUserName">
           <Form.Label column sm={2}>
             User Name
-  </Form.Label>
+          </Form.Label>
           <Col sm={10}>
             <Form.Control onChange={(e) => getInputsData(e)} minLength="3" name="name" type="text" placeholder="User Name" required />
           </Col>
@@ -72,7 +74,7 @@ function Signup() {
         <Form.Group as={Row} controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
             Email
-  </Form.Label>
+         </Form.Label>
           <Col sm={10}>
             <Form.Control onChange={(e) => getInputsData(e)} minLength="5" name="email" type="email" placeholder="Email" required />
           </Col>
@@ -81,7 +83,7 @@ function Signup() {
         <Form.Group as={Row} controlId="formHorizontalPassword">
           <Form.Label column sm={2}>
             Password
-  </Form.Label>
+          </Form.Label>
           <Col sm={10}>
             <Form.Control type="password" onChange={(e) => getInputsData(e)} minLength="4" name="password" placeholder="Password" required />
           </Col>
@@ -89,7 +91,7 @@ function Signup() {
         <Form.Group as={Row} controlId="formHorizontalPassword">
           <Form.Label column sm={2}>
             Confirm Password
-  </Form.Label>
+          </Form.Label>
           <Col sm={10}>
             <Form.Control type="password" onChange={(e) => getInputsData(e)} minLength="4" name="confirmPassword" placeholder="Confirm Password" required />
           </Col>
@@ -105,7 +107,7 @@ function Signup() {
     </div>
   );
 };
-export default Signup
+export default Signup;
 
 
 

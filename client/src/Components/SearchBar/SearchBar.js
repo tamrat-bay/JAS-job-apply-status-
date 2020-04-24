@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import './SearchBar.css'
 
-function SearchBar({ jobApplies, displayFilterdData }) {
-
+const SearchBar = (props) => {
+    const { jobApplies, displayFilterdData } = props
     let searchBy = {
         status: 'Pending', //default Val
         statusCheck: false,
@@ -106,5 +106,4 @@ function SearchBar({ jobApplies, displayFilterdData }) {
         </div>
     )
 }
-
-export default SearchBar
+export default SearchBar;

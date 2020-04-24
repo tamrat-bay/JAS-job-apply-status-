@@ -6,12 +6,13 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert'
-import useToggle from '../hooks/useToggleState';
+import useToggle from '../../hooks/useToggleState';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
 
 import './Login.css'
 
-function Login() {
+const Login = () => {
+
     const [validationFlag, setValidationFlag] = useToggle(false);
     const [loginFlag, setloginFlag] = useToggle(false);
     const { isUserLogged, setisUserLogged } = useContext(IsUserLoggedContext);
@@ -23,7 +24,8 @@ function Login() {
     const getInputsData = (e, type) => {
         return type === 'email' ? loginData.email = e.target.value :
             loginData.password = e.target.value
-    }
+    };
+
     const loginRequest = (e) => {
         e.preventDefault();
         console.log(loginData);

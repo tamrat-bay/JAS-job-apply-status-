@@ -7,7 +7,7 @@ import axios from 'axios';
 import './NewApply.css'
 
 
-function NewApply(props) {
+const NewApply = (props) => {
     let newApply = {
         date: '',
         company: '',
@@ -18,11 +18,11 @@ function NewApply(props) {
         isAnswered: false,
         status: {
             current: 'Pending',//! default value
-            Pending: {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''},
-            Assignment: {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''},
-            "HR interview": {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''},
-            "Phone interview": {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''},
-            "Technical interview": {contactName: '', contactPhone: '', contactPosition: '', statusDescription:''}
+            Pending: { contactName: '', contactPhone: '', contactPosition: '', statusDescription: '' },
+            Assignment: { contactName: '', contactPhone: '', contactPosition: '', statusDescription: '' },
+            "HR interview": { contactName: '', contactPhone: '', contactPosition: '', statusDescription: '' },
+            "Phone interview": { contactName: '', contactPhone: '', contactPosition: '', statusDescription: '' },
+            "Technical interview": { contactName: '', contactPhone: '', contactPosition: '', statusDescription: '' }
         },
     };
 
@@ -42,10 +42,8 @@ function NewApply(props) {
             newApply[e.target.name].current = e.target.value;
         } else {
             newApply[e.target.name] = e.target.value;
-        }
-
-
-    }
+        };
+    };
 
     const submitData = (e) => {
 
@@ -63,14 +61,14 @@ function NewApply(props) {
                 Authorization: `Bearer ${token}`
             }
         })
-        .then((response) => {
-            if (response.status === 201) {
-                props.newApplyAdded(response.data);
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((response) => {
+                if (response.status === 201) {
+                    props.newApplyAdded(response.data);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
 
