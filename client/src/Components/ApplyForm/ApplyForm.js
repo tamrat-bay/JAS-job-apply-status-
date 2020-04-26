@@ -12,6 +12,7 @@ const ApplyForm = (props) => {
     const formik = useFormik({
         initialValues,
         onSubmit: values => {
+            console.log("form value", values);
 
             submitForm(values);
 
@@ -24,6 +25,8 @@ const ApplyForm = (props) => {
         axios({ method, url, data, headers })
             .then(response => {
                 if (response.status === 200 || response.status === 201) {
+                    console.log("response.data",response.data);
+                    
                     resolveFunction(response.data);
                 };
             })

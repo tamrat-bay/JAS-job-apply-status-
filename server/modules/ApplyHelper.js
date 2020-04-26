@@ -3,14 +3,6 @@ const { Apply } = require('../models/applyModel');
 const User = require('../models/User');
 
 
-// const getApplyHandler = (req, res) => {
-//     return Apply.find({})
-//         .then(response => res.status(200).send(response))
-//         .catch(err => { console.log(err); res.status(500).send(`server problem - ${err}`) })
-// }
-
-
-//new version
 const getApplyHandler = (req, res) => {
     const { userId } = req.params;
     User.findOne({ _id: userId }).populate('applies').exec(function (err, user) {
@@ -20,26 +12,8 @@ const getApplyHandler = (req, res) => {
 };
 
 
-// const postApplyHandler = (req, res) => {
-//     const { company, location, companySize, status, cvversion, jobDescription, isAnswered } = req.body
-//     //todo-- need to Add Validation
-//     const apply = new Apply({
-//         company,
-//         location,
-//         companySize,
-//         status,
-//         cvversion,
-//         jobDescription,
-//         isAnswered
-//     });
-//     return apply.save()
-//         .then(response => res.status(201).send(response))
-//         .catch(err => { console.log(err); res.status(500).send(`server problem - ${err}`) })
-// }
-
-//new version
 const postApplyHandler = (req, res) => {
-    const newApply = { company, location, companySize, status, cvversion, jobDescription, isAnswered } = req.body
+    const newApply = { company, location, companySize, status, cvversion, jobDescription, isAnswered, date } = req.body
     const { userId } = req.params;
     //todo-- need to Add Validation
     Apply.create({
@@ -49,7 +23,8 @@ const postApplyHandler = (req, res) => {
         status,
         cvversion,
         jobDescription,
-        isAnswered
+        isAnswered,
+        date
     }, function (err, apply) {
         if (err) return res.status(500).send(`server problem - ${err}`);
         User.findOne({ _id: userId }, function (err, foundUser) {
@@ -62,8 +37,6 @@ const postApplyHandler = (req, res) => {
         })
     });
 };
-
-
 
 
 const updateApplyHandler = (req, res) => {
@@ -81,7 +54,6 @@ const deleteApplyHandler = (req, res) => {
         .then(response => res.status(200).send('Deleted'))
         .catch(err => { console.log(err); res.status(500).send(`server problem - ${err}`) })
 };
-
 
 module.exports.getApplyHandler = getApplyHandler;
 module.exports.postApplyHandler = postApplyHandler;

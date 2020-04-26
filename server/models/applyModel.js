@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
 const applySchema = new mongoose.Schema({
-    date: {
-    type:String, default: new Date().toDateString()},
-    company:String,
+    date: String,
+    company: String,
     companySize: String,
-    location:String,
+    location: String,
     status: Object,
-    cvversion:String,
-    jobDescription:String,
-    isAnswered:Boolean
+    cvversion: String,
+    jobDescription: String,
+    isAnswered: Boolean
 });
 
 //todo Add Contact Name- And phone and Position
@@ -21,6 +20,6 @@ const applySchema = new mongoose.Schema({
 
 
 
-const Apply = mongoose.model('apply',applySchema);
+const Apply = mongoose.model('apply', applySchema);
 
-module.exports.Apply =  Apply;
+module.exports.Apply = Apply;
