@@ -3,11 +3,11 @@
     transition: all .7s;
 }
 
-.ApplyTable span:nth-child(1):hover{
+.ApplyTable-updateIcon:hover{
     background-color: rgb(129, 188, 236);
 }
 
-.ApplyTable span:nth-child(2):hover{
+.ApplyTable-deleteIcon:hover{
     background-color: rgb(240, 72, 6);
 }
 

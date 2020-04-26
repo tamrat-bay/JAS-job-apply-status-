@@ -14,7 +14,7 @@ const MoreDetails = (props) => {
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Cv Version</th>
+                        <th>CV Version</th>
                         <th>Status</th>
                     </tr>
                 </thead>

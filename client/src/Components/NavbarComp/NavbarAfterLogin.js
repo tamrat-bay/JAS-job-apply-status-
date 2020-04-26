@@ -8,7 +8,7 @@ const NavbarAfterLogin = () => {
     const logout = () => {
         localStorage.clear();
         setisUserLogged(false)
-    }
+    };
 
     return (
         <div>
@@ -21,13 +21,12 @@ const NavbarAfterLogin = () => {
                         <Nav.Link href="/applies">Applies</Nav.Link>
                     </Nav>
                     <Nav className="mr-auto">
-                        <span>Hello</span>
+                        <span><strong>Welcome User!</strong></span>
                         <Nav.Link onClick={logout} href="#">Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
         </div>
     )
-}
-
+};
 export default NavbarAfterLogin

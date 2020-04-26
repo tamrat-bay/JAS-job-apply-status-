@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React, { useContext } from 'react';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -17,8 +17,8 @@ const Login = () => {
     const [loginFlag, setloginFlag] = useToggle(false);
     const { isUserLogged, setisUserLogged } = useContext(IsUserLoggedContext);
 
-    console.log("isUserLogged",isUserLogged);
-    
+    console.log("isUserLogged", isUserLogged);
+
     let loginData = { email: '', password: '' }
 
     const getInputsData = (e, type) => {
@@ -37,7 +37,7 @@ const Login = () => {
                     const user = { name, id, email, image, token };
                     localStorage.jas_login = JSON.stringify(user);
                     // setisUserLogged( true )
-                       setisUserLogged( true )
+                    setisUserLogged(true)
                     setloginFlag()
                 } else {
                     setValidationFlag()

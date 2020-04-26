@@ -16,16 +16,16 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-      <IsUserLoggedProvider> 
-        <NavbarComp />
-        <Container>
-          <Switch>
-            <Route exact path='/' component={ Home } />
-            <Route exact path='/applies' component={ ApplyTable } />
-            <Route exact path='/login' component={ Login } />
-            <Route exact path='/signup' component={ Signup}  />
-          </Switch>
-        </Container>
+        <IsUserLoggedProvider>
+          <NavbarComp />
+          <Container>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/applies' component={ApplyTable} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={Signup} />
+            </Switch>
+          </Container>
         </IsUserLoggedProvider>
       </BrowserRouter>
     </div>
