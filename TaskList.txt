@@ -1,7 +1,7 @@
-1) Handle update of apply after search --- filter by id -AVSH
-2) Protect /applies route - when user is logged off - TAM
+1) Handle update of apply after search --- filter by id -AVSH ----DONE
+2) Protect /applies route - when user is logged off ----> AVSH DONE
 3) Home page - TAM 
 4) Forgat password option via email - TAM
-6) add form component to handle both update and new apply - AVSH
-7) add hook to handle change - AVSH
+6) add form component to handle both update and new apply - AVSH ---> DONE
+7) add hook to handle change - AVSH ----> not needed anymore (used formik)
 
