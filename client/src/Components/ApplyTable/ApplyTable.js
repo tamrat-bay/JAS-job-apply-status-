@@ -68,6 +68,8 @@ const ApplyTable = () => {
 
     const addNewApply = (data) => {
 
+        console.log(data);
+        
         const temp = [...allJobApplies];
         temp.push(data);
 
