@@ -14,7 +14,7 @@
     background-color: inherit;
 }
 .Login_form{
-    padding: 50px;
+    padding: 15px;
     width: 60%;
     margin: 0 auto;
 }
@@ -39,22 +39,23 @@
     border-color: #1b9b00e8;
     box-shadow: 2px 2px 5px #1b9b00e8;
 }
-
+.Login_forgatPassword{
+    text-align: center;
+    background-color: white;
+    width: 160px;
+    margin: 0 auto;
+}
 
 /* ? Media Query */
 @media only screen and (max-width: 750px) {
 .Login_form {
-    padding: 50px;
     width: 85%;
-    margin: 0 auto;
 }
 
 }
 @media only screen and (max-width: 450px) {
 .Login_form {
-    padding: 50px;
     width: 95%;
-    margin: 0 auto;
 }
 
 }

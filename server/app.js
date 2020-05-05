@@ -4,6 +4,7 @@ const app = express();
 const port = 5000;
 const { VerifyToken } = require('./modules/VerifyToken');
 const ApplyHelper = require('./modules/ApplyHelper');
+const ForgatPassword = require('./modules/ForgatPassword');
 const Authentication = require('./modules/Authentication');
 
 
@@ -44,6 +45,14 @@ app.post('/users/register', (req, res) => {
 
 app.post('/users/login', (req, res) => {
     return Authentication.login(req, res);
+});
+//forgat password
+app.post('/forgatpassword/:email', (req, res) => {
+    return ForgatPassword.forgatPassword(req, res);
+});
+//Reset password
+app.patch('/reset', (req, res) => {
+    return ForgatPassword.resetPassword(req, res);
 });
 
 app.listen(port, () => console.log('app is listening on port ' + port));

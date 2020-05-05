@@ -31,3 +31,10 @@ DELETE  http://localhost:5000/jobapply/5e35281bb2afc52fd8f587ed
 Content-Type: application/json
 
 ###
+
+POST http://localhost:5000/forgatpassword/tamrat3@gmail.com
+Content-Type: application/json
+
+###
+PATCH  http://localhost:5000/reset/95d9db237e1c593eacf1a208ed2f8f39
+Content-Type: application/json

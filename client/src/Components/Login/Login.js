@@ -60,6 +60,11 @@ const Login = () => {
                     </p>
                 </Alert> : ''}
             <h2>Login</h2>
+
+            <div className='Login_forgatPassword' >
+            <a href='/forgatpassword'>Forgat password</a>
+            </div>
+
             <Form onSubmit={(e) => loginRequest(e)} className="Login_form">
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
@@ -85,6 +90,7 @@ const Login = () => {
                     </Col>
                 </Form.Group>
             </Form>
+         
         </div>
     )
 };
