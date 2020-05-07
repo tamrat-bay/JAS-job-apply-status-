@@ -1,8 +1,7 @@
 1) Home page - TAM.
-2) add email verification - AVSH.
+2) add export table to excel or pdf - AVSH.
 3) STYLING!!!
 4) REFACTOR!!!
-
 
 
 
