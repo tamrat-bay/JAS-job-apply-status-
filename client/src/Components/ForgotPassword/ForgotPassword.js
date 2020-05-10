@@ -4,28 +4,23 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
-import Alert from 'react-bootstrap/Alert'
-import useToggle from '../../hooks/useToggleState';
-import './ForgatPassword.css';
+import './ForgotPassword.css';
 
 
-const ForgatPassword = () => {
+const ForgotPassword = () => {
 
-    let ForgatEmail ;
+    let ForgotEmail ;
 
     const getInputsData = (e) => {
-        return e.target.name === 'email' ? ForgatEmail = e.target.value :''
+        return e.target.name === 'email' ? ForgotEmail = e.target.value :''
     };
 
-    const ForgatRequest = (e) => {
+    const ForgotRequest = (e) => {
         e.preventDefault();
-        axios.post(`/forgatpassword/${ForgatEmail}`)
+        axios.post(`/forgotpassword/${ForgotEmail}`)
         .then(res => {
             if (res.status === 201) {
                 console.log(res.data);
-                
-                
             }
         })
         .catch(err => console.log(err))
@@ -33,9 +28,9 @@ const ForgatPassword = () => {
     }
     
     return (
-        <div className="ForgatPassword">
-            <h1>ForgatPassword</h1>
-            <Form onSubmit={(e) => ForgatRequest(e)} className="Login_form">
+        <div className="ForgotPassword">
+            <h1>ForgotPassword</h1>
+            <Form onSubmit={(e) => ForgotRequest(e)} className="Login_form">
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
                         Email
@@ -55,5 +50,4 @@ const ForgatPassword = () => {
         </div>
     )
 }
-
-export default ForgatPassword
+export default ForgotPassword;

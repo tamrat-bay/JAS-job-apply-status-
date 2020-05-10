@@ -4,7 +4,7 @@ const app = express();
 const port = 5000;
 const { VerifyToken } = require('./modules/VerifyToken');
 const ApplyHelper = require('./modules/ApplyHelper');
-const ForgatPassword = require('./modules/ForgotPassword');
+const ForgotPassword = require('./modules/ForgotPassword');
 const Authentication = require('./modules/Authentication');
 
 
@@ -41,7 +41,7 @@ app.post('/users/login', (req, res) => {
     return Authentication.login(req, res);
 });
 
-//forgat password
+//forgot password
 app.post('/forgotPassword/:email', (req, res) => {
     return ForgotPassword.forgotPassword(req, res);
 });
@@ -51,9 +51,4 @@ app.patch('/reset', (req, res) => {
     return ForgotPassword.resetPassword(req, res);
 });
 
-app.listen(port, () => console.log('app is listening on port ' + port));
-
-
-
-
-
+app.listen(port, () => console.log('app is listening on port: ' + port));

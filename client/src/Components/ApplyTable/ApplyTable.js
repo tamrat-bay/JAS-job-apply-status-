@@ -26,20 +26,6 @@ const ApplyTable = () => {
     const { isUserLogged } = useContext(IsUserLoggedContext);
 
 
-    useEffect(() => {
-        //protect route 
-        if (isUserLogged && !allJobApplies.length) {
-            getApplies();
-        };
-
-        //show filterd apllies after update
-        if (!updateFlag && filterFlag) {
-            filterApllies();
-        };
-
-    }, [isUserLogged, updateFlag, allJobApplies, filterFlag]);
-
-
     const getApplies = () => {
 
         const { id, token } = JSON.parse(localStorage.jas_login);
@@ -69,7 +55,7 @@ const ApplyTable = () => {
     const addNewApply = (data) => {
 
         console.log(data);
-        
+
         const temp = [...allJobApplies];
         temp.push(data);
 
@@ -149,6 +135,19 @@ const ApplyTable = () => {
             alert('Please Select Search Method');
         };
     };
+
+    useEffect(() => {
+        //protect route 
+        if (isUserLogged) {
+            getApplies();
+        };
+
+        //show filterd apllies after update
+        if (!updateFlag && filterFlag) {
+            filterApllies();
+        };
+
+    }, [isUserLogged, updateFlag, filterFlag]);
 
 
 

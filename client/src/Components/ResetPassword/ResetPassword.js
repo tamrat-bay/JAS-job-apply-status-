@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-
-import {Button,Row,Col,Form,Alert} from 'react-bootstrap';
+import React from 'react';
+import { Button, Row, Col, Form, Alert } from 'react-bootstrap';
 import useToggle from '../../hooks/useToggleState';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const ResetPassword = (props) => {
@@ -26,7 +25,7 @@ const ResetPassword = (props) => {
                 .catch((error) => {
                     console.log(error);
                 });
-        }else{
+        } else {
             setValidationFlag()
         }
 

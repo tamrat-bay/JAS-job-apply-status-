@@ -55,5 +55,5 @@ function resetPassword(req, res) {
         })
 }
 
-module.exports.forgatPassword = forgotPassword;
+module.exports.forgotPassword = forgotPassword;
 module.exports.resetPassword = resetPassword;

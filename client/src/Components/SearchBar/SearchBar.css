@@ -1,3 +1,19 @@
 .SearchBar{
+    padding: 10px;
     background-color: darkcyan;
+    color:white;
+}
+
+.SearchBar-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.SearchBar button{
+    background-color: transparent;
+    color: white;
+}
+
+.SearchBar button:hover{
+    color: red;
 }

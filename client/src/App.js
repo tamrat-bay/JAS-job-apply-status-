@@ -6,14 +6,13 @@ import Home from './Components/Home/Home';
 import ApplyTable from './Components/ApplyTable/ApplyTable';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
-import ForgatPassword from './Components/ForgatPassword/ForgatPassword';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import { IsUserLoggedProvider } from './context/IsUserLoggedContext'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ResetPassword from './Components/ResetPassword/ResetPassword';
 
 
 const App = () => {
-
 
   return (
     <div className="App">
@@ -26,7 +25,7 @@ const App = () => {
               <Route exact path='/applies' component={ApplyTable} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
-              <Route exact path='/forgatpassword' component={ForgatPassword} />
+              <Route exact path='/forgotpassword' component={ForgotPassword} />
               <Route exact path='/reset/:id' component={ResetPassword} />
             </Switch>
           </Container>
