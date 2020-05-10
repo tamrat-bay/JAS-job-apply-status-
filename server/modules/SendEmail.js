@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const jasEmail = require('../emailInfo.json')
 
 // async..await is not allowed in global scope, must use a wrapper
 async function sendEmail(request) {
@@ -13,17 +14,17 @@ async function sendEmail(request) {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'email', // generated ethereal user
-      pass: 'password' // generated ethereal password
+      user: jasEmail.email, // generated ethereal user
+      pass: jasEmail.password // generated ethereal password
     }
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: 'email@address', // sender address
+    from: jasEmail.email, // sender address
     to: email, // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
+    subject: "Jas-Team Reset Password", // Subject line
+    text: "", // plain text body
     html: `<p>To reset your password please click on this link : <a href="http://localhost:3000/reset/${id}">Reset LINK</a> </p>` // html body
   });
 

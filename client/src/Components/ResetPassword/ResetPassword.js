@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-
+import React from 'react'
 import {Button,Row,Col,Form,Alert} from 'react-bootstrap';
 import useToggle from '../../hooks/useToggleState';
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 
 const ResetPassword = (props) => {
+
     const [resetFlag, setResetFlag] = useToggle(false);
     const [validationFlag, setValidationFlag] = useToggle(false);
 
@@ -17,7 +17,7 @@ const ResetPassword = (props) => {
         e.preventDefault();
         console.log(resetData);
         if (resetData.password === resetData.confirmPassword) {
-            axios.patch('/reset/', resetData)
+            axios.patch('/reset', resetData)
                 .then((response) => {
                     if (response.status === 204) {
                         setResetFlag()
@@ -29,7 +29,6 @@ const ResetPassword = (props) => {
         }else{
             setValidationFlag()
         }
-
     }
 
     if (resetFlag) return <Redirect to='/login' />
@@ -67,8 +66,7 @@ const ResetPassword = (props) => {
 
                 <Form.Group as={Row}>
                     <Col sm={{ span: 10, offset: 2 }}>
-                        <Button className='buttons' type="submit" >Login</Button>
-                        <Button className='buttons' name="login" href="/">Return</Button>
+                        <Button className='buttons' type="submit" >Reset</Button>
                     </Col>
                 </Form.Group>
 

@@ -11,9 +11,9 @@ const NavbarAfterLogin = () => {
     };
 
     return (
-        <div>
-            <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <div className="Navbar">
+            <Navbar bg="light" variant="dark" expand="lg">
+                <Navbar.Brand  href="/">React-Bootstrap</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

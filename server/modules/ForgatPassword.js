@@ -47,7 +47,12 @@ function resetPassword(req,res) {
                     user.password = hashed;
                     //update the user data
                     User.findByIdAndUpdate(user._id,user)
-                    .then(userUpdate =>  res.status(204).send('Passwoed was changed'))
+                    .then(userUpdate => { 
+                             //!Delete ResestRequest after use so that id is used only once
+                             request.remove().then(request => console.log(email,'request was deleted'))
+                             
+                       return res.status(204).send('Passwoed was changed')
+                })
                 })
             }
            

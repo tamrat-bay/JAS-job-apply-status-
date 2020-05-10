@@ -10,6 +10,7 @@ import ForgatPassword from './Components/ForgatPassword/ForgatPassword';
 import { IsUserLoggedProvider } from './context/IsUserLoggedContext'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ResetPassword from './Components/ResetPassword/ResetPassword';
+import './App.css'
 
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
       <BrowserRouter>
         <IsUserLoggedProvider>
           <NavbarComp />
-          <Container>
+          <div className="App_body">
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/applies' component={ApplyTable} />
@@ -29,7 +30,7 @@ const App = () => {
               <Route exact path='/forgatpassword' component={ForgatPassword} />
               <Route exact path='/reset/:id' component={ResetPassword} />
             </Switch>
-          </Container>
+          </div>
         </IsUserLoggedProvider>
       </BrowserRouter>
     </div>

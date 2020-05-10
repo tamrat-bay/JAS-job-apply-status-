@@ -54,6 +54,9 @@ app.post('/forgatpassword/:email', (req, res) => {
 app.patch('/reset', (req, res) => {
     return ForgatPassword.resetPassword(req, res);
 });
+// app.delete('/reset', (req, res) => {
+//     return ForgatPassword.resetPassword(req, res);
+// });
 
 app.listen(port, () => console.log('app is listening on port ' + port));
 

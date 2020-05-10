@@ -1,9 +1,10 @@
 import React from 'react'
 import { Navbar ,Nav} from 'react-bootstrap';
+import './Navbar.css'
 
 const NavbarBeforeLogin = () => {
     return (
-        <div className="NavbarBeforeLogin">
+        <div className=" Navbar NavbarBeforeLogin">
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
