@@ -8,8 +8,8 @@ import { Redirect } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert'
 import useToggle from '../../hooks/useToggleState';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+import './Login.css';
 
-import './Login.css'
 
 const Login = () => {
 
@@ -61,8 +61,8 @@ const Login = () => {
                 </Alert> : ''}
             <h2>Login</h2>
 
-            <div className='Login_forgatPassword' >
-            <a href='/forgatpassword'>Forgat password</a>
+            <div className='Login_forgotPassword' >
+                <a href='/forgotpassword'>Forgot password</a>
             </div>
 
             <Form onSubmit={(e) => loginRequest(e)} className="Login_form">
@@ -90,7 +90,7 @@ const Login = () => {
                     </Col>
                 </Form.Group>
             </Form>
-         
+
         </div>
     )
 };

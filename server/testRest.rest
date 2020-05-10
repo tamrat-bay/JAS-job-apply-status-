@@ -32,7 +32,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5000/forgatpassword/tamrat3@gmail.com
+POST http://localhost:5000/forgotpassword/tamrat3@gmail.com
 Content-Type: application/json
 
 ###

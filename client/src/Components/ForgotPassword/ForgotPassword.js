@@ -5,10 +5,10 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import useToggle from '../../hooks/useToggleState';
-import './ForgatPassword.css';
+import './ForgotPassword.css';
 
 
-const ForgatPassword = () => {
+const ForgotPassword = () => {
  
     const [sendEmailFlag, setSendEmailFlag] = useToggle(false)
 
@@ -17,7 +17,7 @@ const ForgatPassword = () => {
         return e.target.name === 'email' ? userEmail = e.target.value :''
     };
 
-    const ForgatRequest = (e) => {
+    const ForgotRequest = (e) => {
         
         e.preventDefault();
         axios.post(`/forgatpassword/${userEmail}`)
@@ -33,11 +33,9 @@ const ForgatPassword = () => {
 
     
     return (
-        <div className="ForgatPassword">
-            <h1>Forgat my Password</h1>
-
-            {!sendEmailFlag ? 
-            <Form onSubmit={(e) => ForgatRequest(e)} className="Login_form">
+        <div className="ForgotPassword">
+            <h1>ForgotPassword</h1>
+            <Form onSubmit={(e) => ForgotRequest(e)} className="Login_form">
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
                         Email
@@ -54,10 +52,8 @@ const ForgatPassword = () => {
                 </Form.Group>
             </Form>
                 :
-                <h3>Email was sent to {userEmail} please check your email to restore the password</h3>
-                }
+                <h3>Email was sent to you please check your email to restore the password</h3>
         </div>
     )
 }
-
-export default ForgatPassword
+export default ForgotPassword;
