@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react'
-import Table from 'react-bootstrap/Table'
 import NewApply from '../NewApply/NewApply';
 import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import SearchBar from '../SearchBar/SearchBar';
 import TableRowData from './TableRowData';
 import { Redirect } from 'react-router-dom';
+import { Container, Table } from 'react-bootstrap';
 import useToggle from '../../hooks/useToggleState'
-import './ApplyTable.css';
-import axios from 'axios';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+import axios from 'axios';
+import './ApplyTable.css';
 
 
 const ApplyTable = () => {
@@ -130,7 +130,8 @@ console.log('filterApllies activated searchValues',searchValues);
             setDisplayList(byCompanieAndStatus);
         } else if (searchBy.companyCheck) {
             let byCompanies = allJobApplies.filter(j => j.company === searchBy.company);
-            console.log("byCompanies ");
+            console.log("byCompanies" ,allJobApplies);
+            console.log("byCompanies" ,byCompanies);
 
             setDisplayList(byCompanies);
         } else if (searchBy.statusCheck) {
@@ -162,6 +163,7 @@ console.log('filterApllies activated searchValues',searchValues);
 
     return (
         <div className="ApplyTable">
+            <Container>
             {moreDetailsFlag ? <MoreDetails data={singleApplyData}
                 close={() => setMoreDetailsFlag()} /> : ''}
             <div className="ApplyTable_Addnew">
@@ -185,11 +187,13 @@ console.log('filterApllies activated searchValues',searchValues);
             }
             {
                 deleteFlag ? <div className="ApplyTable_delete">
-                    <h2>Are you sure you want to delete?</h2>
-                    <h4>{singleApplyData.company}</h4>
-                    <div><button onClick={() => deleteApply()}>YES</button></div>
-                    <div><button onClick={() => setDeleteFlag()}>No</button></div>
-                </div> : ''
+                <h2>Are you sure you want to delete?</h2>
+                <h3>({singleApplyData.company})</h3>
+                <div className='ApplyTable_delete_butons'>
+                    <button onClick={() => deleteApply()}>Yes</button>
+                    <button onClick={() => setDeleteFlag()}>No</button>
+                </div>
+            </div> : ''
             }
 
             <SearchBar
@@ -200,8 +204,8 @@ console.log('filterApllies activated searchValues',searchValues);
                 setDisplayList={setDisplayList}
             />
 
-            <Table striped bordered hover variant="dark">
-                <thead>
+            <Table bordered>
+                    <thead>
                     <tr>
                         <th>Date</th>
                         <th>Company</th>
@@ -211,7 +215,9 @@ console.log('filterApllies activated searchValues',searchValues);
                     </tr>
                 </thead>
                 <tbody>
-                     {filterFlag ? 
+                     {
+                     filterFlag 
+                      ? 
                        displayList.map((j, i) =>
                         <TableRowData
                             key={i}
@@ -229,7 +235,6 @@ console.log('filterApllies activated searchValues',searchValues);
                         job={j} index={i}
                         setDeleteFlag={setDeleteFlag}
                         setUpdateFlag={setUpdateFlag}
-
                         setSingleApplyData={setSingleApplyData}
                         getMoreDetails={getMoreDetails}
                     />
@@ -237,7 +242,9 @@ console.log('filterApllies activated searchValues',searchValues);
                 }
                 </tbody>
             </Table>
+            </Container>
         </div>
     )
 };
 export default ApplyTable;
+

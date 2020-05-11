@@ -22,7 +22,7 @@ const SearchBar = (props) => {
             }
         ,
         onSubmit: values => {
-            // console.log("form value Search bar", values);
+            console.log("form value Search bar", values);
             
             handleSubmit(values);
 

@@ -16,11 +16,11 @@ const Home = () => {
                 <div className="Home_box">
 
                     <div className="Home_icon">
-                        <a href=""><i className="fas fa-fire"></i></a>
+                        <a href="/"><i className="fas fa-fire"></i></a>
                     </div>
 
                     <div className="Home_text">
-                        <a href="">
+                        <a href="/">
                             <h3>The Product</h3>
                             <p>
                                 Simple and efficiant job applies status manger board.
@@ -33,11 +33,11 @@ const Home = () => {
                 <div className="Home_box">
 
                     <div className="Home_icon">
-                        <a href=""><i className="fa fa-seedling"></i></a>
+                        <a href="/"><i className="fa fa-seedling"></i></a>
                     </div>
 
                     <div className="Home_text">
-                        <a href="">
+                        <a href="/">
                             <h3>The Purpose</h3>
                             <p>We will use only animal-friendly, fair-trade yarn. Only the best!</p>
                         </a>
@@ -48,11 +48,11 @@ const Home = () => {
                 <div className="Home_box">
 
                     <div className="Home_icon">
-                        <a href=""><i className="fas fa-address-card"></i></a>
+                        <a href="/"><i className="fas fa-address-card"></i></a>
                     </div>
 
                     <div className="Home_text">
-                        <a href="">
+                        <a href="/">
                             <h3>The Group</h3>
                             <p>Become a member, become family. Teamwork is everything.</p>
                         </a>
