@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react'
-import Table from 'react-bootstrap/Table'
 import NewApply from '../NewApply/NewApply';
 import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
 import SearchBar from '../SearchBar/SearchBar';
 import TableRowData from './TableRowData';
 import { Redirect } from 'react-router-dom';
+import { Container, Table } from 'react-bootstrap';
 import useToggle from '../../hooks/useToggleState'
-import './ApplyTable.css';
-import axios from 'axios';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+import axios from 'axios';
+import './ApplyTable.css';
 
 
 const ApplyTable = () => {
@@ -155,66 +155,70 @@ const ApplyTable = () => {
 
     return (
         <div className="ApplyTable">
-            {moreDetailsFlag ? <MoreDetails data={singleApplyData}
-                close={() => setMoreDetailsFlag()} /> : ''}
-            <div style={{ height: "20px", margin: "15px" }}>
-                {!addNewFlag && !updateFlag ?
-                    <button onClick={() => setAddNewFlag()}>Add New Apply</button> : ""}
-            </div>
-            {
-                addNewFlag ?
-                    <NewApply
-                        addNewApply={addNewApply}
-                        closeMe={closeAddNewApplyPopup}
-                    />
-                    : ''
-            }
-            {
-                updateFlag ? <UpdateApply
-                    initialValues={singleApplyData}
-                    updateApply={updateApply}
-                    closeMe={closeUpdateApplyPopup}
-                /> : ''
-            }
-            {
-                deleteFlag ? <div className="ApplyTable_delete">
-                    <h2>Are you sure you want to delete?</h2>
-                    <h4>{singleApplyData.company}</h4>
-                    <div><button onClick={() => deleteApply()}>YES</button></div>
-                    <div><button onClick={() => setDeleteFlag()}>No</button></div>
-                </div> : ''
-            }
-
-            <SearchBar
-                filterApllies={filterApllies}
-                setFilterFlag={setFilterFlag}
-                allJobApplies={allJobApplies}
-                setDisplayList={setDisplayList}
-            />
-
-            <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Company</th>
-                        <th>Status</th>
-                        <th>Update / Delete</th>
-                        <th>More Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {displayList.map((j, i) =>
-                        <TableRowData
-                            key={i}
-                            job={j}
-                            setDeleteFlag={setDeleteFlag}
-                            setUpdateFlag={setUpdateFlag}
-                            setSingleApplyData={setSingleApplyData}
-                            getMoreDetails={getMoreDetails}
+            <Container>
+                {moreDetailsFlag ? <MoreDetails data={singleApplyData}
+                    close={() => setMoreDetailsFlag()} /> : ''}
+                <div style={{ height: "20px", margin: "15px" }}>
+                    {!addNewFlag && !updateFlag ?
+                        <button onClick={() => setAddNewFlag()}>Add New Apply</button> : ""}
+                </div>
+                {
+                    addNewFlag ?
+                        <NewApply
+                            addNewApply={addNewApply}
+                            closeMe={closeAddNewApplyPopup}
                         />
-                    )}
-                </tbody>
-            </Table>
+                        : ''
+                }
+                {
+                    updateFlag ? <UpdateApply
+                        initialValues={singleApplyData}
+                        updateApply={updateApply}
+                        closeMe={closeUpdateApplyPopup}
+                    /> : ''
+                }
+                {
+                    deleteFlag ? <div className="ApplyTable_delete">
+                        <h2>Are you sure you want to delete?</h2>
+                        <h3>({singleApplyData.company})</h3>
+                        <div className='ApplyTable_delete_butons'>
+                            <button onClick={() => deleteApply()}>Yes</button>
+                            <button onClick={() => setDeleteFlag()}>No</button>
+                        </div>
+                    </div> : ''
+                }
+
+                <SearchBar
+                    filterApllies={filterApllies}
+                    setFilterFlag={setFilterFlag}
+                    allJobApplies={allJobApplies}
+                    setDisplayList={setDisplayList}
+                />
+
+                <Table bordered>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Company</th>
+                            <th>Status</th>
+                            <th>Update / Delete</th>
+                            <th>More Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {displayList.map((j, i) =>
+                            <TableRowData
+                                key={i}
+                                job={j}
+                                setDeleteFlag={setDeleteFlag}
+                                setUpdateFlag={setUpdateFlag}
+                                setSingleApplyData={setSingleApplyData}
+                                getMoreDetails={getMoreDetails}
+                            />
+                        )}
+                    </tbody>
+                </Table>
+            </Container>
         </div>
     )
 };

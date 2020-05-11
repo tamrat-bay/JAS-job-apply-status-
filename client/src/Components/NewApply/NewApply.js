@@ -1,6 +1,5 @@
 import React from 'react'
 import ApplyForm from '../ApplyForm/ApplyForm';
-import './NewApply.css'
 
 
 const NewApply = (props) => {
@@ -32,7 +31,6 @@ const NewApply = (props) => {
 
     return <ApplyForm
         title='New'
-        CssClass='NewApply'
         initialValues={newApply}
         axiosInfo={axiosInfo}
         closeMe={props.closeMe}

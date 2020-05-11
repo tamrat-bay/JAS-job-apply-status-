@@ -1,6 +1,5 @@
 import React from 'react';
 import ApplyForm from '../ApplyForm/ApplyForm';
-import './UpdateApply.css'
 
 
 const UpdateApply = (props) => {
@@ -13,12 +12,8 @@ const UpdateApply = (props) => {
         resolveFunction: updateApply
     };
 
-    // console.log(initialValues);
-
-
     return <ApplyForm
         title='Update'
-        CssClass='UpdateApply'
         initialValues={initialValues}
         axiosInfo={axiosInfo}
         closeMe={closeMe}

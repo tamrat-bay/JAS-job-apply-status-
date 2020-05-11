@@ -1,20 +1,94 @@
-.ApplyTable span{
+.ApplyTable table{
+    width: 100%;
+    font-size: 2vw;
+}
+
+.ApplyTable th, td{
+    padding: 8px;
+}
+
+.ApplyTable th{
+    background-color: #204051;
+    color: white;
+}
+
+.ApplyTable tr{
+    background-color: #3b6978;   
+    color: #cae8d5;
+}
+
+.ApplyTable-moreDetails:hover{
     cursor: pointer;
-    transition: all .7s;
+    color: red;
+}
+
+.ApplyTable-updateDelete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.ApplyTable-updateIcon, .ApplyTable-deleteIcon{
+    padding: 2.5px;
+    margin: 0 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
 }
 
 .ApplyTable-updateIcon:hover{
     background-color: rgb(129, 188, 236);
+    cursor: pointer;
+    transition: background-color 400ms;
 }
 
 .ApplyTable-deleteIcon:hover{
     background-color: rgb(240, 72, 6);
+    cursor: pointer;
+    transition: background-color 400ms;
 }
 
 .ApplyTable_delete{
-    background-color: #ef3300f0;
-    border: 2px dotted yellow;
+    position: relative;
+    padding: 10px;
+    background-color: rgb(240, 72, 6);
+    color: white;
+    border: 3px outset black;
+    width: 85%;
+    max-width: 500px;
+    height: 40%;
+    max-height: 250px;
     position: fixed;
+    top: 25%;
     left: 50%;
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, -25%);
 }
+
+.ApplyTable_delete_butons{
+   position: absolute;
+   bottom: 10px;
+   width: 100%;
+   display: flex;
+   justify-content: space-around;
+}
+
+.ApplyTable_delete_butons button{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    width: 20%;
+    font-size: 18px;
+}
+
+.ApplyTable_delete_butons button:hover{
+    background-color: white;
+    color: rgb(240, 72, 6);
+}
+
+@media screen and (min-width: 1200px) {
+    .ApplyTable table {
+       font-size: 18px;
+    }
+  }
