@@ -18,3 +18,18 @@
     left: 50%;
     transform: translate(-50%, 100%);
 }
+.ApplyTable_Addnew {
+    background-color: #3b6978;
+    padding: 1em 0 0 0;
+}
+.ApplyTable_Addnew button{
+    background-color: #313839;
+    border: none;
+    color: white;
+    width: 200px;
+    height: 40px;
+    font-size: 1.5em;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    font-family: pasifico;
+}

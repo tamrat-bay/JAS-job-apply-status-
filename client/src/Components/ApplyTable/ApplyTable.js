@@ -16,15 +16,20 @@ const ApplyTable = () => {
 
     const [allJobApplies, setAllJobApplies] = useState([]);
     const [displayList, setDisplayList] = useState([]);
+    const [searchValues, setSearchValues] = useState({});
 
     const [singleApplyData, setSingleApplyData] = useState({});
-    const [filterFlag, setFilterFlag] = useState((sessionStorage.status || sessionStorage.company) ? true : false)
+    const [filterFlag, setFilterFlag] = useState((sessionStorage.status || sessionStorage.companyCheck) ? true : false)
     const [addNewFlag, setAddNewFlag] = useToggle(false);
     const [updateFlag, setUpdateFlag] = useToggle(false);
     const [deleteFlag, setDeleteFlag] = useToggle(false);
     const [moreDetailsFlag, setMoreDetailsFlag] = useToggle(false);
     const { isUserLogged } = useContext(IsUserLoggedContext);
 
+    console.log('displayList',displayList);
+    console.log('singleApplyData',singleApplyData);
+    console.log('filterFlag',filterFlag);
+    
 
     const getApplies = () => {
 
@@ -41,7 +46,7 @@ const ApplyTable = () => {
                 if (res.status === 200) {
 
                     setAllJobApplies([...res.data]);
-                    setDisplayList([...res.data]);
+                    // setDisplayList([...res.data]) ;
                 };
             })
             .catch(error =>
@@ -100,20 +105,21 @@ const ApplyTable = () => {
                     const index = temp.findIndex(apply => apply._id === singleApplyData._id);
                     temp.splice(index, 1);
                     setAllJobApplies(temp);
-                    setDisplayList(temp);
+                    // setDisplayList(temp);
                     setDeleteFlag()
                 };
             })
             .catch(err => console.log(err))
     };
 
-    const filterApllies = () => {
+    const filterApllies = (searchValues) => {
+console.log('filterApllies activated searchValues',searchValues);
 
         const searchBy = {
-            companyCheck: sessionStorage.companyCheck ? JSON.parse(sessionStorage.companyCheck) : '',
-            statusCheck: sessionStorage.statusCheck ? JSON.parse(sessionStorage.statusCheck) : '',
-            status: sessionStorage.status ? sessionStorage.status : 'Pending',
-            company: sessionStorage.company ? sessionStorage.company : ''
+            companyCheck: searchValues.companyCheck ? searchValues.companyCheck : '',
+            statusCheck: searchValues.statusCheck ? searchValues.statusCheck : '',
+            status: searchValues.status ? searchValues.status : 'Pending',
+            company: searchValues.company ? searchValues.company : ''
         };
 
         if (searchBy.companyCheck && searchBy.statusCheck) {
@@ -132,7 +138,8 @@ const ApplyTable = () => {
             console.log("byStatus")
             setDisplayList(byStatus);
         } else {
-            alert('Please Select Search Method');
+            setFilterFlag(false);
+           return alert('Please Select Search Method');
         };
     };
 
@@ -143,9 +150,9 @@ const ApplyTable = () => {
         };
 
         //show filterd apllies after update
-        if (!updateFlag && filterFlag) {
-            filterApllies();
-        };
+        // if (!updateFlag && filterFlag) {
+        //     filterApllies(searchValues);
+        // };
 
     }, [isUserLogged, updateFlag, filterFlag]);
 
@@ -157,7 +164,7 @@ const ApplyTable = () => {
         <div className="ApplyTable">
             {moreDetailsFlag ? <MoreDetails data={singleApplyData}
                 close={() => setMoreDetailsFlag()} /> : ''}
-            <div style={{ height: "20px", margin: "15px" }}>
+            <div className="ApplyTable_Addnew">
                 {!addNewFlag && !updateFlag ?
                     <button onClick={() => setAddNewFlag()}>Add New Apply</button> : ""}
             </div>
@@ -189,6 +196,7 @@ const ApplyTable = () => {
                 filterApllies={filterApllies}
                 setFilterFlag={setFilterFlag}
                 allJobApplies={allJobApplies}
+                setSearchValues={setSearchValues}
                 setDisplayList={setDisplayList}
             />
 
@@ -203,7 +211,8 @@ const ApplyTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {displayList.map((j, i) =>
+                     {filterFlag ? 
+                       displayList.map((j, i) =>
                         <TableRowData
                             key={i}
                             job={j}
@@ -212,7 +221,20 @@ const ApplyTable = () => {
                             setSingleApplyData={setSingleApplyData}
                             getMoreDetails={getMoreDetails}
                         />
-                    )}
+                    )
+                    :
+                    allJobApplies.map((j, i) =>
+                    <TableRowData
+                        key={i}
+                        job={j} index={i}
+                        setDeleteFlag={setDeleteFlag}
+                        setUpdateFlag={setUpdateFlag}
+
+                        setSingleApplyData={setSingleApplyData}
+                        getMoreDetails={getMoreDetails}
+                    />
+                    )
+                }
                 </tbody>
             </Table>
         </div>

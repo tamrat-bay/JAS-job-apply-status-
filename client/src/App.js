@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import NavbarComp from './Components/NavbarComp/NavbarComp';
+import NavBar from './Components/NavBar/NavBar';
 import Home from './Components/Home/Home';
 import ApplyTable from './Components/ApplyTable/ApplyTable';
 import Login from './Components/Login/Login';
@@ -19,8 +19,8 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <IsUserLoggedProvider>
-          <NavbarComp />
-          <div className="App_body">
+          <NavBar />
+          {/* <div className="App_body"> */}
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/applies' component={ApplyTable} />
@@ -29,7 +29,7 @@ const App = () => {
               <Route exact path='/forgotpassword' component={ForgotPassword} />
               <Route exact path='/reset/:id' component={ResetPassword} />
             </Switch>
-          </div>
+          {/* </div> */}
         </IsUserLoggedProvider>
       </BrowserRouter>
     </div>

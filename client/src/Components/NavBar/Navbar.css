@@ -1,0 +1,43 @@
+.Navbar {
+    width: 100%;
+    color: whitesmoke;
+}
+.Navbar .bg-dark {
+    background-color: #090b0d!important;
+}
+
+.Navbar_logginStatus{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.Navbar_logginStatus div{
+ align-self: center;
+}
+
+.Navbar .navbar-dark .navbar-brand {
+    color: #fff;
+    letter-spacing: 10px;
+    font-size: 2.5em;
+    font-family: pacifico;
+    padding: 0 45px;
+}
+.Navbar .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: .5rem;
+    padding-left: .5rem;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.Navbar .navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.8);
+}
+
+
+@media only screen and (max-width: 991px) {
+
+.Navbar_logginStatus {
+    width: 100%;
+}
+}

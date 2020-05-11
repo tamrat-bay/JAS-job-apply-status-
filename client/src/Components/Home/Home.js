@@ -22,8 +22,9 @@ const Home = () => {
                     <div className="Home_text">
                         <a href="">
                             <h3>The Product</h3>
-                            <p>Simple and efficiant job applies status manger board.
-                                 to help you track your applies and their current status.</p>
+                            <p>
+                                Simple and efficiant job applies status manger board.
+                            </p>
                         </a>
                     </div>
 
