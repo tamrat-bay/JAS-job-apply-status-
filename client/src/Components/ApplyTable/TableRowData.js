@@ -26,16 +26,18 @@ const TableRowData = (props) => {
             <td>{job.date}</td>
             <td>{job.company}</td>
             <td>{job.status.current}</td>
-            <td className='ApplyTable-updateDelete'>
+            <td >
+              <div className='ApplyTable-updateDelete'>
                 <span className='ApplyTable-updateIcon' onClick={() => handleUpdate(job)}>
-                    <span role="img" aria-label="handwrite">✍</span>
-                    <span>Update</span>
+                <i className="fas fa-edit" style={{color:'#6abbff'}}></i>
                 </span>
-                <span>|</span>
+                <span>
+                    |
+                </span>
                 <span className='ApplyTable-deleteIcon' onClick={() => handleDelete(job)}>
-                    <span role="img" aria-label="sciccors">✂</span>
-                    <span>Delete</span>
+                <i className="fas fa-trash-alt" style={{color:'#dd4646'}}></i>
                 </span>
+                </div>
             </td>
             <td className='ApplyTable-moreDetails' onClick={() => getMoreDetails(job)}>
                 More Details

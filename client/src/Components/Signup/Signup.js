@@ -50,57 +50,59 @@ const Signup = () => {
     <div className='Signup'>
       {validationFlag ?
         <Alert variant='warning' onClick={setValidationFlag}>
-          Please try again. Make sure user name doesn't contains blank spaces,
+          Please try again.
           make sure user contains only alphanumeric symbols
-          and that the passwords match
+          and that both passwords match
           <p>
             <Alert.Link >Click here to close this window</Alert.Link>
           </p>
         </Alert> : ''}
 
-
-      <h2>Sign up</h2>
-      <Form onSubmit={(e) => signUpRequest(e)} className='signup'>
-
+       
+      
+      <Form onSubmit={(e) => signUpRequest(e)} className='Signup_form'>
+        <div class="form-title">
+                  <h2>Welcome to JAS</h2>
+                  <p>Signup here</p>
+              </div>
         <Form.Group as={Row} controlId="formHorizontalUserName">
           <Form.Label column sm={2}>
-            User Name
+            {/* User Name */}
           </Form.Label>
-          <Col sm={10}>
+          <Col sm={12}>
             <Form.Control onChange={(e) => getInputsData(e)} minLength="3" name="name" type="text" placeholder="User Name" required />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
-            Email
+            {/* Email */}
          </Form.Label>
-          <Col sm={10}>
+          <Col sm={12}>
             <Form.Control onChange={(e) => getInputsData(e)} minLength="5" name="email" type="email" placeholder="Email" required />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} controlId="formHorizontalPassword">
           <Form.Label column sm={2}>
-            Password
+            {/* Password */}
           </Form.Label>
-          <Col sm={10}>
+          <Col sm={12}>
             <Form.Control type="password" onChange={(e) => getInputsData(e)} minLength="4" name="password" placeholder="Password" required />
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formHorizontalPassword">
           <Form.Label column sm={2}>
-            Confirm Password
+            {/* Confirm Password */}
           </Form.Label>
-          <Col sm={10}>
+          <Col sm={12}>
             <Form.Control type="password" onChange={(e) => getInputsData(e)} minLength="4" name="confirmPassword" placeholder="Confirm Password" required />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Col sm={{ span: 10, offset: 2 }}>
-            <Button className='buttons' type="submit">Sign Up</Button>
-            <Button className='buttons' name="signUp"  >Return</Button>
+          <Col sm={{ span: 12 }}>
+            <Button type="submit">Signup</Button>
           </Col>
         </Form.Group>
       </Form>

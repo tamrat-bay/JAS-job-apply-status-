@@ -1,44 +1,138 @@
+
 .Login {
     margin-top: 15px;
     padding: 50px;
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://cdn.pixabay.com/photo/2018/03/17/10/51/bulletin-board-3233653_960_720.jpg);
-    /* background-attachment: fixed; */
-    background-size: cover;
-    background-position: center;
-    color: white;
-    height: 70vh;
+    height: 100vh;
     margin: 0;
+    background-color: #cbceccb8;
 }
-.Login h2 {
+
+.Login_form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 1px 5px;
+}
+.Login form{
+    padding: 30px 25px 15px 25px;
+    background-color: #ffffff;
+    min-width: 350px;
+    border-radius: 10px;
+  }
+ .Login .form-group{
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+.Login .form-title{
+    margin-bottom: 20px;
+  }
+
+.Login h2{
+    font-size: 30px;
+    color: #323232;
+     font-family: pasifico;
+  }
+ .Login p{
+    color: #777777;
+    font-family: pasifico;
+  }
+  
+/* .Login  label{
+    color: #565656;
+} */
+
+.Login input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #a7a3a3;
+}
+
+.Login .form-group p {
+    margin-top: 13px;
+    text-align: center;
+    font-size: 1.2em;
+    border-bottom: 0.1px solid black;
+    width: 75%;
+    margin: 10px auto;
+    /* background-color: #47596357; */
+    border-radius: 5px;
+    letter-spacing: 1px;
+}
+
+/* .Login .form-group p:hover {
+    background-color: #2d3530d3;
+    color: white;
+  } */
+
+  .Login  .form-group a{
+    /* text-decoration: none; */
+    color: rgb(40, 109, 173);
+  }
+
+  .Login button{
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    cursor: pointer;
+    margin-top: 15px;
+    background-color: #3b6978;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bolder;
+    width: 75%;
+    transition: all .3s ease;
+  }
+  
+  .Login  button:hover{
+    background-color: #204051;
+  }
+  .Login .alert-warning {
+    color: #bf0c0c;
+    font-size: 1.2em;
+    background-color: #fff3cd;
+    border-color: #000000;
+    border-radius: 5px;
+    z-index: 1;
+}
+/* .Login h2 {
     text-align: center;
     background-color: inherit;
-}
-.Login_form{
-    padding: 15px;
-    width: 60%;
-    margin: 0 auto;
-}
+} */
 
-.Login button {
+
+/* .Login button {
     cursor: pointer;
-}
+} */
 
 
 
-.Login .btn-primary {
+/* .Login .btn-primary {
     color: #fff;
     background-color: #1d1c1c;
     width: 120px;
     font-size: 1.5em;
     border-color: #289c119d;
     border-radius: 9px;
-}
-.Login .btn-primary:hover {
+} */
+/* .Login .btn-primary:hover {
     color: #fff;
     background-color: #000000;
     border-color: #1b9b00e8;
     box-shadow: 2px 2px 5px #1b9b00e8;
-}
+} */
 .Login_forgotPassword{
     text-align: center;
     background-color: white;
@@ -47,7 +141,16 @@
 }
 
 /* ? Media Query */
-@media only screen and (max-width: 750px) {
+
+/* @media (min-width: 576px){
+ .col-sm-10 {
+        flex: 0;
+    }
+.offset-sm-12 {
+    margin-left:0;
+}
+} */
+/* @media only screen and (max-width: 750px) {
 .Login_form {
     width: 85%;
 }
@@ -58,4 +161,4 @@
     width: 95%;
 }
 
-}
+} */
