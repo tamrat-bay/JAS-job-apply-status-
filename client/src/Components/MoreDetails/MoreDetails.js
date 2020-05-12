@@ -7,9 +7,10 @@ const MoreDetails = (props) => {
     const { data, close } = props
     return (
         <div className="MoreDetails" >
-            <h4 onClick={close}>Close Window</h4>
-            <h2>{data.company}</h2>
-            <h3>Is a {data.companySize} in {data.location}</h3>
+            <h4 onClick={close}>
+                <i className="fas fa-times"></i>
+            </h4>
+            <h2>'{data.company}' is a {data.companySize} in {data.location}</h2>
             <Table striped bordered hover>
                 <thead>
                     <tr>

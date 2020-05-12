@@ -26,6 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100% !important;
   
 }
 
@@ -36,6 +37,7 @@
     justify-content: space-around;
     align-items: center;
     width: 30%;
+    /* height: 100%; */
 }
 
 .ApplyTable-updateIcon:hover{
