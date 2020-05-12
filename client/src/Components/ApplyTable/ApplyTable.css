@@ -40,17 +40,18 @@
     /* height: 100%; */
 }
 
-.ApplyTable-updateIcon:hover{
-    background-color: rgb(129, 188, 236);
+.ApplyTable-updateIcon:hover , .ApplyTable-deleteIcon:hover{
     cursor: pointer;
-    transition: background-color 400ms;
+    transform: scale(1.2);
+    transition: all 300ms;
 }
 
-.ApplyTable-deleteIcon:hover{
-    background-color: rgb(240, 72, 6);
+/* .ApplyTable-deleteIcon:hover{
+    background-color: rgba(165, 22, 22, 0.48);
+    border-radius: 3px;
     cursor: pointer;
     transition: background-color 400ms;
-}
+} */
 
 .ApplyTable_delete{
     position: relative;
@@ -76,19 +77,27 @@
    justify-content: space-around;
 }
 .ApplyTable_Addnew {
-    background-color: #3b6978;
-    padding: 1em 0 0 0;
+    background-color: #84a9ac;
+    padding: 1em 0;
+    margin: 10px 0;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
 }
 .ApplyTable_Addnew button{
     background-color: #313839;
     border: none;
     color: white;
-    width: 200px;
+    width: 170px;
     height: 40px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     border-radius: 5px;
-    letter-spacing: 2px;
-    font-family: pasifico;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
 }
 
 .ApplyTable_delete_butons button{
@@ -103,9 +112,44 @@
     background-color: white;
     color: rgb(240, 72, 6);
 }
+.ApplyTable table i {
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 1px black;
+}
+.ApplyTable .table td, .table th {
+    vertical-align: middle;
+}
 
-@media screen and (min-width: 1200px) {
+ @media screen and (min-width: 1200px) {
     .ApplyTable table {
        font-size: 18px;
     }
+    .ApplyTable table i {
+        font-size: 1rem;
+    }
   }
+  @media screen and (max-width: 991px) {
+
+       .ApplyTable_Addnew button {
+           width: 120px;
+           height: 35px;
+       }
+       .ApplyTable table i {
+        font-size: 1rem;
+    }
+    }
+
+ @media screen and (max-width: 750px) {
+        .ApplyTable table i {
+            font-size: .8rem;
+        }
+    } 
+ @media screen and (max-width: 450px) {
+
+    .ApplyTable_Addnew button {
+        width: 90px;
+        height: 30px;
+        font-size: 1em;
+    }
+  
+    }

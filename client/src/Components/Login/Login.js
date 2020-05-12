@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { Redirect ,Link} from "react-router-dom";
 import Alert from 'react-bootstrap/Alert'
 import useToggle from '../../hooks/useToggleState';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
@@ -51,42 +51,48 @@ const Login = () => {
     if (loginFlag) return <Redirect to="/applies" />;
     return (
         <div className='Login'>
-            {validationFlag ?
+
+            {validationFlag
+                ?
                 <Alert variant='warning' onClick={setValidationFlag}>
                     Please try again.
                         <p>Make sure user Email and Password are correct</p>
                     <p>
                         <Alert.Link >Click here to close this window</Alert.Link>
                     </p>
-                </Alert> : ''}
-            <h2>Login</h2>
+                </Alert> :
+                ''}
 
-            <div className='Login_forgotPassword' >
-                <a href='/forgotpassword'>Forgot password</a>
-            </div>
+           
 
             <Form onSubmit={(e) => loginRequest(e)} className="Login_form">
+            <div class="form-title">
+                <h2>Welcome to JAS</h2>
+                <p>Login here</p>
+            </div>
                 <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={2}>
-                        Email
+                    <Form.Label column sm={0}>                        
                         </Form.Label>
-                    <Col sm={10}>
+                    <Col sm={12}>
                         <Form.Control type="email" onChange={(e) => getInputsData(e, 'email')} placeholder="Email" />
                     </Col>
                 </Form.Group>
 
                 <Form.Group as={Row} controlId="formHorizontalPassword">
                     <Form.Label column sm={2}>
-                        Password
+                    {/* <div>Password</div> */}
                         </Form.Label>
-                    <Col sm={10}>
+                    <Col sm={12}>
                         <Form.Control type="password" onChange={(e) => getInputsData(e, 'password')} placeholder="Password" />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
-                    <Col sm={{ span: 10, offset: 2 }}>
-                        <Button className='buttons' type="submit" >Login</Button>
-                        <Button className='buttons' name="login" href="/">Return</Button>
+                    <Col sm={{ span: 12 }}>
+                    <div className='form-group button'>
+                        <Button type="submit" >Login</Button>
+                            <p><a href='/forgotpassword'>Forgot password ?</a></p>
+                            <p><Link to='/signup'>Don`t have an account ?</Link></p>
+                        </div>
                     </Col>
                 </Form.Group>
             </Form>

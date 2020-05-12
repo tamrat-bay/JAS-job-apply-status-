@@ -166,10 +166,7 @@ console.log('filterApllies activated searchValues',searchValues);
             <Container>
             {moreDetailsFlag ? <MoreDetails data={singleApplyData}
                 close={() => setMoreDetailsFlag()} /> : ''}
-            <div className="ApplyTable_Addnew">
-                {!addNewFlag && !updateFlag ?
-                    <button onClick={() => setAddNewFlag()}>Add New Apply</button> : ""}
-            </div>
+   
             {
                 addNewFlag ?
                     <NewApply
@@ -202,6 +199,7 @@ console.log('filterApllies activated searchValues',searchValues);
                 allJobApplies={allJobApplies}
                 setSearchValues={setSearchValues}
                 setDisplayList={setDisplayList}
+                setAddNewFlag={setAddNewFlag}
             />
 
             <Table bordered>
@@ -210,7 +208,7 @@ console.log('filterApllies activated searchValues',searchValues);
                         <th>Date</th>
                         <th>Company</th>
                         <th>Status</th>
-                        <th>Update / Delete</th>
+                        <th>Edit / Delete</th>
                         <th>More Details</th>
                     </tr>
                 </thead>
@@ -226,6 +224,9 @@ console.log('filterApllies activated searchValues',searchValues);
                             setUpdateFlag={setUpdateFlag}
                             setSingleApplyData={setSingleApplyData}
                             getMoreDetails={getMoreDetails}
+                            updateFlag={updateFlag}
+                            addNewFlag={addNewFlag}
+                            setAddNewFlag={setAddNewFlag}
                         />
                     )
                     :
@@ -237,6 +238,8 @@ console.log('filterApllies activated searchValues',searchValues);
                         setUpdateFlag={setUpdateFlag}
                         setSingleApplyData={setSingleApplyData}
                         getMoreDetails={getMoreDetails}
+                        updateFlag={updateFlag}
+                        addNewFlag={addNewFlag}
                     />
                     )
                 }

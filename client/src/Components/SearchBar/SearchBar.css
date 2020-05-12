@@ -1,27 +1,31 @@
-.SearchBar{
+/* .SearchBar{
+
+} */
+
+.SearchBar-container{
     padding: 10px;
     background-color: #3b6978;
+    box-shadow: 2px 2px 6px black;
+    border-radius: 5px;
     color: white;
-    margin: 0 0 1rem 0;
+    margin: 1em 0 1rem 0;
 }
-
-/* .SearchBar-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
 .SearchBar button , .SearchBar_formButtons div{
     color: white;
-    width: 130px;
+    width: 100px;
     height: 35px;
+    margin: 0 5px;
     color: #ffffff;
     border: 1px solid #343a40;
     font-weight: 500;
     outline: none;
     border-radius: 4px;
     background-color: #1f3143a1;
-    cursor: pointer;
+}
+.SearchBar_formButtons div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .SearchBar button:hover, .SearchBar_formButtons div:hover{
@@ -32,15 +36,23 @@
     justify-content: center;
 }
 .SearchBar .form-inline label{
-    padding: .4rem 2rem;
+    padding: 0.4rem 1rem;
     margin: .6em 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: initial;
 }
 .SearchBar input[type=checkbox] {
-        width: 20px;
-        height: 2em;
+    width: 36px;
+    height: 31.99px;
+    position: relative;
+    top: 1px;
+}
+.SearchBar select{
+    height: 31px;
+    border-radius: 5px;
+    padding: 0 5px;
+    width: 168px;
 }
 .SearchBar label div{
     display: flex;
@@ -49,8 +61,33 @@
 .SearchBar .ml-3, .mx-3 {
     margin-left: 0rem!important;
 }
-.SearchBar_exports {
+.SearchBar i {
+    color: #faf872c4;
+}
+
+.SearchBar_formButtons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 75px;
+ }
+
+
+
+@media screen and (max-width: 991px) {
+ .SearchBar_formButtons{ 
+        flex-direction: row;
+        height: 100%;
+        width: 265px;
+    } 
+    .ApplyTable_Addnew button {
+        width: 120px;
+        height: 35px;
+    }
+}
+
+/* .SearchBar_exports {
     display: flex;
     justify-content: flex-end;
 }
-
+ */
