@@ -4,7 +4,7 @@ import AboutProfile from './AboutProfile';
 
  const profiles = [
         {
-        name:'Avshalum Mogos', 
+        name:'Avshalom Mogos', 
         img : 'https://png2.cleanpng.com/sh/16a0da26948c36caa861ba49522d7075/L0KzQYm3V8A2N6p2ipH0aYP2gLBuTfVud6Vue9H3LXXwf7vwTgNucZ1qkZ9sb33zhcXskr1qa5Dzi59wZXXuPYbpUBRkbmYAeaY6N3O7Poa8WMIyQWg7Sac8MEe6R4W6U8Y4OmIziNDw/kisspng-emoticon-emoji-smiley-computer-icons-geek-5b3dcf59a417c8.5582197615307774336721.png' ,
         email:'avshalomogos@gmail.com',
         about:  `I am a full stack web developer. I mainly work with PHP, HTML, CSS, JS and WordPress.

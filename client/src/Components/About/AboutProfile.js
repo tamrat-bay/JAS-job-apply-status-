@@ -6,7 +6,7 @@ const AboutProfile = (props) => {
     
     return (
         <div className="About_Profile">
-            <aside class="profile-card">
+            <aside class="profile-card shadow-drop-center">
 
                 <header>
 

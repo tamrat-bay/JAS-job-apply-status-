@@ -108,7 +108,7 @@ const SearchBar = (props) => {
                                 value={formik.values.company}
                                 name="company"
                                 type="text"
-                                placeholder="company name"
+                                placeholder="Company name"
                                 aria-label="Search"
                             />
                         </label>

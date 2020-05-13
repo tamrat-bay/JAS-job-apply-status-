@@ -26,17 +26,14 @@
     overflow: hidden;
     box-shadow: 0 0 100px 10px #fff;
     transition: all ease 0.3s;
-    /* position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-top: 4px solid #26A69A;
-    border-bottom: 4px solid #00695C;
-    border-radius: 5px; */
     height: 480px;
     width: 340px;
-    box-shadow: 0 0 70px 10px #fff;
+    /* box-shadow: 0 0 10px 5px #000; */
     
+  }
+  .shadow-drop-center {
+    -webkit-animation: shadow-drop-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+            animation: shadow-drop-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
   }
   aside ul li:first-child {
     animation: social_animation 2000ms ease-in-out both;
@@ -137,6 +134,36 @@
     background-color: #ffffff73;
     border-radius: 5px;
   }
+
+/* box shadow  */
+/* ----------------------------------------------
+
+/ * ----------------------------------------
+/* animation shadow-drop-center
+/* ----------------------------------------
+ */
+ @-webkit-keyframes shadow-drop-center {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 15px 10px rgb(0, 0, 0);
+            box-shadow: 0 0 15px 10px rgb(0, 0, 0);
+  }
+}
+@keyframes shadow-drop-center {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 15px 10px rgb(0, 0, 0);
+            box-shadow: 0 0 15px 10px rgb(0, 0, 0);
+  }
+}
+
+
   /*PROFILE IMAGE ANIMATE */
   
   @keyframes profile_image {

@@ -1,7 +1,6 @@
 .Login {
     padding: 10px;
     min-height: calc(100vh - (76px + 176px));
-    background-color: #cbceccb8;
     display: flex;
 }
 

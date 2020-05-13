@@ -5,6 +5,7 @@ import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
 
 const NavbarAfterLogin = () => {
     const { setisUserLogged } = useContext(IsUserLoggedContext);
+    const user = JSON.parse(localStorage.jas_login)
 
     const logout = () => {
         localStorage.clear();
@@ -22,7 +23,7 @@ const NavbarAfterLogin = () => {
                         <Nav.Link as={Link} to="/about">About</Nav.Link>
                     </Nav>
                     <Nav className="Navbar_logginStatus">
-                        <div><strong>Welcome User!</strong></div>
+                        <div><strong>Welcome {user.name} ! </strong></div>
                         <Nav.Link as={Link} onClick={logout} to="/">Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

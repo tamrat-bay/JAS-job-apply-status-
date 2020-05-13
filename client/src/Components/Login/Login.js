@@ -60,19 +60,6 @@ const Login = () => {
     return (
         <div className='Login'>
 
-            {/* {validationFlag
-                ?
-                <Alert variant='warning' onClick={setValidationFlag}>
-                    Please try again.
-                        <p>Make sure user Email and Password are correct</p>
-                    <p>
-                        <Alert.Link >Click here to close this window</Alert.Link>
-                    </p>
-                </Alert> :
-                ''} */}
-
-
-
             <Form onSubmit={(e) => loginRequest(e)} className="Login_form">
                 <div className="form-title">
                     <h2>Welcome to JAS</h2>
