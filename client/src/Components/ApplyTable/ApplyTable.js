@@ -6,8 +6,8 @@ import SearchBar from '../SearchBar/SearchBar';
 import TableRowData from './TableRowData';
 import { Redirect } from 'react-router-dom';
 import { Container, Table } from 'react-bootstrap';
-import useToggle from '../../hooks/useToggleState'
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+import useToggle from '../../hooks/useToggleState'
 import axios from 'axios';
 import './ApplyTable.css';
 
@@ -26,10 +26,10 @@ const ApplyTable = () => {
     const [moreDetailsFlag, setMoreDetailsFlag] = useToggle(false);
     const { isUserLogged } = useContext(IsUserLoggedContext);
 
-    console.log('displayList',displayList);
-    console.log('singleApplyData',singleApplyData);
-    console.log('filterFlag',filterFlag);
-    
+    console.log('displayList', displayList);
+    console.log('singleApplyData', singleApplyData);
+    console.log('filterFlag', filterFlag);
+
 
     const getApplies = () => {
 
@@ -53,9 +53,6 @@ const ApplyTable = () => {
                 console.log(error.response.data)
             );
     };
-
-    const closeAddNewApplyPopup = () => setAddNewFlag();
-    const closeUpdateApplyPopup = () => setUpdateFlag();
 
     const addNewApply = (data) => {
 
@@ -113,7 +110,7 @@ const ApplyTable = () => {
     };
 
     const filterApllies = (searchValues) => {
-console.log('filterApllies activated searchValues',searchValues);
+        console.log('filterApllies activated searchValues', searchValues);
 
         const searchBy = {
             companyCheck: searchValues.companyCheck ? searchValues.companyCheck : '',
@@ -130,8 +127,8 @@ console.log('filterApllies activated searchValues',searchValues);
             setDisplayList(byCompanieAndStatus);
         } else if (searchBy.companyCheck) {
             let byCompanies = allJobApplies.filter(j => j.company === searchBy.company);
-            console.log("byCompanies" ,allJobApplies);
-            console.log("byCompanies" ,byCompanies);
+            console.log("byCompanies", allJobApplies);
+            console.log("byCompanies", byCompanies);
 
             setDisplayList(byCompanies);
         } else if (searchBy.statusCheck) {
@@ -140,7 +137,7 @@ console.log('filterApllies activated searchValues',searchValues);
             setDisplayList(byStatus);
         } else {
             setFilterFlag(false);
-           return alert('Please Select Search Method');
+            return alert('Please Select Search Method');
         };
     };
 
@@ -164,87 +161,96 @@ console.log('filterApllies activated searchValues',searchValues);
     return (
         <div className="ApplyTable">
             <Container>
-            {moreDetailsFlag ? <MoreDetails data={singleApplyData}
-                close={() => setMoreDetailsFlag()} /> : ''}
-   
-            {
-                addNewFlag ?
-                    <NewApply
-                        addNewApply={addNewApply}
-                        closeMe={closeAddNewApplyPopup}
-                    />
-                    : ''
-            }
-            {
-                updateFlag ? <UpdateApply
-                    initialValues={singleApplyData}
-                    updateApply={updateApply}
-                    closeMe={closeUpdateApplyPopup}
-                /> : ''
-            }
-            {
-                deleteFlag ? <div className="ApplyTable_delete">
-                <h2>Are you sure you want to delete?</h2>
-                <h3>({singleApplyData.company})</h3>
-                <div className='ApplyTable_delete_butons'>
-                    <button onClick={() => deleteApply()}>Yes</button>
-                    <button onClick={() => setDeleteFlag()}>No</button>
-                </div>
-            </div> : ''
-            }
+                {moreDetailsFlag ? <MoreDetails data={singleApplyData}
+                    close={setMoreDetailsFlag} /> : ''}
 
-            <SearchBar
-                filterApllies={filterApllies}
-                setFilterFlag={setFilterFlag}
-                allJobApplies={allJobApplies}
-                setSearchValues={setSearchValues}
-                setDisplayList={setDisplayList}
-                setAddNewFlag={setAddNewFlag}
-            />
-
-            <Table bordered>
-                    <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Company</th>
-                        <th>Status</th>
-                        <th>Edit / Delete</th>
-                        <th>More Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                     {
-                     filterFlag 
-                      ? 
-                       displayList.map((j, i) =>
-                        <TableRowData
-                            key={i}
-                            job={j}
-                            setDeleteFlag={setDeleteFlag}
-                            setUpdateFlag={setUpdateFlag}
-                            setSingleApplyData={setSingleApplyData}
-                            getMoreDetails={getMoreDetails}
-                            updateFlag={updateFlag}
-                            addNewFlag={addNewFlag}
-                            setAddNewFlag={setAddNewFlag}
+                {
+                    addNewFlag ?
+                        <NewApply
+                            addNewApply={addNewApply}
+                            closeMe={setAddNewFlag}
                         />
-                    )
-                    :
-                    allJobApplies.map((j, i) =>
-                    <TableRowData
-                        key={i}
-                        job={j} index={i}
-                        setDeleteFlag={setDeleteFlag}
-                        setUpdateFlag={setUpdateFlag}
-                        setSingleApplyData={setSingleApplyData}
-                        getMoreDetails={getMoreDetails}
-                        updateFlag={updateFlag}
-                        addNewFlag={addNewFlag}
-                    />
-                    )
+                        : ''
                 }
-                </tbody>
-            </Table>
+                {
+                    updateFlag ? <UpdateApply
+                        initialValues={singleApplyData}
+                        updateApply={updateApply}
+                        closeMe={setUpdateFlag}
+                    /> : ''
+                }
+                {
+                    deleteFlag ?
+                        <>
+                            <div className="ApplyTable_delete">
+                                <i className="far fa-times-circle"></i>
+                                <h2>Are you sure?</h2>
+                                <span>
+                                    <p> Do you really want to delete this apply? ({singleApplyData.company}).</p>
+                                    <p>This process cannot be undone.</p>
+                                </span>
+                                <div className='ApplyTable_delete_buttons'>
+                                    <button className='ApplyTable_delete_buttons_delete' onClick={deleteApply}>Delete</button>
+                                    <button className='ApplyTable_delete_buttons_cancel' onClick={setDeleteFlag}>Cancel</button>
+                                </div>
+                            </div>
+                            <div className='ApplyTable-dim-background'></div>
+                        </>
+                        : ''
+                }
+
+                <SearchBar
+                    filterApllies={filterApllies}
+                    setFilterFlag={setFilterFlag}
+                    allJobApplies={allJobApplies}
+                    setSearchValues={setSearchValues}
+                    setDisplayList={setDisplayList}
+                    setAddNewFlag={setAddNewFlag}
+                />
+
+                <Table bordered>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Company</th>
+                            <th>Status</th>
+                            <th>Edit / Delete</th>
+                            <th>More Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            filterFlag
+                                ?
+                                displayList.map((j, i) =>
+                                    <TableRowData
+                                        key={i}
+                                        job={j}
+                                        setDeleteFlag={setDeleteFlag}
+                                        setUpdateFlag={setUpdateFlag}
+                                        setSingleApplyData={setSingleApplyData}
+                                        getMoreDetails={getMoreDetails}
+                                        updateFlag={updateFlag}
+                                        addNewFlag={addNewFlag}
+                                        setAddNewFlag={setAddNewFlag}
+                                    />
+                                )
+                                :
+                                allJobApplies.map((j, i) =>
+                                    <TableRowData
+                                        key={i}
+                                        job={j} index={i}
+                                        setDeleteFlag={setDeleteFlag}
+                                        setUpdateFlag={setUpdateFlag}
+                                        setSingleApplyData={setSingleApplyData}
+                                        getMoreDetails={getMoreDetails}
+                                        updateFlag={updateFlag}
+                                        addNewFlag={addNewFlag}
+                                    />
+                                )
+                        }
+                    </tbody>
+                </Table>
             </Container>
         </div>
     )

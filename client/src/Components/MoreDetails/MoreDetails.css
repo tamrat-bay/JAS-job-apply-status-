@@ -1,16 +1,66 @@
 .MoreDetails{
-    background-color: #6e8083;
-    height: 500px;
-    position: fixed;
-    width: 70%;
-    left: 50%;
-    transform: translate(-50%, 0px);
-    box-shadow: 2px 3px 6px;
+    border: 2px outset black;
+    width: 95%;
+    height: 95%;
+    max-width: 650px;
+    max-height: 650px;
+    overflow-y: auto;
+    padding: 20px;
     border-radius: 10px;
-    padding: 1%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    font-size: 18px;
+    background-color: #84a9ac;
 }
 
-.MoreDetails h4{
-    font-size: 1.5rem;
+.MoreDetails-close{
+    font-size: 20px;
+    background-color: transparent;
+    text-align: right;
+}
+
+.MoreDetails-close i:hover{
     cursor: pointer;
 }
+
+.MoreDetails-items{
+    height: 20%;
+}
+
+.MoreDetails-items ul{
+    list-style: none;
+    text-align: left;
+}
+
+.MoreDetails input, .MoreDetails textarea, .MoreDetails select{
+    outline: none !important; 
+    background-color: transparent !important;
+    color: #204051 !important;
+}
+
+.MoreDetails-statusDetailes{
+    height: 70%;
+}
+
+.MoreDetails fieldset {
+    padding: 5px 20px;
+    border: 1px solid #ced4da !important;
+    min-height: 100%;
+}
+   
+.MoreDetails  legend {
+    width: auto;
+    text-align: left;
+}
+
+/* color scheme
+https://colorhunt.co/palette/177866
+
+darkest - #204051
+lighter - #3b6978
+lighter - #84a9ac
+lightest - #cae8d5
+*/

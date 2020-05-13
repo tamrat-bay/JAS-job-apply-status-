@@ -1,15 +1,12 @@
-/* .SearchBar{
-
-} */
-
 .SearchBar-container{
     padding: 10px;
     background-color: #3b6978;
     box-shadow: 2px 2px 6px black;
     border-radius: 5px;
     color: white;
-    margin: 1em 0 1rem 0;
+    /* margin: 1em 0 1rem 0; */
 }
+
 .SearchBar button , .SearchBar_formButtons div{
     color: white;
     width: 100px;
@@ -22,6 +19,7 @@
     border-radius: 4px;
     background-color: #1f3143a1;
 }
+
 .SearchBar_formButtons div{
     display: flex;
     justify-content: center;
@@ -31,10 +29,12 @@
 .SearchBar button:hover, .SearchBar_formButtons div:hover{
     color: red;
 }
+
 .SearchBar .form-inline {
     display: flex;
     justify-content: center;
 }
+
 .SearchBar .form-inline label{
     padding: 0.4rem 1rem;
     margin: .6em 0;
@@ -42,37 +42,40 @@
     justify-content: center;
     align-items: initial;
 }
+
 .SearchBar input[type=checkbox] {
     width: 36px;
     height: 31.99px;
     position: relative;
     top: 1px;
 }
+
 .SearchBar select{
     height: 31px;
     border-radius: 5px;
     padding: 0 5px;
     width: 168px;
 }
+
 .SearchBar label div{
     display: flex;
     align-items: center;
 }
+
 .SearchBar .ml-3, .mx-3 {
     margin-left: 0rem!important;
 }
+
 .SearchBar i {
     color: #faf872c4;
 }
 
 .SearchBar_formButtons {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 75px;
- }
-
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+}
 
 @media screen and (max-width: 991px) {
  .SearchBar_formButtons{ 

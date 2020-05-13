@@ -1,210 +1,142 @@
 .Home {
-  height: 100vh;
-}
-.Home header {
-    margin:0;
-    padding: 2em 0px;
-    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(https://images.unsplash.com/photo-1518893494013-481c1d8ed3fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat;
-    background-size: cover;
-    font-family: "open sans";
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
- 
-}
-/* .Home_body {
-    height: 40vh;
-    width: 100%;
-} */
-
-.Home .product{
-  /* background: linear-gradient(rgb(33, 117, 115), rgb(218, 214, 216)); */
-  background-color: #3b6978;
+  min-height: calc(100vh - (76px + 176px));
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(https://images.unsplash.com/photo-1518893494013-481c1d8ed3fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat;
+  background-size: cover;
+  display: flex;
 }
 
-/* .Home header{
-    display:flex;
-    justify-content: space-between;
-    color: white;
-    background: rgba(0,0,0,0.2)
-  } */
+.Home-container{
+  margin: auto auto;
+}
+
+.Home .Home_titles{
+  color: white;
+  text-align: center;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+.Home_titles h1{
+  font-family: Pacifico;
+  font-size: 5rem;
+  margin-bottom: 0;
+  text-shadow: 1px 1px 0 black;
   
-  /* .Home header div{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Pacifico;
-    margin: 0 2rem;
-  } */
+}
+
+.Home_titles p{
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 0 black;
+}
   
-  /* .Home header div i{
+.Home_container-boxes{
+  margin: 0 auto;
+  padding: 0;
+  display:flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  max-width: 80vw;
+}
+  
+.Home_box{
+  background: rgba(255, 255, 255, 0.76);
+  margin: 1rem;
+  box-shadow: 1px 1px 10px;
+  padding: .5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 350px;
+  max-height: 180px;
+  min-height: 180px;
+  transition: all .4s ease-out;
+}
+  
+.Home_box:hover{
+  background: rgba(255,255,255,.7);
+  transform: translateY(-15%);
+}
+  
+.Home_box a{
+  text-decoration: none;
+  color: black;
+}
+  
+.Home_icon{
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+.Home_text h3{
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 0;
+}
+
+.Home_text p{
+  margin-top: 1rem;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
+.Home_text{
+  padding: .5rem;
+}
+
+
+/* MEDIAQUERIES */
+
+@media (max-width: 1389px){
+  .Home_text h3{
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 1160px){
+    .Home_icon{
     font-size: 2rem;
-    margin: 1rem;
+    padding: 0.5rem;
   }
-   */
-  
-  /* .Home header nav{
-    padding: 1rem 2rem;
-  } */
-  
-  /* .Home nav ul li{
-    list-style: none;
-    display: inline;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 5px;
-  }
-  
-  .Home nav li a{
-    padding: 1rem;
-    margin: 1rem;
-    text-decoration: none;
-    color: white;
-    transition: all 250ms ease-in;
-  }
-  
-  .Home nav li a:hover{
-    background: rgba(255,255,255,.3);
-    color: black;
-  }
-   */
-  
-  
-  /* ------------------------ TOP SECTION ----------------*/
-  
-  .Home .Home_titles{
-    color: white;
-    text-align: center;
-    width: 50vw;
-    margin: 0 auto;
-  }
-  
-  .Home_titles h1{
-    font-family: Pacifico;
-    font-size: 5rem;
-    margin-bottom: 0;
-    text-shadow: 1px 1px 0 black;
-  
-  }
-  
-  .Home_titles p{
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 0 black;
-  }
-  
-  /* ------------------------ BOT SECTION ----------------*/
-  
-  
-  
-  .Home_container-boxes{
-    margin: 0 auto;
-    padding: 0;
-    display:flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    max-width: 80vw;
-  }
-  
-  .Home_box{
-    background: rgba(255, 255, 255, 0.76);
-    margin: 1rem;
-    box-shadow: 1px 1px 10px;
-    padding: .5rem;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 350px;
-    max-height: 180px;
-    min-height: 180px;
-    transition: all .4s ease-out;
-  }
-  
-  .Home_box:hover{
-    background: rgba(255,255,255,.7);
-    transform: translateY(-20%);
-  }
-  
-  .Home_box a{
-    text-decoration: none;
-    color: black;
-  }
-  
-  .Home_icon{
-    font-size: 3rem;
-    padding: 1rem;
-  }
-  
   .Home_text h3{
     text-transform: uppercase;
     letter-spacing: 4px;
     margin-bottom: 0;
+    font-size: .8rem;
   }
-  
+
   .Home_text p{
     margin-top: 1rem;
     line-height: 1.5rem;
     text-align: left;
+    font-size: .8rem;
   }
-  
-  .Home_text{
-    padding: .5rem;
+}
+
+@media (max-width: 890px){
+  body{
+    height: 100%;
   }
-  
-  
-  /* MEDIAQUERIES */
-  
-  @media (max-width: 1389px){
-    .Home_text h3{
-      font-size: 1.2rem;
-    }
+
+  .Home_container-boxes{
+    flex-direction: column;
   }
-  @media (max-width: 1160px){
-     .Home_icon{
-      font-size: 2rem;
-      padding: 0.5rem;
-    }
-    .Home_text h3{
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      margin-bottom: 0;
-      font-size: .8rem;
-    }
-  
-    .Home_text p{
-      margin-top: 1rem;
-      line-height: 1.5rem;
-      text-align: left;
-      font-size: .8rem;
-    }
-    /* nav li a:hover{
-    background: none;
-    color: black;
-    } */
+
+  .Home_text h3{
+    font-size: 1.1rem;
   }
-  
-  
-  @media (max-width: 890px){
-    body{
-      height: 100%;
-    }
-    .Home_container-boxes{
-      flex-direction: column;
-    }
-    .Home_text h3{
-      font-size: 1.1rem;
-    }
-    .Home_box:hover{
-      background: rgba(255,255,255,.7);
-      transform: none;
-    }
-    .Home_box{
-      max-width: 320px;
-      max-height: 180px;
-      min-height: 125px;
-    }
-    .Home_titles h1{
+
+  .Home_box:hover{
+    background: rgba(255,255,255,.7);
+    transform: none;
+  }
+
+  .Home_box{
+    max-width: 320px;
+    max-height: 180px;
+    min-height: 125px;
+  }
+
+  .Home_titles h1{
     font-size: 3rem;
-    }
   }
+}

@@ -38,26 +38,6 @@ const SearchBar = (props) => {
         },
     });
 
-    // let searchBy = {
-    //     status: 'Pending', //default Val
-    //     statusCheck: false,
-    //     company: '',
-    //     companyCheck: false
-    // };
-
-    // const getInputsData = (e) => {
-    //     searchBy[e.target.name] = e.target.value;
-    //     sessionStorage[e.target.name] = e.target.value
-    //     if (e.target.type === 'checkbox') {
-    //         console.log('check Box', e.target.checked);
-    //         sessionStorage[e.target.name] = e.target.checked
-    //         console.log(JSON.parse(sessionStorage[e.target.name]));
-
-    //         return searchBy[e.target.name] = JSON.parse(sessionStorage[e.target.name])
-    //     };
-    // };
-
-
 
     const showAll = (e) => {
         sessionStorage.clear();
@@ -169,16 +149,11 @@ const SearchBar = (props) => {
                         <button type="submit">Search</button>
                         <div onClick={showAll}>Clear</div>
                     </div>
-
-
                 </form>
-
-
-                {/* <div className="SearchBar_exports"> */}
             </div>
 
             <div className="ApplyTable_Addnew">
-                <OverlayTrigger overlay={<Tooltip id="addNew">Add New Job Apply</Tooltip>}>
+                <OverlayTrigger rootClose overlay={<Tooltip id="addNew">Add New Job Apply</Tooltip>}>
                     <button onClick={setAddNewFlag}>
                         <i className="fas fa-plus-square"></i>
                         NEW

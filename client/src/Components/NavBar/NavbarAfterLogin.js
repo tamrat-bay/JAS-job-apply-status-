@@ -22,7 +22,7 @@ const NavbarAfterLogin = () => {
                     </Nav>
                     <Nav className="Navbar_logginStatus">
                         <div><strong>Welcome User!</strong></div>
-                        <Nav.Link as={Link} onClick={logout} href="#">Logout</Nav.Link>
+                        <Nav.Link as={Link} onClick={logout} to="/">Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
