@@ -3,6 +3,7 @@ import { Button, Row, Col, Form, Alert } from 'react-bootstrap';
 import useToggle from '../../hooks/useToggleState';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import './ResetPassword.css'
 
 const ResetPassword = (props) => {
 
@@ -11,12 +12,17 @@ const ResetPassword = (props) => {
 
     let resetData = { password: '', confirmPassword: '', id: props.match.params.id }
 
-    const getInputsData = (e) => resetData[e.target.name] = e.target.value
+    const getInputsData = (e) =>{
+        if (validationFlag) {
+            setValidationFlag()
+        }
+      return resetData[e.target.name] = e.target.value
+        }
 
     const ResetRequest = (e) => {
         e.preventDefault();
         console.log(resetData);
-        if (resetData.password === resetData.confirmPassword) {
+        if (resetData.password === resetData.confirmPassword && resetData.password.length) {
             axios.patch('/reset', resetData)
                 .then((response) => {
                     if (response.status === 204) {
@@ -34,38 +40,46 @@ const ResetPassword = (props) => {
     if (resetFlag) return <Redirect to='/login' />
 
     return (
-        <div>
-            {validationFlag ?
-                <Alert variant='warning' onClick={setValidationFlag}>
-                    Please try again.
-                        <p>Password dont match</p>
-                    <p>
-                        <Alert.Link >Click here to close this window</Alert.Link>
-                    </p>
-                </Alert> : ''}
+        <div className='ResetPassword'>
             <Form onSubmit={(e) => ResetRequest(e)} className="Login_form">
+             {validationFlag ?
+                    <p
+                        className="validation-warning"
+                        onClick={setValidationFlag}>Please try again. <br />
+                                 There is a problem with your password !
 
+                    </p>
+                    :
+                    ''}
                 <Form.Group as={Row} controlId="formHorizontalPassword">
                     <Form.Label column sm={2}>
-                        Password
                         </Form.Label>
-                    <Col sm={10}>
-                        <Form.Control type="password" onChange={(e) => getInputsData(e)} name='password' placeholder="Password" />
+                    <Col sm={12}>
+                        <Form.Control 
+                        type="password" 
+                        onChange={(e) => getInputsData(e)} 
+                        name='password' 
+                        placeholder="Password"
+                        requierd
+                        />
                     </Col>
                 </Form.Group>
 
 
                 <Form.Group as={Row} controlId="formHorizontalconfirmPassword">
                     <Form.Label column sm={2}>
-                        confirmPassword
                         </Form.Label>
-                    <Col sm={10}>
-                        <Form.Control type="password" onChange={(e) => getInputsData(e)} name='confirmPassword' placeholder="confirmPassword" />
+                    <Col sm={12}>
+                        <Form.Control type="password" 
+                        onChange={(e) => getInputsData(e)} 
+                        name='confirmPassword' 
+                        placeholder="Confirm Password"
+                        requierd
+                         />
                     </Col>
                 </Form.Group>
-
                 <Form.Group as={Row}>
-                    <Col sm={{ span: 10, offset: 2 }}>
+                    <Col sm={{ span: 12}}>
                         <Button className='buttons' type="submit" >Reset</Button>
                     </Col>
                 </Form.Group>

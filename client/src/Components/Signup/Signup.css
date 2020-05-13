@@ -1,149 +1,92 @@
 .Signup {
-  margin-top: 15px;
-  padding: 50px;
-  height: 100vh;
-  margin: 0;
+  padding: 10px;
+  min-height: calc(100vh - (76px + 176px));
   background-color: #cbceccb8;
+  display: flex;
 }
 
 .Signup_form{
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  margin: auto auto;
 }
 
 .Signup form {
-    padding: 30px 25px 15px 25px;
-    background-color: #ffffff;
-    min-width: 350px;
-    border-radius: 10px;
-    box-shadow: 0px 1px 5px;
+  padding: 30px 25px 15px 25px;
+  background-color: #ffffff;
+  min-width: 350px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 5px;
 }
+
 .Signup .form-group{
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
-
- .Signup .form-title{
-    margin-bottom: 20px;
-  }
-
-  .Signup h2{
-    font-size: 30px;
-    color: #323232;
-     font-family: pasifico;
-  }
-
-  .Signup p{
-    color: #777777;
-    font-family: pasifico;
-  }
-
-  .Signup input {
-    display: block;
-    width: 100%;
-    margin-top: 6px;
-    margin-bottom: 10px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid #f0f0f0;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #a7a3a3;
-  }
-
-  .Signup button{
-    border: none;
-    outline: none;
-    padding: 12px 20px;
-    border-radius: 7px;
-    margin-left: 12.5%;
-    margin-right: 12.5%;
-    cursor: pointer;
-    margin-top: 15px;
-    background-color: #3b6978;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bolder;
-    width: 75%;
-    transition: all .3s ease;
-  }
-  
-  .Signup  button:hover{
-    background-color: #204051;
-  }
-  .Signup .alert-warning {
-    color: #bf0c0c;
-    font-size: 1.2em;
-    background-color: #fff3cd;
-    border-color: #000000;
-    border-radius: 5px;
-    z-index: 1;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
-/* .signup {
-    padding: 50px;
-    width: 60%;
-    margin: 0 auto;
-    min-height: 100vh;
-}  */
 
-/* .signup > form {
-    width: 50%;
-} */
+.Signup .form-title{
+  margin-bottom: 20px;
+}
 
-/* .signupdiv h2 {
-    text-align: center;
-    background-color: inherit;
-} */
+.Signup h2{
+  font-size: 30px;
+  color: #323232;
+  font-family: pasifico;
+}
 
-/* .signupdiv {
-    padding: 50px;
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://cdn.pixabay.com/photo/2017/10/31/09/55/dream-job-2904780__340.jpg);
-    background-size: cover;
-    color: white;
-} */
+.Signup p{
+  color: #777777;
+  font-family: pasifico;
+}
+
+.Signup input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #a7a3a3;
+}
+
+.Signup button{
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 7px;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  cursor: pointer;
+  margin-top: 15px;
+  background-color: #3b6978;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bolder;
+  width: 75%;
+  transition: all .3s ease;
+}
+
+.Signup  button:hover{
+  background-color: #204051;
+}
+
+.Signup .alert-warning {
+  color: #bf0c0c;
+  font-size: 1.2em;
+  background-color: #fff3cd;
+  border-color: #000000;
+  border-radius: 5px;
+  z-index: 1;
+}
 
 .alert-warning {
-    color: #856404;
-    background-color: #f4db8ef2;
-    border-color: #ffeeba;
-    width: 60%;
-    font-size: 1.1em;
-    text-align: center;
-    margin: 0 auto;
+  color: #856404;
+  background-color: #f4db8ef2;
+  border-color: #ffeeba;
+  width: 60%;
+  font-size: 1.1em;
+  text-align: center;
+  margin: 0 auto;
 }
-
-
-/* .signupdiv .btn-primary {
-    color: #fff;
-    background-color: #1d1c1c;
-    width: 120px;
-    font-size: 1.5em;
-    border-color: #289c119d;
-    border-radius: 9px;
-} */
-/* .signupdiv .btn-primary:hover {
-    color: #fff;
-    background-color: #000000;
-    border-color: #1b9b00e8;
-    box-shadow: 2px 2px 5px #1b9b00e8;
-} */
-/* 
-@media only screen and (max-width: 750px) {
-    .signup {
-        padding: 50px;
-        width: 85%;
-        margin: 0 auto;
-    }
-    
-    } */
-    /* @media only screen and (max-width: 450px) {
-       .signup {
-        padding: 50px;
-        width: 95%;
-        margin: 0 auto;
-    }
-    
-    } */

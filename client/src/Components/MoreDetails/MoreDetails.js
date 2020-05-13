@@ -1,45 +1,117 @@
-import React from 'react';
-import Table from 'react-bootstrap/Table'
+import React, { useState } from 'react';
+import { Form, Col } from 'react-bootstrap';
 import './MoreDetails.css';
 
 const MoreDetails = (props) => {
 
-    const { data, close } = props
-    return (
-        <div className="MoreDetails" >
-            <h4 onClick={close}>Close Window</h4>
-            <h2>{data.company}</h2>
-            <h3>Is a {data.companySize} in {data.location}</h3>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>CV Version</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{data.date}</td>
-                        <td>{data.cvversion}</td>
-                        <td>{data.status.current}</td>
-                    </tr>
-                </tbody>
-            </Table>
-            <div className="MoreDetails_description">
-                <h4>Job Description</h4>
-                <p>{data.jobDescription}</p>
+    const { data, close } = props;
 
-                {data.isAnswered ? <div>
-                    <h4>Contact Name: {data.status[data.status.current].contactName}</h4>
-                    <h5> Phone: {data.status[data.status.current].contactPhone}</h5>
-                    <h5>Position : {data.status[data.status.current].contactPosition}</h5>
-                    <p>
-                        {data.status[data.status.current].statusDescription}
-                    </p>
-                </div> : ''}
+    console.log("MoreDetails DATA:", data);
+
+    const [currentStatus, setCurrentStatus] = useState(data.status.current);
+
+    const handleChange = e => setCurrentStatus(e.target.value);
+
+    return (
+        <div className='MoreDetails' >
+            <div className='MoreDetails-close'>
+                <i className='fas fa-times' onClick={close}></i>
+            </div>
+
+            <div className='MoreDetails-items'>
+                <ul>
+                    <li>
+                        <strong>CV version: </strong>
+                        {data.cvversion}
+                    </li>
+                    <li>
+                        <strong>Job description: </strong>
+                        {data.jobDescription}</li>
+                    <li>
+                        <strong>Answered: </strong>
+                        {data.isAnswered ? "Yes" : "No"}
+                    </li>
+                </ul>
+            </div>
+
+            <div className='MoreDetails-statusDetailes'>
+
+                <fieldset>
+                    
+                    <legend>
+                        <Form.Row>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    as="select"
+                                    id="status.current"
+                                    name="status.current"
+                                    value={currentStatus}
+                                    onChange={handleChange}
+                                >
+                                    <option>Pending</option>
+                                    <option>Phone interview</option>
+                                    <option>HR interview</option>
+                                    <option>Technical interview</option>
+                                    <option>Assignment</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Form.Row>
+                    </legend>
+
+                    <Form.Row>
+                        <Form.Group as={Col}>
+                            <div className="statusDetails">
+                                <div>
+                                    <Form.Row>
+                                        <Form.Group as={Col}>
+                                            <Form.Label>Contact Name</Form.Label>
+                                            <Form.Control
+                                                value={data.status[currentStatus].contactName}
+                                                readOnly
+                                                placeholder="Name"
+                                            >
+                                            </Form.Control>
+                                        </Form.Group>
+                                        <Form.Group as={Col}>
+                                            <Form.Label>Contact Phone</Form.Label>
+                                            <Form.Control
+                                                value={data.status[currentStatus].contactPhone}
+                                                readOnly
+                                                placeholder="Phone"
+                                            >
+                                            </Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <Form.Group as={Col}>
+                                            <Form.Label>Contact Position</Form.Label>
+                                            <Form.Control
+                                                value={data.status[currentStatus].contactPosition}
+                                                readOnly
+                                                placeholder="Position"
+                                            >
+                                            </Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
+                                </div>
+                                <div>
+                                    <Form.Label>How did it went</Form.Label>
+                                    <Form.Control as='textarea'
+                                        value={data.status[currentStatus].statusDescription}
+                                        readOnly
+                                        placeholder="How did it go?"
+                                    >
+                                    </Form.Control>
+                                </div>
+                            </div>
+                        </Form.Group>
+                    </Form.Row>
+                </fieldset>
+
+
             </div>
         </div>
+
     )
 };
 export default MoreDetails;

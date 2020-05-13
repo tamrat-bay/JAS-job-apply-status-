@@ -22,6 +22,9 @@ const Signup = () => {
   };
 
   const getInputsData = (e) => {
+    if (validationFlag) {
+      setValidationFlag()
+  }
     signUpData[e.target.name] = e.target.value; // get every input data (w onChange)
   };
 
@@ -48,7 +51,7 @@ const Signup = () => {
 
   return (
     <div className='Signup'>
-      {validationFlag ?
+      {/* {validationFlag ?
         <Alert variant='warning' onClick={setValidationFlag}>
           Please try again.
           make sure user contains only alphanumeric symbols
@@ -56,7 +59,7 @@ const Signup = () => {
           <p>
             <Alert.Link >Click here to close this window</Alert.Link>
           </p>
-        </Alert> : ''}
+        </Alert> : ''} */}
 
        
       
@@ -65,6 +68,15 @@ const Signup = () => {
                   <h2>Welcome to JAS</h2>
                   <p>Signup here</p>
               </div>
+
+              {validationFlag ?
+                    <p
+                        className="validation-warning"
+                        onClick={setValidationFlag}>Please try again. <br />
+                            Make sure both password are the same
+                    </p>
+                    :
+                    ''}
         <Form.Group as={Row} controlId="formHorizontalUserName">
           <Form.Label column sm={2}>
             {/* User Name */}

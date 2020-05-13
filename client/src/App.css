@@ -1,18 +1,19 @@
 .App {
   text-align: center;
-  margin: 0;
-  padding: 0;
+
   /* background-color: black; */
   /* height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(https://images.unsplash.com/photo-1518893494013-481c1d8ed3fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat;
   background-size: cover; */
 }
 
-.App_body{
-  /* position: fixed; */
-  width: 100%;
-  /* top: 45px; */
-}
 .body{
   background-color: #d1d1d1;
+  margin: 0;
+  padding: 0;
+}
+.validation-warning{
+  margin: 0;
+  color: #d03227 !important;
+  font-family: sans-serif;
 }

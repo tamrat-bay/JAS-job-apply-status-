@@ -1,0 +1,144 @@
+/*==================== 
+	Footer 
+====================== */
+
+/* Main Footer */
+
+footer .main-footer {
+	padding: 5px 0;
+    background: #090b0d;
+    text-align: left;
+}
+
+footer ul {
+	padding-left: 0;
+	list-style: none;
+}
+
+
+/* Copy Right Footer */
+
+.footer-copyright {
+	background: #000000f2;
+	padding: 3px 0;
+}
+
+.footer-copyright p {
+	color: #969696;
+	margin: 0;
+	vertical-align: middle;
+	line-height: 30px;   
+}
+
+/*==================== 
+	Widgets 
+====================== */
+
+.widget {
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.widget.widget-last {
+	margin-bottom: 0px;
+}
+
+.widget.no-box {
+	padding: 0;
+	background-color: transparent;
+	margin-bottom: 0px;
+	box-shadow: none;
+}
+
+.widget.subscribe p {
+	margin-bottom: 9px;
+}
+
+
+.widget li a:hover {
+	color: #4b92dc;
+}
+
+.widget-title {
+	margin-bottom: 7px;
+}
+
+.get-started-p{
+	margin: 5px;
+}
+
+.widget-title span {
+	background: #839FAD none repeat scroll 0 0;
+	display: block;
+	height: 1px;
+	margin-top: 10px;
+	position: relative;
+	width: 40%;
+}
+
+.widget-title span::after {
+	background: inherit;
+	content: "";
+	height: inherit;
+	position: absolute;
+	top: -4px;
+	width: 50%;
+}
+
+.widget-title.text-center span,
+.widget-title.text-center span::after {
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	
+}
+
+.widget .badge {
+	float: right;
+	background: #7f7f7f;
+}
+
+.typo-light h1,
+.typo-light h2,
+.typo-light h3,
+.typo-light h4,
+.typo-light h5,
+.typo-light h6,
+.typo-light p,
+.typo-light div,
+.typo-light span,
+.typo-light small {
+	color: rgba(255,255,255,.8);
+}
+
+ul.social-footer2 {
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+
+ul.social-footer2 li {
+	display: inline-block;
+	padding: 0;
+}
+
+ul.social-footer2 li a:hover {
+	background-color: #ff8d1e;
+}
+
+ul.social-footer2 li a {
+	display: block;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+}
+
+.btn:hover,
+.btn:focus,
+.btn.active {
+	background: #4b92dc;
+	color: #fff;
+	box-shadow: 0 7.5px 30px rgba(0, 0, 0, 0.1);
+	transition: all 250ms ease-in-out 0s;
+}

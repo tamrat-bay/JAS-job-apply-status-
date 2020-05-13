@@ -19,10 +19,11 @@ const NavbarAfterLogin = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/applies">Applies</Nav.Link>
+                        <Nav.Link as={Link} to="/about">About</Nav.Link>
                     </Nav>
                     <Nav className="Navbar_logginStatus">
                         <div><strong>Welcome User!</strong></div>
-                        <Nav.Link as={Link} onClick={logout} href="#">Logout</Nav.Link>
+                        <Nav.Link as={Link} onClick={logout} to="/">Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

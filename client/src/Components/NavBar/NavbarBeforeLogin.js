@@ -11,6 +11,7 @@ const NavbarBeforeLogin = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
+                    <Nav.Link as={Link} to="/about">About</Nav.Link>
                     </Nav>
                     <Nav className="Navbar_logginStatus">
                         <Nav.Link as={Link} to="/login">Login</Nav.Link>

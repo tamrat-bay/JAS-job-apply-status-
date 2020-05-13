@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { Form, Col, Container } from 'react-bootstrap';
+import { Form, Col } from 'react-bootstrap';
 import axios from "axios";
 import './ApplyForm.css';
 

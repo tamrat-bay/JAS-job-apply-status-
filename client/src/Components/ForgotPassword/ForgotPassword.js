@@ -11,9 +11,15 @@ import './ForgotPassword.css';
 const ForgotPassword = () => {
  
     const [sendEmailFlag, setSendEmailFlag] = useToggle(false)
+    const [validationFlag, setValidationFlag] = useToggle(false);
 
     let userEmail ='';
+
     const getInputsData = (e) => {
+        if (validationFlag) {
+            setValidationFlag()
+        }
+
         return e.target.name === 'email' ? userEmail = e.target.value :''
     };
 
@@ -26,7 +32,10 @@ const ForgotPassword = () => {
                 setSendEmailFlag()
             }
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            setValidationFlag()
+            console.log(err)
+        })
 
     }
     
@@ -38,6 +47,15 @@ const ForgotPassword = () => {
                   <div className="form-title">
                       <h2>Forgot Password</h2>
                   </div>
+
+                  {validationFlag ?
+                    <p
+                        className="validation-warning"
+                        onClick={setValidationFlag}>Please try again. <br />
+                             There is a problem with your email address
+                    </p>
+                    :
+                    ''}
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
                         </Form.Label>

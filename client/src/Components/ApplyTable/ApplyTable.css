@@ -1,3 +1,9 @@
+.ApplyTable{
+    padding: 1rem;
+    min-height: calc(100vh - (76px + 176px));
+    background-color: #cbceccb8;
+}
+
 .ApplyTable table{
     width: 100%;
     font-size: 2vw;
@@ -26,7 +32,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+    /* height: 100% !important; */
 }
 
 .ApplyTable-updateIcon, .ApplyTable-deleteIcon{
@@ -36,44 +42,57 @@
     justify-content: space-around;
     align-items: center;
     width: 30%;
+    /* height: 100%; */
 }
 
-.ApplyTable-updateIcon:hover , .ApplyTable-deleteIcon:hover{
+.ApplyTable-updateIcon:hover, .ApplyTable-deleteIcon:hover{
     cursor: pointer;
     transform: scale(1.2);
     transition: all 300ms;
 }
 
-/* .ApplyTable-deleteIcon:hover{
-    background-color: rgba(165, 22, 22, 0.48);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 400ms;
-} */
-
 .ApplyTable_delete{
     position: relative;
-    padding: 10px;
-    background-color: rgb(240, 72, 6);
+    padding: 20px;
+    background-color: white;
     color: white;
     border: 3px outset black;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    border-radius: 10px;
     width: 85%;
-    max-width: 500px;
-    height: 40%;
-    max-height: 250px;
+    max-width: 350px;
+    height: 70%;
+    max-height: 400px;
     position: fixed;
-    top: 25%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -25%);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.ApplyTable_delete_butons{
-   position: absolute;
-   bottom: 10px;
+.ApplyTable_delete i{
+    color: #f15e5e;
+    font-size: 70px;
+}
+
+.ApplyTable_delete p{
+    color: black;
+    margin: 0;
+}
+
+.ApplyTable_delete h2{
+    font-weight: 100;
+}
+
+.ApplyTable_delete_buttons{
    width: 100%;
    display: flex;
    justify-content: space-around;
 }
+
 .ApplyTable_Addnew {
     background-color: #84a9ac;
     padding: 1em 0;
@@ -83,6 +102,7 @@
     display: flex;
     justify-content: space-around;
 }
+
 .ApplyTable_Addnew button{
     background-color: #313839;
     border: none;
@@ -98,56 +118,82 @@
     align-items: baseline;
 }
 
-.ApplyTable_delete_butons button{
-    background-color: transparent;
+.ApplyTable_delete_buttons button{
     color: white;
     border: 1px solid white;
-    width: 20%;
+    padding: 8px 16px;
+    width: 96px;
+    height: 28;
     font-size: 18px;
+    outline: none;
 }
 
-.ApplyTable_delete_butons button:hover{
-    background-color: white;
-    color: rgb(240, 72, 6);
+.ApplyTable_delete_buttons_delete{
+    background-color: #f15e5e;
 }
+
+.ApplyTable_delete_buttons_cancel{
+    background-color: #c1c1c1;
+}
+
+.ApplyTable_delete_buttons button:hover{
+   opacity: 0.8;
+}
+
 .ApplyTable table i {
     font-size: 1.4rem;
     text-shadow: 1px 1px 1px black;
 }
+
 .ApplyTable .table td, .table th {
     vertical-align: middle;
 }
 
- @media screen and (min-width: 1200px) {
+.ApplyTable-dim-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    background-color: rgba(0,0,0, 0.7);
+}
+
+@media screen and (min-width: 1200px) {
+
     .ApplyTable table {
        font-size: 18px;
     }
+
     .ApplyTable table i {
         font-size: 1rem;
     }
-  }
-  @media screen and (max-width: 991px) {
+}
 
-       .ApplyTable_Addnew button {
-           width: 120px;
-           height: 35px;
-       }
-       .ApplyTable table i {
+@media screen and (max-width: 991px) {
+
+    .ApplyTable_Addnew button {
+        width: 120px;
+        height: 35px;
+    }
+    
+    .ApplyTable table i {
         font-size: 1rem;
     }
-    }
+}
 
- @media screen and (max-width: 750px) {
-        .ApplyTable table i {
-            font-size: .8rem;
-        }
-    } 
- @media screen and (max-width: 450px) {
+@media screen and (max-width: 750px) {
+
+    .ApplyTable table i {
+        font-size: .8rem;
+    }
+} 
+
+@media screen and (max-width: 450px) {
 
     .ApplyTable_Addnew button {
         width: 90px;
         height: 30px;
         font-size: 1em;
     }
-  
-    }
+}
