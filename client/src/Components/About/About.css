@@ -1,6 +1,9 @@
 .About {
   min-height: calc(100vh - (76px + 176px));
   padding: 20px;
+  padding: 20px;
+    display: flex;
+    align-items: center;
 }
 .About .profile-card{
   margin: 5px;
@@ -16,6 +19,8 @@
 .About_profiles{
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
   .About_Profile  aside {
     display: block;
