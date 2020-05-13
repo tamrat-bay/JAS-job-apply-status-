@@ -22,14 +22,24 @@ const MoreDetails = (props) => {
                 <ul>
                     <li>
                         <strong>CV version: </strong>
-                        {data.cvversion}
+                        <span>{data.cvversion}.</span>
+                    </li>
+                    <li>
+                        <strong>Company location: </strong>
+                        <span>{data.location}.</span>
+                    </li>
+                    <li>
+                        <strong>Company size: </strong>
+                        <span>{data.companySize}.</span>
+                        
                     </li>
                     <li>
                         <strong>Job description: </strong>
-                        {data.jobDescription}</li>
+                        <span>{data.jobDescription}.</span>
+                    </li>
                     <li>
                         <strong>Answered: </strong>
-                        {data.isAnswered ? "Yes" : "No"}
+                        <span>{data.isAnswered ? "Yes" : "No"}.</span>
                     </li>
                 </ul>
             </div>

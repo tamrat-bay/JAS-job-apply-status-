@@ -9,6 +9,9 @@ footer .main-footer {
     background: #090b0d;
     text-align: left;
 }
+footer a{
+	color: #c6d6b7;
+}
 
 footer ul {
 	padding-left: 0;
@@ -124,7 +127,7 @@ ul.social-footer2 li {
 }
 
 ul.social-footer2 li a:hover {
-	background-color: #ff8d1e;
+	background-color: #3b6978;
 }
 
 ul.social-footer2 li a {
@@ -134,10 +137,15 @@ ul.social-footer2 li a {
 	text-align: center;
 }
 
-.btn:hover,
-.btn:focus,
-.btn.active {
-	background: #4b92dc;
+footer .btn{
+	background: #3b6978;
+	border: none;
+}
+
+footer .btn:hover,
+footer .btn:focus,
+footer .btn.active {
+	background: #204051;
 	color: #fff;
 	box-shadow: 0 7.5px 30px rgba(0, 0, 0, 0.1);
 	transition: all 250ms ease-in-out 0s;

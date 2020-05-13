@@ -13,7 +13,8 @@
     transform: translate(-50%, -50%);
     z-index: 10;
     font-size: 18px;
-    background-color: #84a9ac;
+    background-color: #3b6978;
+    font-size: 5vw;
 }
 
 .MoreDetails-close{
@@ -27,22 +28,51 @@
 }
 
 .MoreDetails-items{
-    height: 20%;
+    height: 30%;
 }
+
+
+.MoreDetails-items strong{
+    color: #204051;
+}
+
+.MoreDetails-items span{
+    color: #84a9ac;
+}
+
+
+/* color scheme
+https://colorhunt.co/palette/177866
+
+darkest - #204051
+lighter - #3b6978
+lighter - #84a9ac
+lightest - #cae8d5
+*/
 
 .MoreDetails-items ul{
     list-style: none;
     text-align: left;
 }
 
+.MoreDetails label{
+    color: white !important;
+}
+
 .MoreDetails input, .MoreDetails textarea, .MoreDetails select{
     outline: none !important; 
     background-color: transparent !important;
-    color: #204051 !important;
+    color: #cae8d5 !important;
 }
 
+.MoreDetails ::placeholder {
+    color: #84a9ac !important;
+    opacity: 0.6 !important;
+}
+
+
 .MoreDetails-statusDetailes{
-    height: 70%;
+    height: 60%;
 }
 
 .MoreDetails fieldset {
@@ -56,11 +86,13 @@
     text-align: left;
 }
 
-/* color scheme
-https://colorhunt.co/palette/177866
+@media screen and (min-width: 400px) {
 
-darkest - #204051
-lighter - #3b6978
-lighter - #84a9ac
-lightest - #cae8d5
-*/
+    .MoreDetails {
+       font-size: 18px;
+    }
+
+    .ApplyTable table i {
+        font-size: 1rem;
+    }
+}
