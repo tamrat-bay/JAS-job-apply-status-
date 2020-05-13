@@ -66,7 +66,7 @@ const Login = () => {
            
 
             <Form onSubmit={(e) => loginRequest(e)} className="Login_form">
-            <div class="form-title">
+            <div className="form-title">
                 <h2>Welcome to JAS</h2>
                 <p>Login here</p>
             </div>
@@ -90,7 +90,7 @@ const Login = () => {
                     <Col sm={{ span: 12 }}>
                     <div className='form-group button'>
                         <Button type="submit" >Login</Button>
-                            <p><a href='/forgotpassword'>Forgot password ?</a></p>
+                            <p><Link to='/forgotpassword'>Forgot password ?</Link></p>
                             <p><Link to='/signup'>Don`t have an account ?</Link></p>
                         </div>
                     </Col>

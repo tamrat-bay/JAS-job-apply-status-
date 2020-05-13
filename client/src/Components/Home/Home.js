@@ -61,25 +61,6 @@ const Home = () => {
                 </div>
             </section>
             </header>
-
-            <div className="Home_body">
-                <h3>The Product</h3>
-                            <p>Simple and efficiant job applies status manger board.
-                                 to help you track your applies and their current status.
-                            </p>
-            </div>
-            <div className="Home_body product">
-                <h3>The Product</h3>
-                            <p>Simple and efficiant job applies status manger board.
-                                 to help you track your applies and their current status.
-                            </p>
-            </div>
-            <div className="Home_body">
-                <h3>The Product</h3>
-                            <p>Simple and efficiant job applies status manger board.
-                                 to help you track your applies and their current status.
-                            </p>
-            </div>
         </div>
     )
 }

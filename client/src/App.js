@@ -10,6 +10,7 @@ import { IsUserLoggedProvider } from './context/IsUserLoggedContext'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ResetPassword from './Components/ResetPassword/ResetPassword';
 import './App.css'
+import About from './Components/About/About';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
               <Route exact path='/applies' component={ApplyTable} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
+              <Route exact path='/about' component={About} />
               <Route exact path='/forgotpassword' component={ForgotPassword} />
               <Route exact path='/reset/:id' component={ResetPassword} />
             </Switch>
