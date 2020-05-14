@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { exportTableToCsv } from '../../utils/exportTableToCsv';
@@ -14,11 +14,11 @@ const SearchBar = (props) => {
     const {
         filterApllies,
         setFilterFlag,
-        allJobApplies,
-        setDisplayList,
+        // allJobApplies,
+        // setDisplayList,
         setAddNewFlag,
-        setSearchValues,
-        addNewFlag
+        // // setSearchValues,
+        // addNewFlag
     } = props;
 
     const formik = useFormik({
@@ -42,7 +42,7 @@ const SearchBar = (props) => {
     const showAll = (e) => {
         sessionStorage.clear();
         setFilterFlag(false);
-        setDisplayList(allJobApplies)
+        // setDisplayList(allJobApplies)
         formik.resetForm()
         //clear form values
         const statusCheck = document.getElementById('statusCheck');
@@ -55,16 +55,16 @@ const SearchBar = (props) => {
     };
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        return () => {
-            sessionStorage.clear()
-        }
-    }, []);
+    //     return () => {
+    //         sessionStorage.clear()
+    //     }
+    // }, []);
 
     const handleSubmit = (values) => {
         // console.log('SearchBar submit',values);
-        console.log('SearchBar entries', Object.entries(values));
+        // console.log('SearchBar entries', Object.entries(values));
         // Object.entries(values).map(v => {
         //     sessionStorage[v[0]] = v[1];
         //     if (sessionStorage[v[0]] === 'statusCheck' && !sessionStorage[v[1]]) {
@@ -75,7 +75,7 @@ const SearchBar = (props) => {
         //     }
 
         // })
-        setSearchValues(values)
+        // setSearchValues(values)
         // e.preventDefault();
         setFilterFlag(true);
         filterApllies(values);

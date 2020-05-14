@@ -5,7 +5,9 @@
 .Navbar .bg-dark {
     background-color: #090b0d!important;
 }
-
+.Navbar strong {
+    text-transform: capitalize;
+}
 .Navbar_logginStatus{
     display: flex;
     flex-direction: row;

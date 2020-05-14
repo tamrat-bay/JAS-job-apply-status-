@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
-import Alert from 'react-bootstrap/Alert'
 import { Redirect } from "react-router-dom";
 import useToggle from '../../hooks/useToggleState';
 import './Signup.css';

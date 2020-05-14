@@ -16,7 +16,7 @@ const ApplyTable = () => {
 
     const [allJobApplies, setAllJobApplies] = useState([]);
     const [displayList, setDisplayList] = useState([]);
-    const [searchValues, setSearchValues] = useState({});
+    // const [searchValues, setSearchValues] = useState({});
 
     const [singleApplyData, setSingleApplyData] = useState({});
     const [filterFlag, setFilterFlag] = useState((sessionStorage.status || sessionStorage.companyCheck) ? true : false)
@@ -80,7 +80,7 @@ const ApplyTable = () => {
     const getMoreDetails = (data) => {
 
         setSingleApplyData(data);
-        console.log('more details', data);
+        // console.log('more details', data);
         setMoreDetailsFlag();
     };
 
@@ -203,7 +203,7 @@ const ApplyTable = () => {
                     filterApllies={filterApllies}
                     setFilterFlag={setFilterFlag}
                     allJobApplies={allJobApplies}
-                    setSearchValues={setSearchValues}
+                    // setSearchValues={setSearchValues}
                     setDisplayList={setDisplayList}
                     setAddNewFlag={setAddNewFlag}
                 />

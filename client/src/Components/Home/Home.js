@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 
@@ -37,7 +38,9 @@ const Home = () => {
                         <div className="Home_text">
                             <a href="/">
                                 <h3>The Purpose</h3>
-                                <p>We will use only animal-friendly, fair-trade yarn. Only the best!</p>
+                                <p>
+                                    Allow job seekers to properly organize and manage their applies
+                                </p>
                             </a>
                         </div>
 
@@ -50,10 +53,14 @@ const Home = () => {
                         </div>
 
                         <div className="Home_text">
-                            <a href="/">
+                            <Link to="/about">
                                 <h3>The Group</h3>
-                                <p>Become a member, become family. Teamwork is everything.</p>
-                            </a>
+                                <p>
+                                    Jr Full stack web developers.<br />
+                                    Who created this platform from their own need.<br />
+                                     {/* Click for more info */}
+                                </p>
+                            </Link>
                         </div>
                     </div>
                 </section>

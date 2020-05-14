@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { Redirect, Link } from "react-router-dom";
-import Alert from 'react-bootstrap/Alert'
 import useToggle from '../../hooks/useToggleState';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
 import axios from 'axios';
