@@ -59,11 +59,13 @@
   transform: translateY(-15%);
 }
   
-.Home_box a{
-  text-decoration: none;
+.Home_box a {
+  text-decoration: none !important;
   color: black;
 }
-  
+.Home_box a:hover{
+  color: #004239;}
+
 .Home_icon{
   font-size: 3rem;
   padding: 1rem;
@@ -140,4 +142,10 @@
   .Home_titles h1{
     font-size: 3rem;
   }
+}
+
+@media (max-width: 999px){
+  .Home {
+    background-position-y: 0px;
+}
 }

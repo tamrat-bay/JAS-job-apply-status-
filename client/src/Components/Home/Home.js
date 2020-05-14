@@ -16,7 +16,9 @@ const Home = () => {
                 <section className="Home_container-boxes">
                     <div className="Home_box">
                         <div className="Home_icon">
-                            <a href="/"><i className="fas fa-fire"></i></a>
+                            <a href="/">
+                            <i className="fas fa-table"></i>
+                                </a>
                         </div>
                         <div className="Home_text">
                             <a href="/">
@@ -32,7 +34,9 @@ const Home = () => {
                     <div className="Home_box">
 
                         <div className="Home_icon">
-                            <a href="/"><i className="fa fa-seedling"></i></a>
+                            <a href="/">
+                            <i className="fas fa-briefcase"></i>
+                                </a>
                         </div>
 
                         <div className="Home_text">
@@ -49,14 +53,16 @@ const Home = () => {
                     <div className="Home_box">
 
                         <div className="Home_icon">
-                            <a href="/"><i className="fas fa-address-card"></i></a>
+                            <a href="/">
+                             <i className="fas fa-user-friends"></i>
+                            </a>
                         </div>
 
                         <div className="Home_text">
                             <Link to="/about">
                                 <h3>The Group</h3>
                                 <p>
-                                    Jr Full stack web developers.<br />
+                                    JR Full stack web developers.<br />
                                     Who created this platform from their own need.<br />
                                      {/* Click for more info */}
                                 </p>
