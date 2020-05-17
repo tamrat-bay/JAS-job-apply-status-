@@ -17,18 +17,13 @@ const ApplyTable = () => {
     const [allJobApplies, setAllJobApplies] = useState([]);
     const [displayList, setDisplayList] = useState([]);
     // const [searchValues, setSearchValues] = useState({});
-
     const [singleApplyData, setSingleApplyData] = useState({});
-    const [filterFlag, setFilterFlag] = useState((sessionStorage.status || sessionStorage.companyCheck) ? true : false)
+    const [filterFlag, setFilterFlag] = useState(false)
     const [addNewFlag, setAddNewFlag] = useToggle(false);
     const [updateFlag, setUpdateFlag] = useToggle(false);
     const [deleteFlag, setDeleteFlag] = useToggle(false);
     const [moreDetailsFlag, setMoreDetailsFlag] = useToggle(false);
     const { isUserLogged } = useContext(IsUserLoggedContext);
-
-    console.log('displayList', displayList);
-    console.log('singleApplyData', singleApplyData);
-    console.log('filterFlag', filterFlag);
 
 
     const getApplies = () => {
@@ -56,13 +51,11 @@ const ApplyTable = () => {
 
     const addNewApply = (data) => {
 
-        console.log(data);
-
         const temp = [...allJobApplies];
         temp.push(data);
 
         setAllJobApplies(temp);
-        setDisplayList(temp);
+        // setDisplayList(temp);
         setAddNewFlag();
     };
 
@@ -110,7 +103,6 @@ const ApplyTable = () => {
     };
 
     const filterApllies = (searchValues) => {
-        console.log('filterApllies activated searchValues', searchValues);
 
         const searchBy = {
             companyCheck: searchValues.companyCheck ? searchValues.companyCheck : '',
@@ -122,18 +114,18 @@ const ApplyTable = () => {
         if (searchBy.companyCheck && searchBy.statusCheck) {
             let companies = allJobApplies.filter(j => j.company === searchBy.company);
             let byCompanieAndStatus = companies.filter(j => j.status.current === searchBy.status);
-            console.log("byCompanieAndStatus");
+            // console.log("byCompanieAndStatus");
 
             setDisplayList(byCompanieAndStatus);
         } else if (searchBy.companyCheck) {
             let byCompanies = allJobApplies.filter(j => j.company === searchBy.company);
-            console.log("byCompanies", allJobApplies);
-            console.log("byCompanies", byCompanies);
+            // console.log("byCompanies", allJobApplies);
+            // console.log("byCompanies", byCompanies);
 
             setDisplayList(byCompanies);
         } else if (searchBy.statusCheck) {
             let byStatus = allJobApplies.filter(j => j.status.current === searchBy.status);
-            console.log("byStatus")
+            // console.log("byStatus")
             setDisplayList(byStatus);
         } else {
             setFilterFlag(false);
@@ -142,17 +134,10 @@ const ApplyTable = () => {
     };
 
     useEffect(() => {
-        //protect route 
         if (isUserLogged) {
             getApplies();
         };
-
-        //show filterd apllies after update
-        // if (!updateFlag && filterFlag) {
-        //     filterApllies(searchValues);
-        // };
-
-    }, [isUserLogged, updateFlag, filterFlag]);
+    }, [isUserLogged, updateFlag]);
 
 
 
@@ -161,49 +146,60 @@ const ApplyTable = () => {
     return (
         <div className="ApplyTable">
             <Container>
-                {moreDetailsFlag ? <MoreDetails data={singleApplyData}
-                    close={setMoreDetailsFlag} /> : ''}
+
+                {moreDetailsFlag ? 
+
+                <MoreDetails 
+                  data={singleApplyData}
+                  close={setMoreDetailsFlag} 
+                /> 
+                : 
+                ''}
 
                 {
                     addNewFlag ?
                         <NewApply
-                            addNewApply={addNewApply}
-                            closeMe={setAddNewFlag}
+                         addNewApply={addNewApply}
+                         closeMe={setAddNewFlag}
                         />
                         : ''
                 }
+
                 {
-                    updateFlag ? <UpdateApply
+                    updateFlag ? 
+                    <UpdateApply
                         initialValues={singleApplyData}
                         updateApply={updateApply}
                         closeMe={setUpdateFlag}
-                    /> : ''
-                }
+                    /> 
+                    : 
+                    ''}
+
                 {
-                    deleteFlag ?
-                        <>
-                            <div className="ApplyTable_delete">
-                                <i className="far fa-times-circle"></i>
-                                <h2>Are you sure?</h2>
-                                <span>
-                                    <p> Do you really want to delete this apply? ({singleApplyData.company}).</p>
-                                    <p>This process cannot be undone.</p>
-                                </span>
-                                <div className='ApplyTable_delete_buttons'>
-                                    <button className='ApplyTable_delete_buttons_delete' onClick={deleteApply}>Delete</button>
-                                    <button className='ApplyTable_delete_buttons_cancel' onClick={setDeleteFlag}>Cancel</button>
-                                </div>
+                 deleteFlag ?
+                    <>
+                        <div className="ApplyTable_delete">
+                            <i className="far fa-times-circle"></i>
+                            <h2>Are you sure?</h2>
+                            <span>
+                                <p> Do you really want to delete this apply? ({singleApplyData.company}).</p>
+                                <p>This process cannot be undone.</p>
+                            </span>
+                            <div className='ApplyTable_delete_buttons'>
+                                <button className='ApplyTable_delete_buttons_delete' onClick={deleteApply}>Delete</button>
+                                <button className='ApplyTable_delete_buttons_cancel' onClick={setDeleteFlag}>Cancel</button>
                             </div>
-                            <div className='ApplyTable-dim-background'></div>
-                        </>
-                        : ''
+                        </div>
+                        <div className='ApplyTable-dim-background'></div>
+                    </>
+                        : 
+                        ''
                 }
 
                 <SearchBar
                     filterApllies={filterApllies}
                     setFilterFlag={setFilterFlag}
                     allJobApplies={allJobApplies}
-                    // setSearchValues={setSearchValues}
                     setDisplayList={setDisplayList}
                     setAddNewFlag={setAddNewFlag}
                 />

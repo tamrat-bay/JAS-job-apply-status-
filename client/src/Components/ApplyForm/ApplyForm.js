@@ -12,8 +12,7 @@ const ApplyForm = (props) => {
     const formik = useFormik({
         initialValues,
         onSubmit: values => {
-            console.log("form value", values);
-
+            // console.log("form value apply form", values);
             submitForm(values);
 
         },

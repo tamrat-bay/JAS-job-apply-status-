@@ -8,18 +8,11 @@ import './SearchBar.css'
 
 const SearchBar = (props) => {
 
-    console.log('SearchBar render'.toUpperCase());
-
-
     const {
         filterApllies,
         setFilterFlag,
-        // allJobApplies,
-        // setDisplayList,
         setAddNewFlag,
-        // // setSearchValues,
-        // addNewFlag
-    } = props;
+         } = props;
 
     const formik = useFormik({
         initialValues:
@@ -31,18 +24,15 @@ const SearchBar = (props) => {
         }
         ,
         onSubmit: values => {
-            console.log("form value Search bar", values);
-
+            // console.log("form value Search bar", values);
             handleSubmit(values);
-
         },
     });
 
 
     const showAll = (e) => {
-        sessionStorage.clear();
         setFilterFlag(false);
-        // setDisplayList(allJobApplies)
+
         formik.resetForm()
         //clear form values
         const statusCheck = document.getElementById('statusCheck');
@@ -54,56 +44,31 @@ const SearchBar = (props) => {
         companyName.value = '';
     };
 
-
-    // useEffect(() => {
-
-    //     return () => {
-    //         sessionStorage.clear()
-    //     }
-    // }, []);
-
     const handleSubmit = (values) => {
-        // console.log('SearchBar submit',values);
-        // console.log('SearchBar entries', Object.entries(values));
-        // Object.entries(values).map(v => {
-        //     sessionStorage[v[0]] = v[1];
-        //     if (sessionStorage[v[0]] === 'statusCheck' && !sessionStorage[v[1]]) {
-        //         sessionStorage[v[0]] = false
-        //     }
-        //     if (sessionStorage[v[0]] === 'companyCheck' && !sessionStorage[v[1]]) {
-        //         sessionStorage[v[0]] = false
-        //     }
-
-        // })
-        // setSearchValues(values)
-        // e.preventDefault();
         setFilterFlag(true);
         filterApllies(values);
     };
 
     return (
         <div className="SearchBar">
-            {/* <h3>Search Applies</h3> */}
             <div className="SearchBar-container">
-                <form className="form-inline" onSubmit={formik.handleSubmit}>
-
+                <form 
+                className="form-inline" 
+                onSubmit={formik.handleSubmit}
+                >
                     <OverlayTrigger overlay={<Tooltip id="searchBycompany">Search by company name</Tooltip>}>
                         <label htmlFor='company'>
                             <div>
                                 <input type="checkbox"
-                                    // onChange={getInputsData}
-                                    onChange={formik.handleChange}
-                                    value={formik.values.companyCheck}
-                                    id="companyCheck"
-                                    // defaultChecked={sessionStorage.companyCheck || false}
-                                    name="companyCheck"
+                                onChange={formik.handleChange}
+                                value={formik.values.companyCheck}
+                                id="companyCheck"
+                                name="companyCheck"
                                 />
                                 {/* Search by Company Name */}
                             </div>
                             <input id="company"
                                 className="form-control form-control-sm ml-3"
-                                // onChange={getInputsData}
-                                // defaultValue={sessionStorage.company || ''}
                                 onChange={formik.handleChange}
                                 value={formik.values.company}
                                 name="company"
@@ -121,8 +86,7 @@ const SearchBar = (props) => {
                                 <input
                                     type="checkbox"
                                     id='statusCheck'
-                                    // onChange={getInputsData}
-                                    // defaultChecked={sessionStorage.statusCheck || false}
+
                                     onChange={formik.handleChange}
                                     value={formik.values.statusCheck}
                                     name="statusCheck"
@@ -131,8 +95,6 @@ const SearchBar = (props) => {
                             </div>
                             <select id="status"
                                 name="status"
-                                //  defaultValue={sessionStorage.status || 'Pending'} 
-                                //  onChange={getInputsData} 
                                 onChange={formik.handleChange}
                                 value={formik.values.status}
                             >

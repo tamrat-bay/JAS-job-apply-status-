@@ -5,7 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { Redirect, Link } from "react-router-dom";
 import useToggle from '../../hooks/useToggleState';
-import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+import { IsUserLoggedContext } from '../../context/IsUserLoggedContext';
+import { useFormik } from 'formik';
 import axios from 'axios';
 import './Login.css';
 
@@ -14,52 +15,59 @@ const Login = () => {
 
     const [validationFlag, setValidationFlag] = useToggle(false);
     const [loginFlag, setloginFlag] = useToggle(false);
-    const { isUserLogged, setisUserLogged } = useContext(IsUserLoggedContext);
+    const { setisUserLogged } = useContext(IsUserLoggedContext);
 
-    console.log("isUserLogged", isUserLogged);
-
-    let loginData = { email: '', password: '' }
-
-    const getInputsData = (e, type) => {
-        if (validationFlag) {
-            setValidationFlag()
-        }
-
-        return type === 'email' ? loginData.email = e.target.value :
-            loginData.password = e.target.value
-    };
-
-    const loginRequest = (e) => {
-        e.preventDefault();
-        console.log(loginData);
-
-        axios.post('/users/login/', loginData)
+    const handleSubmit = (values) => {
+        
+        axios.post('/users/login/', values)
             .then((response) => {
                 if (response.status === 200) {
                     const { name, id, email, image, token } = response.data;
                     const user = { name, id, email, image, token };
                     localStorage.jas_login = JSON.stringify(user);
-                    // setisUserLogged( true )
                     setisUserLogged(true)
                     setloginFlag()
                 } else {
                     setValidationFlag()
-
                 }
             })
             .catch((error) => {
                 setValidationFlag()
-
                 console.log(error);
             });
     }
+
+    const formik = useFormik({
+        initialValues:
+        {
+            email: '', 
+            password: ''
+        }
+        ,
+        onSubmit: values => {
+            console.log("form value login ", values);
+            handleSubmit(values);
+
+        },
+    });
+
+
+    const handleChange = (e) => {
+        if (validationFlag) {
+            setValidationFlag()
+        }
+          formik.handleChange(e)
+      };
+
 
     if (loginFlag) return <Redirect to="/applies" />;
 
     return (
         <div className='Login'>
 
-            <Form onSubmit={(e) => loginRequest(e)} className="Login_form">
+            <Form 
+             onSubmit={formik.handleSubmit}
+             className="Login_form">
                 <div className="form-title">
                     <h2>Welcome to JAS</h2>
                     <p>Login here</p>
@@ -75,25 +83,35 @@ const Login = () => {
                     ''}
 
                 <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={0}>
-                    </Form.Label>
+                    {/* <Form.Label column sm={0}>
+                    </Form.Label> */}
                     <Col sm={12}>
                         <Form.Control
                             type="email"
-                            onChange={(e) => getInputsData(e, 'email')} placeholder="Email" />
+                            onChange={handleChange}
+                            value={formik.values.email}
+                            required
+                            autoComplete="false"
+                            placeholder="email"
+                            name="email"
+                             />
                     </Col>
                 </Form.Group>
 
                 <Form.Group as={Row} controlId="formHorizontalPassword">
-                    <Form.Label column sm={2}>
+                    {/* <Form.Label column sm={2}> */}
                         {/* <div>Password</div> */}
-                    </Form.Label>
+                    {/* </Form.Label> */}
                     <Col sm={12}>
                         <Form.Control
                             type="password"
-                            onChange={(e) => getInputsData(e, 'password')}
+                            onChange={handleChange}
+                            value={formik.values.password}
                             required
-                            placeholder="Password" />
+                            autoComplete="true"
+                            placeholder="password" 
+                            name="password" 
+                            />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>

@@ -4,11 +4,12 @@ const jasEmail = require('../emailInfo.json')
 // async..await is not allowed in global scope, must use a wrapper
 async function sendEmail(request) {
   const { email, id } = request;
-  console.log('useremaiol', email);
+  // console.log('useremail and id', email,id);
+  // console.log('jasEmail', jasEmail);
 
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
-  let testAccount = await nodemailer.createTestAccount();
+  // let testAccount = await nodemailer.createTestAccount();
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({

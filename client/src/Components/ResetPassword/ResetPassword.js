@@ -4,26 +4,16 @@ import useToggle from '../../hooks/useToggleState';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './ResetPassword.css'
+import { useFormik } from 'formik';
 
 const ResetPassword = (props) => {
 
     const [resetFlag, setResetFlag] = useToggle(false);
     const [validationFlag, setValidationFlag] = useToggle(false);
 
-    let resetData = { password: '', confirmPassword: '', id: props.match.params.id }
-
-    const getInputsData = (e) =>{
-        if (validationFlag) {
-            setValidationFlag()
-        }
-      return resetData[e.target.name] = e.target.value
-        }
-
-    const ResetRequest = (e) => {
-        e.preventDefault();
-        console.log(resetData);
-        if (resetData.password === resetData.confirmPassword && resetData.password.length) {
-            axios.patch('/reset', resetData)
+    const handleSubmit = (values) => {
+        if ((values.password === values.confirmPassword) && values.password.length) {
+            axios.patch('/reset', values)
                 .then((response) => {
                     if (response.status === 204) {
                         setResetFlag()
@@ -37,44 +27,77 @@ const ResetPassword = (props) => {
         }
     }
 
+    const formik = useFormik({
+        initialValues:
+        { 
+         password: '', 
+         confirmPassword: '', 
+         id: props.match.params.id 
+       }
+        ,
+        onSubmit: values => {
+            // console.log("form value reset pass ", values);
+            handleSubmit(values);
+        },
+    });
+
+    const handleChange = (e) => {
+        if (validationFlag) {
+            setValidationFlag()
+        }
+          formik.handleChange(e)
+      };
+
     if (resetFlag) return <Redirect to='/login' />
 
     return (
         <div className='ResetPassword'>
-            <Form onSubmit={(e) => ResetRequest(e)} className="Login_form">
+
+            <Form 
+            onSubmit={formik.handleSubmit} 
+            className="Login_form"
+            >
+
+            <div className="form-title">
+                 <h2>Reset Passwoed</h2>
+            </div>
+
              {validationFlag ?
                     <p
                         className="validation-warning"
-                        onClick={setValidationFlag}>Please try again. <br />
-                                 There is a problem with your password !
-
+                        onClick={setValidationFlag}>
+                            Please try again. <br />
+                            There is a problem with your password !
                     </p>
                     :
-                    ''}
+                    ''
+            }
                 <Form.Group as={Row} controlId="formHorizontalPassword">
                     <Form.Label column sm={2}>
                         </Form.Label>
                     <Col sm={12}>
                         <Form.Control 
                         type="password" 
-                        onChange={(e) => getInputsData(e)} 
+                        onChange={handleChange} 
                         name='password' 
                         placeholder="Password"
-                        requierd
+                        required
+                        autoComplete="true"
                         />
                     </Col>
                 </Form.Group>
-
 
                 <Form.Group as={Row} controlId="formHorizontalconfirmPassword">
                     <Form.Label column sm={2}>
                         </Form.Label>
                     <Col sm={12}>
-                        <Form.Control type="password" 
-                        onChange={(e) => getInputsData(e)} 
+                        <Form.Control 
+                        type="password" 
+                        onChange={handleChange} 
                         name='confirmPassword' 
                         placeholder="Confirm Password"
-                        requierd
+                        required
+                        autoComplete="true"
                          />
                     </Col>
                 </Form.Group>
