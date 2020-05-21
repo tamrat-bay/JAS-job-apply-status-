@@ -8,8 +8,9 @@ footer .main-footer {
 	padding: 5px 0;
     background: #090b0d;
 	text-align: left;
-	min-height: 140px;
+	min-height: 135px;
 }
+
 footer a{
 	color: #c6d6b7;
 }
@@ -20,7 +21,7 @@ footer ul {
 }
 
 
-/* Copy Right Footer */
+/* Copyright Footer */
 
 .footer-copyright {
 	background: #000000f2;
@@ -58,7 +59,6 @@ footer ul {
 	margin-bottom: 9px;
 }
 
-
 .widget li a:hover {
 	color: #4b92dc;
 }
@@ -72,6 +72,7 @@ footer ul {
 }
 
 .widget-title span {
+	text-align: left;
 	background: #839FAD none repeat scroll 0 0;
 	display: block;
 	height: 1px;
@@ -114,33 +115,6 @@ footer ul {
 .typo-light span,
 .typo-light small {
 	color: rgba(255,255,255,.8);
-}
-
-ul.social-footer2 {
-	margin: 0;
-	padding: 0;
-	width: auto;
-}
-
-ul.social-footer2 li {
-	display: inline-block;
-	padding: 0;
-}
-
-ul.social-footer2 li a:hover {
-	background-color: #3b6978;
-}
-
-ul.social-footer2 li a {
-	display: block;
-	height: 30px;
-	width: 30px;
-	text-align: center;
-}
-
-footer .btn{
-	background: #3b6978;
-	border: none;
 }
 
 footer .btn:hover,
