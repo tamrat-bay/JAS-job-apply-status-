@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
 
 const NavbarAfterLogin = () => {
@@ -31,4 +31,4 @@ const NavbarAfterLogin = () => {
         </div>
     )
 };
-export default NavbarAfterLogin
+export default NavbarAfterLogin;

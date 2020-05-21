@@ -4,6 +4,7 @@
   background-size: cover;
   background-position-y: -270px;
   display: flex;
+  padding: 20px;
 }
 
 .Home-container{

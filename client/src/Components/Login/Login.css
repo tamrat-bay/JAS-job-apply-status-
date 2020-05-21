@@ -1,43 +1,40 @@
 .Login {
-    padding: 10px;
-    min-height: var(--global-min-height);
-    display: flex;
+  padding: 10px;
+  min-height: var(--global-min-height);
+  display: flex;
 }
 
 .Login_form{
-    margin: auto auto;
-    box-shadow: 0px 1px 5px;
+  margin: auto auto;
+  box-shadow: 0px 1px 5px;
 }
 
 .Login form{
-    padding: 30px 25px 15px 25px;
-    background-color: #ffffff;
-    min-width: 350px;
-    border-radius: 10px;
-  }
+  padding: 30px 25px 15px 25px;
+  background-color: #ffffff;
+  min-width: 350px;
+  border-radius: 10px;
+}
 
- .Login .form-group{
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
+.Login .form-group{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
 
 .Login .form-title{
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
+}
 
 .Login h2{
-    font-size: 30px;
-    color: #323232;
-     font-family: pasifico;
-  }
- .Login p{
-    color: #777777;
-    font-family: pasifico;
-  }
-  
-/* .Login  label{
-    color: #565656;
-} */
+  font-size: 30px;
+  color: #323232;
+  font-family: pasifico;
+}
+
+.Login p{
+  color: #777777;
+  font-family: pasifico;
+}
 
 .Login input {
   display: block;
@@ -54,108 +51,53 @@
 }
 
 .Login .form-group p {
-    margin-top: 13px;
-    text-align: center;
-    font-size: 1.2em;
-    border-bottom: 0.1px solid black;
-    width: 75%;
-    margin: 10px auto;
-    /* background-color: #47596357; */
-    border-radius: 5px;
-    letter-spacing: 1px;
+  margin-top: 13px;
+  text-align: center;
+  font-size: 1.2em;
+  border-bottom: 0.1px solid black;
+  width: 75%;
+  margin: 10px auto;
+  border-radius: 5px;
+  letter-spacing: 1px;
 }
 
-/* .Login .form-group p:hover {
-    background-color: #2d3530d3;
-    color: white;
-  } */
-
-  .Login  .form-group a{
-    /* text-decoration: none; */
-    color: rgb(40, 109, 173);
-  }
-
-  .Login button{
-    border: none;
-    outline: none;
-    padding: 12px 20px;
-    border-radius: 7px;
-    margin-left: 12.5%;
-    margin-right: 12.5%;
-    cursor: pointer;
-    margin-top: 15px;
-    background-color: #3b6978;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bolder;
-    width: 75%;
-    transition: all .3s ease;
-  }
-  
-  .Login  button:hover{
-    background-color: #204051;
-  }
-  .Login .alert-warning {
-    color: #bf0c0c;
-    font-size: 1.2em;
-    background-color: #fff3cd;
-    border-color: #000000;
-    border-radius: 5px;
-    z-index: 1;
+.Login  .form-group a{
+  color: rgb(40, 109, 173);
 }
 
-/* .Login h2 {
-    text-align: center;
-    background-color: inherit;
-} */
+.Login button{
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 7px;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  cursor: pointer;
+  margin-top: 15px;
+  background-color: #3b6978;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bolder;
+  width: 75%;
+  transition: all .3s ease;
+}
 
+.Login  button:hover{
+  background-color: #204051;
+}
 
-/* .Login button {
-    cursor: pointer;
-} */
+.Login .alert-warning {
+  color: #bf0c0c;
+  font-size: 1.2em;
+  background-color: #fff3cd;
+  border-color: #000000;
+  border-radius: 5px;
+  z-index: 1;
+}
 
-
-
-/* .Login .btn-primary {
-    color: #fff;
-    background-color: #1d1c1c;
-    width: 120px;
-    font-size: 1.5em;
-    border-color: #289c119d;
-    border-radius: 9px;
-} */
-/* .Login .btn-primary:hover {
-    color: #fff;
-    background-color: #000000;
-    border-color: #1b9b00e8;
-    box-shadow: 2px 2px 5px #1b9b00e8;
-} */
 .Login_forgotPassword{
-    text-align: center;
-    background-color: white;
-    width: 160px;
-    margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  width: 160px;
+  margin: 0 auto;
 }
-
-/* ? Media Query */
-
-/* @media (min-width: 576px){
- .col-sm-10 {
-        flex: 0;
-    }
-.offset-sm-12 {
-    margin-left:0;
-}
-} */
-/* @media only screen and (max-width: 750px) {
-.Login_form {
-    width: 85%;
-}
-
-}
-@media only screen and (max-width: 450px) {
-.Login_form {
-    width: 95%;
-}
-
-} */

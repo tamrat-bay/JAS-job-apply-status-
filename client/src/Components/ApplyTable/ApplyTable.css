@@ -32,7 +32,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100% !important; */
 }
 
 .ApplyTable-updateIcon, .ApplyTable-deleteIcon{
@@ -42,7 +41,6 @@
     justify-content: space-around;
     align-items: center;
     width: 30%;
-    /* height: 100%; */
 }
 
 .ApplyTable-updateIcon:hover, .ApplyTable-deleteIcon:hover{

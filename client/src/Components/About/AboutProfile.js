@@ -1,12 +1,13 @@
 import React from 'react'
 
+
 const AboutProfile = (props) => {
 
     const { name, email, img, about, links } = props.profile;
 
     return (
         <div className="About_Profile">
-            <aside class="profile-card shadow-drop-center">
+            <aside className="profile-card shadow-drop-center">
 
                 <header>
                     <a href="https://tutsplus.com" target="_blank" rel="noopener noreferrer">
@@ -19,7 +20,7 @@ const AboutProfile = (props) => {
                     <h2>- Full Stack Web Developer-</h2>
                 </header>
                 {/* <!-- bit of a bio; who are you? --> */}
-                <div class="profile-bio">
+                <div className="profile-bio">
                     <p className='email'>{email}</p>
                     <p>Hello there!</p>
                     <p>
@@ -27,25 +28,25 @@ const AboutProfile = (props) => {
                     </p>
                 </div>
                 {/* <!-- some social links to show off --> */}
-                <ul class="profile-social-links">
+                <ul className="profile-social-links">
                     {/* <!-- twitter - el clásico  --> */}
                     <li>
                         <a href={links.github} target="_blank" rel="noopener noreferrer">
                             {/* <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg" /> */}
-                            <i class="fab fa-github" style={{ color: 'black' }}></i>
+                            <i className="fab fa-github" style={{ color: 'black' }}></i>
                         </a>
                     </li>
                     {/* <!-- envato – use this one to link to your marketplace profile --> */}
                     <li>
                         <a href={links.linkdin} target="_blank" rel="noopener noreferrer">
                             {/* <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-envato.svg"  /> */}
-                            <i class="fab fa-linkedin" style={{ color: '#0077B5' }}></i>
+                            <i className="fab fa-linkedin" style={{ color: '#0077B5' }}></i>
                         </a>
                     </li>
                     {/* <!-- codepen - your codepen profile--> */}
                     <li>
                         <a href={links.facebook} target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-facebook" style={{ color: '#4267B2' }}></i>
+                            <i className="fab fa-facebook" style={{ color: '#4267B2' }}></i>
                         </a>
                     </li>
                     {/* <!-- add or remove social profiles as you see fit --> */}
@@ -53,6 +54,5 @@ const AboutProfile = (props) => {
             </aside>
         </div>
     )
-}
-
-export default AboutProfile
+};
+export default AboutProfile;

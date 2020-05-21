@@ -2,12 +2,15 @@
     width: 100%;
     color: whitesmoke;
 }
+
 .Navbar .bg-dark {
-    background-color: #090b0d!important;
+    background-color: #090b0d !important;
 }
+
 .Navbar strong {
     text-transform: capitalize;
 }
+
 .Navbar_logginStatus{
     display: flex;
     flex-direction: row;
@@ -16,30 +19,31 @@
 }
 
 .Navbar_logginStatus div{
- align-self: center;
+    align-self: center;
 }
 
 .Navbar .navbar-dark .navbar-brand {
     color: #fff;
     letter-spacing: 10px;
-    font-size: 2.5em;
+    font-size: 2em;
     font-family: pacifico;
     padding: 0 45px;
 }
+
 .Navbar .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: .5rem;
     padding-left: .5rem;
     font-size: 1.2em;
     font-weight: 500;
 }
+
 .Navbar .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.8);
 }
 
-
 @media only screen and (max-width: 991px) {
 
-.Navbar_logginStatus {
-    width: 100%;
-}
+    .Navbar_logginStatus {
+        width: 100%;
+    }
 }
