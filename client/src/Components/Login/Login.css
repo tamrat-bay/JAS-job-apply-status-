@@ -1,6 +1,6 @@
 .Login {
     padding: 10px;
-    min-height: calc(100vh - (76px + 176px));
+    min-height: var(--global-min-height);
     display: flex;
 }
 

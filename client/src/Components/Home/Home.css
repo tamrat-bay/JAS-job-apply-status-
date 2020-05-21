@@ -1,5 +1,5 @@
 .Home {
-  min-height: calc(100vh - (76px + 176px));
+  min-height: var(--global-min-height);
   background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(https://images.unsplash.com/photo-1518893494013-481c1d8ed3fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat;
   background-size: cover;
   background-position-y: -270px;

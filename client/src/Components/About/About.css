@@ -1,5 +1,5 @@
 .About {
-  min-height: calc(100vh - (76px + 176px));
+  min-height: var(--global-min-height);
   padding: 20px;
   padding: 20px;
     display: flex;

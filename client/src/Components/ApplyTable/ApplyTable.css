@@ -1,6 +1,6 @@
 .ApplyTable{
     padding: 1rem;
-    min-height: calc(100vh - (76px + 176px));
+    min-height: var(--global-min-height);
     background-color: #cbceccb8;
 }
 
