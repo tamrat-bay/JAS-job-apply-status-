@@ -68,7 +68,7 @@ const SearchBar = (props) => {
                                 {/* Search by Company Name */}
                             </div>
                             <input id="company"
-                                className="form-control form-control-sm ml-3"
+                                // className="form-control form-control-sm ml-3"
                                 onChange={formik.handleChange}
                                 value={formik.values.company}
                                 name="company"
