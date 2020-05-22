@@ -12,19 +12,16 @@ const ApplyForm = (props) => {
     const formik = useFormik({
         initialValues,
         onSubmit: values => {
-            // console.log("form value apply form", values);
             submitForm(values);
-
         },
     });
 
     const submitForm = (data) => {
+        
         const { method, url, headers, resolveFunction } = axiosInfo;
-
         axios({ method, url, data, headers })
             .then(response => {
                 if (response.status === 200 || response.status === 201) {
-                    console.log("response.data", response.data);
 
                     resolveFunction(response.data);
                 };
@@ -37,12 +34,12 @@ const ApplyForm = (props) => {
 
     return (
         <div className='ApplyForm'>
-            <Form.Row className='ApplyForm-header'>
+            <div className='ApplyForm-header'>
                 <h2>{title} Job Apply</h2>
                 <button className='ApplyForm-exitBtn' onClick={closeMe}>
                     <i className="fas fa-times"></i>
                 </button>
-            </Form.Row>
+            </div>
             <Form onSubmit={formik.handleSubmit}>
                 <Form.Row>
                     <Form.Group as={Col}>
