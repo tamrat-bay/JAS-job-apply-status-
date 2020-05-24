@@ -13,7 +13,7 @@ const ApplyForm = (props) => {
         initialValues,
         onSubmit: values => {
             submitForm(values);
-        },
+        }
     });
 
     const submitForm = (data) => {

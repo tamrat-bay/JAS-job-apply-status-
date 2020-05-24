@@ -4,7 +4,8 @@
     height: 95%;
     max-width: 650px;
     max-height: 650px;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -24,7 +25,17 @@
     justify-content: space-between;
     align-items: center;
     color: #ffffff;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid wheat;
+}
+
+.MoreDetails-header h2{
+    color: #ffffff;
+    margin: 0;
+    font-weight: 100;
+
+}
+.MoreDetails-header i:hover{
+    cursor: pointer;
 }
 
 .MoreDetails-container{
@@ -32,10 +43,6 @@
     height: 90%;
     overflow-y: auto;
     padding: 15px;
-}
-
-.MoreDetails-close i:hover{
-    cursor: pointer;
 }
 
 .MoreDetails-items{

@@ -1,8 +1,7 @@
 import React from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import { exportTableToCsv } from '../../utils/exportTableToCsv';
-import { exportTableToXlsx } from '../../utils/exportTableToXlsx';
+import { objToSheet } from '../../utils/ObjToXLSX';
 import './SearchBar.css'
 
 
@@ -12,7 +11,8 @@ const SearchBar = (props) => {
         filterApllies,
         setFilterFlag,
         setAddNewFlag,
-         } = props;
+        allJobApplies
+    } = props;
 
     const formik = useFormik({
         initialValues:
@@ -52,18 +52,18 @@ const SearchBar = (props) => {
     return (
         <div className="SearchBar">
             <div className="SearchBar-container">
-                <form 
-                className="form-inline" 
-                onSubmit={formik.handleSubmit}
+                <form
+                    className="form-inline"
+                    onSubmit={formik.handleSubmit}
                 >
                     <OverlayTrigger overlay={<Tooltip id="searchBycompany">Search by company name</Tooltip>}>
                         <label htmlFor='company'>
                             <div>
                                 <input type="checkbox"
-                                onChange={formik.handleChange}
-                                value={formik.values.companyCheck}
-                                id="companyCheck"
-                                name="companyCheck"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.companyCheck}
+                                    id="companyCheck"
+                                    name="companyCheck"
                                 />
                                 {/* Search by Company Name */}
                             </div>
@@ -123,18 +123,17 @@ const SearchBar = (props) => {
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnCsv">Download as CSV file</Tooltip>}>
-                    <button onClick={exportTableToCsv}>
+                    <button onClick={() => objToSheet(allJobApplies, 'csv')}>
                         <i className="fas fa-download"></i>
                             CSV
                             </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnXlsx">Download as XLSX file</Tooltip>}>
-                    <button onClick={exportTableToXlsx}>
+                    <button onClick={() => objToSheet(allJobApplies, 'xlsx')}>
                         <i className="fas fa-download"></i>
                              XLSX</button>
                 </OverlayTrigger>
-
             </div>
         </div>
     )

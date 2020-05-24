@@ -14,7 +14,7 @@ const MoreDetails = (props) => {
     return (
         <div className='MoreDetails' >
             <div className='MoreDetails-header'>
-                <span>More details</span>
+                <h2>More details</h2>
                 <i className='fas fa-times' onClick={close}></i>
             </div>
 
