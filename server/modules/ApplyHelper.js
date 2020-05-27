@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const { Apply } = require('../models/applyModel');
 const User = require('../models/User');
 
@@ -10,7 +9,6 @@ const getApplyHandler = (req, res) => {
         return res.status(200).send(user.applies);
     });
 };
-
 
 const postApplyHandler = (req, res) => {
     const newApply = { company, location, companySize, status, cvversion, jobDescription, isAnswered, date } = req.body
@@ -50,7 +48,8 @@ const updateApplyHandler = (req, res) => {
 
 const deleteApplyHandler = (req, res) => {
     const { id } = req.params;
-    return Apply.findOneAndDelete(id)
+
+    return Apply.findByIdAndRemove(id)
         .then(response => res.status(200).send('Deleted'))
         .catch(err => { console.log(err); res.status(500).send(`server problem - ${err}`) })
 };

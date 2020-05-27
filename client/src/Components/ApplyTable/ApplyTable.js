@@ -78,12 +78,17 @@ const ApplyTable = () => {
     };
 
     const deleteApply = () => {
-        const { id } = singleApplyData;
+
+        const { _id } = singleApplyData;
         const { token } = JSON.parse(localStorage.jas_login);
+
+        console.log(singleApplyData);
+        console.log(_id);
+
 
         axios({
             method: 'delete',
-            url: `/jobapply/${id}`,
+            url: `/jobapply/${_id}`,
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -147,52 +152,52 @@ const ApplyTable = () => {
         <div className="ApplyTable">
             <Container>
 
-                {moreDetailsFlag ? 
+                {moreDetailsFlag ?
 
-                <MoreDetails 
-                  data={singleApplyData}
-                  close={setMoreDetailsFlag} 
-                /> 
-                : 
-                ''}
+                    <MoreDetails
+                        data={singleApplyData}
+                        close={setMoreDetailsFlag}
+                    />
+                    :
+                    ''}
 
                 {
                     addNewFlag ?
                         <NewApply
-                         addNewApply={addNewApply}
-                         closeMe={setAddNewFlag}
+                            addNewApply={addNewApply}
+                            closeMe={setAddNewFlag}
                         />
                         : ''
                 }
 
                 {
-                    updateFlag ? 
-                    <UpdateApply
-                        initialValues={singleApplyData}
-                        updateApply={updateApply}
-                        closeMe={setUpdateFlag}
-                    /> 
-                    : 
-                    ''}
+                    updateFlag ?
+                        <UpdateApply
+                            initialValues={singleApplyData}
+                            updateApply={updateApply}
+                            closeMe={setUpdateFlag}
+                        />
+                        :
+                        ''}
 
                 {
-                 deleteFlag ?
-                    <>
-                        <div className="ApplyTable_delete">
-                            <i className="far fa-times-circle"></i>
-                            <h2>Are you sure?</h2>
-                            <span>
-                                <p> Do you really want to delete this apply? ({singleApplyData.company}).</p>
-                                <p>This process cannot be undone.</p>
-                            </span>
-                            <div className='ApplyTable_delete_buttons'>
-                                <button className='ApplyTable_delete_buttons_delete' onClick={deleteApply}>Delete</button>
-                                <button className='ApplyTable_delete_buttons_cancel' onClick={setDeleteFlag}>Cancel</button>
+                    deleteFlag ?
+                        <>
+                            <div className="ApplyTable_delete">
+                                <i className="far fa-times-circle"></i>
+                                <h2>Are you sure?</h2>
+                                <span>
+                                    <p> Do you really want to delete this apply? ({singleApplyData.company}).</p>
+                                    <p>This process cannot be undone.</p>
+                                </span>
+                                <div className='ApplyTable_delete_buttons'>
+                                    <button className='ApplyTable_delete_buttons_delete' onClick={deleteApply}>Delete</button>
+                                    <button className='ApplyTable_delete_buttons_cancel' onClick={setDeleteFlag}>Cancel</button>
+                                </div>
                             </div>
-                        </div>
-                        <div className='ApplyTable-dim-background'></div>
-                    </>
-                        : 
+                            <div className='ApplyTable-dim-background'></div>
+                        </>
+                        :
                         ''
                 }
 
@@ -235,7 +240,8 @@ const ApplyTable = () => {
                                 allJobApplies.map((j, i) =>
                                     <TableRowData
                                         key={i}
-                                        job={j} index={i}
+                                        index={i}
+                                        job={j}
                                         setDeleteFlag={setDeleteFlag}
                                         setUpdateFlag={setUpdateFlag}
                                         setSingleApplyData={setSingleApplyData}
@@ -249,7 +255,6 @@ const ApplyTable = () => {
                 </Table>
             </Container>
         </div>
-    )
+    );
 };
 export default ApplyTable;
-
