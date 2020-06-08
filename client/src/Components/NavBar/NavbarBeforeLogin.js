@@ -1,13 +1,13 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import './Navbar.css'
+import './Navbar.css';
 
 
 const NavbarBeforeLogin = () => {
     return (
         <div className=" Navbar NavbarBeforeLogin">
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
                 <Navbar.Brand as={Link} to="/">JAS</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -21,6 +21,6 @@ const NavbarBeforeLogin = () => {
                 </Navbar.Collapse>
             </Navbar>
         </div>
-    )
+    );
 };
 export default NavbarBeforeLogin;

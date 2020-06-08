@@ -6,7 +6,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import TableRowData from './TableRowData';
 import { Redirect } from 'react-router-dom';
 import { Container, Table } from 'react-bootstrap';
-import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+import { IsUserLoggedContext } from '../../context/IsUserLoggedContext';
 import useToggle from '../../hooks/useToggleState'
 import axios from 'axios';
 import './ApplyTable.css';
@@ -16,7 +16,6 @@ const ApplyTable = () => {
 
     const [allJobApplies, setAllJobApplies] = useState([]);
     const [displayList, setDisplayList] = useState([]);
-    // const [searchValues, setSearchValues] = useState({});
     const [singleApplyData, setSingleApplyData] = useState({});
     const [filterFlag, setFilterFlag] = useState(false)
     const [addNewFlag, setAddNewFlag] = useToggle(false);
@@ -41,7 +40,7 @@ const ApplyTable = () => {
                 if (res.status === 200) {
 
                     setAllJobApplies([...res.data]);
-                    // setDisplayList([...res.data]) ;
+
                 };
             })
             .catch(error =>
@@ -55,7 +54,6 @@ const ApplyTable = () => {
         temp.push(data);
 
         setAllJobApplies(temp);
-        // setDisplayList(temp);
         setAddNewFlag();
     };
 
@@ -73,7 +71,7 @@ const ApplyTable = () => {
     const getMoreDetails = (data) => {
 
         setSingleApplyData(data);
-        // console.log('more details', data);
+
         setMoreDetailsFlag();
     };
 
@@ -100,7 +98,7 @@ const ApplyTable = () => {
                     const index = temp.findIndex(apply => apply._id === singleApplyData._id);
                     temp.splice(index, 1);
                     setAllJobApplies(temp);
-                    // setDisplayList(temp);
+                
                     setDeleteFlag()
                 };
             })
@@ -119,18 +117,16 @@ const ApplyTable = () => {
         if (searchBy.companyCheck && searchBy.statusCheck) {
             let companies = allJobApplies.filter(j => j.company === searchBy.company);
             let byCompanieAndStatus = companies.filter(j => j.status.current === searchBy.status);
-            // console.log("byCompanieAndStatus");
-
+           
             setDisplayList(byCompanieAndStatus);
         } else if (searchBy.companyCheck) {
             let byCompanies = allJobApplies.filter(j => j.company === searchBy.company);
-            // console.log("byCompanies", allJobApplies);
-            // console.log("byCompanies", byCompanies);
+            
 
             setDisplayList(byCompanies);
         } else if (searchBy.statusCheck) {
             let byStatus = allJobApplies.filter(j => j.status.current === searchBy.status);
-            // console.log("byStatus")
+           
             setDisplayList(byStatus);
         } else {
             setFilterFlag(false);
