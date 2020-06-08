@@ -39,7 +39,7 @@
   align-items: flex-end;
   max-width: 80vw;
 }
-  
+
 .Home_box{
   background: rgba(255, 255, 255, 0.76);
   margin: 1rem;
@@ -54,18 +54,20 @@
   min-height: 180px;
   transition: all .4s ease-out;
 }
-  
+
 .Home_box:hover{
   background: rgba(255,255,255,.7);
   transform: translateY(-15%);
 }
-  
+
 .Home_box a {
   text-decoration: none !important;
   color: black;
 }
+
 .Home_box a:hover{
-  color: #004239;}
+  color: #004239;
+}
 
 .Home_icon{
   font-size: 3rem;
@@ -89,7 +91,7 @@
 }
 
 
-/* MEDIAQUERIES */
+/* MEDIA QUERIES */
 
 @media (max-width: 1389px){
   .Home_text h3{
@@ -148,5 +150,17 @@
 @media (max-width: 999px){
   .Home {
     background-position-y: 0px;
+  }
 }
+
+@media (max-width: 1500px){
+  .Home {
+    background-position-y: 0px;
+  }
+}
+
+@media (max-width: 1500px){
+  .Home {
+    background-size: 100% 100%;
+  }
 }
