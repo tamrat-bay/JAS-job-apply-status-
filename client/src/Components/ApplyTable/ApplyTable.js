@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
 import NewApply from '../NewApply/NewApply';
 import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
@@ -7,7 +7,7 @@ import TableRowData from './TableRowData';
 import { Redirect } from 'react-router-dom';
 import { Container, Table } from 'react-bootstrap';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext';
-import useToggle from '../../hooks/useToggleState'
+import useToggle from '../../hooks/useToggleState';
 import axios from 'axios';
 import './ApplyTable.css';
 
@@ -40,7 +40,6 @@ const ApplyTable = () => {
                 if (res.status === 200) {
 
                     setAllJobApplies([...res.data]);
-
                 };
             })
             .catch(error =>
@@ -71,7 +70,6 @@ const ApplyTable = () => {
     const getMoreDetails = (data) => {
 
         setSingleApplyData(data);
-
         setMoreDetailsFlag();
     };
 
@@ -79,10 +77,6 @@ const ApplyTable = () => {
 
         const { _id } = singleApplyData;
         const { token } = JSON.parse(localStorage.jas_login);
-
-        console.log(singleApplyData);
-        console.log(_id);
-
 
         axios({
             method: 'delete',
@@ -98,7 +92,7 @@ const ApplyTable = () => {
                     const index = temp.findIndex(apply => apply._id === singleApplyData._id);
                     temp.splice(index, 1);
                     setAllJobApplies(temp);
-                
+
                     setDeleteFlag()
                 };
             })
@@ -117,16 +111,16 @@ const ApplyTable = () => {
         if (searchBy.companyCheck && searchBy.statusCheck) {
             let companies = allJobApplies.filter(j => j.company === searchBy.company);
             let byCompanieAndStatus = companies.filter(j => j.status.current === searchBy.status);
-           
+
             setDisplayList(byCompanieAndStatus);
         } else if (searchBy.companyCheck) {
             let byCompanies = allJobApplies.filter(j => j.company === searchBy.company);
-            
+
 
             setDisplayList(byCompanies);
         } else if (searchBy.statusCheck) {
             let byStatus = allJobApplies.filter(j => j.status.current === searchBy.status);
-           
+
             setDisplayList(byStatus);
         } else {
             setFilterFlag(false);
@@ -141,11 +135,10 @@ const ApplyTable = () => {
     }, [isUserLogged, updateFlag]);
 
 
-
-    if (!isUserLogged) return <Redirect to="/" />;
+    if (!isUserLogged) return <Redirect to='/' />;
 
     return (
-        <div className="ApplyTable">
+        <div className='ApplyTable'>
             <Container>
 
                 {moreDetailsFlag ?
@@ -179,8 +172,8 @@ const ApplyTable = () => {
                 {
                     deleteFlag ?
                         <>
-                            <div className="ApplyTable_delete">
-                                <i className="far fa-times-circle"></i>
+                            <div className='ApplyTable_delete'>
+                                <i className='far fa-times-circle'></i>
                                 <h2>Are you sure?</h2>
                                 <span>
                                     <p> Do you really want to delete this apply? ({singleApplyData.company}).</p>

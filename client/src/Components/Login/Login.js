@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggleState';
 import { IsUserLoggedContext } from '../../context/IsUserLoggedContext';
 import { useFormik } from 'formik';
@@ -18,106 +18,100 @@ const Login = () => {
     const { setisUserLogged } = useContext(IsUserLoggedContext);
 
     const handleSubmit = (values) => {
-        
+
         axios.post('/users/login/', values)
             .then((response) => {
                 if (response.status === 200) {
+
                     const { name, id, email, image, token } = response.data;
                     const user = { name, id, email, image, token };
                     localStorage.jas_login = JSON.stringify(user);
-                    setisUserLogged(true)
-                    setloginFlag()
+                    setisUserLogged(true);
+                    setloginFlag();
                 } else {
-                    setValidationFlag()
-                }
+                    setValidationFlag();
+                };
             })
             .catch((error) => {
-                setValidationFlag()
+                setValidationFlag();
                 console.log(error);
             });
-    }
+    };
 
     const formik = useFormik({
         initialValues:
         {
-            email: '', 
+            email: '',
             password: ''
-        }
-        ,
+        },
         onSubmit: values => {
-            console.log("form value login ", values);
-            handleSubmit(values);
 
+            handleSubmit(values);
         },
     });
 
 
     const handleChange = (e) => {
         if (validationFlag) {
-            setValidationFlag()
-        }
-          formik.handleChange(e)
-      };
+            setValidationFlag();
+        };
+        formik.handleChange(e);
+    };
 
 
-    if (loginFlag) return <Redirect to="/applies" />;
+    if (loginFlag) return <Redirect to='/applies' />;
 
     return (
         <div className='Login'>
 
-            <Form 
-             onSubmit={formik.handleSubmit}
-             className="Login_form">
-                <div className="form-title">
+            <Form
+                onSubmit={formik.handleSubmit}
+                className='Login_form'>
+                <div className='form-title'>
                     <h2>Welcome to JAS</h2>
                     <p>Login here</p>
                 </div>
 
                 {validationFlag ?
                     <p
-                        className="validation-warning"
+                        className='validation-warning'
                         onClick={setValidationFlag}>Please try again. <br />
                              Make sure user Email and Password are correct
                     </p>
                     :
                     ''}
 
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    {/* <Form.Label column sm={0}>
-                    </Form.Label> */}
+                <Form.Group as={Row} controlId='formHorizontalEmail'>
                     <Col sm={12}>
                         <Form.Control
-                            type="email"
+                            type='email'
                             onChange={handleChange}
                             value={formik.values.email}
                             required
-                            autoComplete="false"
-                            placeholder="email"
-                            name="email"
-                             />
+                            autoComplete='false'
+                            placeholder='email'
+                            name='email'
+                        />
                     </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} controlId="formHorizontalPassword">
-                    {/* <Form.Label column sm={2}> */}
-                        {/* <div>Password</div> */}
-                    {/* </Form.Label> */}
+                <Form.Group as={Row} controlId='formHorizontalPassword'>
                     <Col sm={12}>
                         <Form.Control
-                            type="password"
+                            type='password'
                             onChange={handleChange}
                             value={formik.values.password}
                             required
-                            autoComplete="true"
-                            placeholder="password" 
-                            name="password" 
-                            />
+                            autoComplete='true'
+                            placeholder='password'
+                            name='password'
+                        />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
                     <Col sm={{ span: 12 }}>
                         <div className='form-group button'>
-                            <Button type="submit" >Login</Button>
+                            <Button type='submit'>Login</Button>
                             <p><Link to='/forgotpassword'>Forgot password ?</Link></p>
                             <p><Link to='/signup'>Don`t have an account ?</Link></p>
                         </div>
@@ -125,6 +119,6 @@ const Login = () => {
                 </Form.Group>
             </Form>
         </div>
-    )
+    );
 };
 export default Login;

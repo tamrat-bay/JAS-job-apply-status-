@@ -1,7 +1,6 @@
 .About {
   min-height: var(--global-min-height);
   padding: 20px;
-  padding: 20px;
   display: flex;
   align-items: center;
 }

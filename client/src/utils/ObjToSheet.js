@@ -6,19 +6,19 @@ export const objToSheet = (allJobApplies, fileType) => {
 
     const wb = XLSX.utils.book_new();
     wb.Props = {
-        Title: "JAS - Applies",
-        Subject: "applies",
-        Author: "JAS inc.",
+        Title: 'JAS - Applies',
+        Subject: 'applies',
+        Author: 'JAS inc.',
     };
 
-    wb.SheetNames.push("Applies");
+    wb.SheetNames.push('Applies');
     const ws_data = formatData(allJobApplies);
     const ws = XLSX.utils.json_to_sheet(ws_data);
-    wb.Sheets["Applies"] = ws;
+    wb.Sheets['Applies'] = ws;
     const wbout = XLSX.write(wb, { bookType: fileType, type: 'binary' });
 
     //download
-    saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), `JAS.${fileType}`);
+    saveAs(new Blob([s2ab(wbout)], { type: 'application/octet-stream' }), `JAS.${fileType}`);
 };
 
 const s2ab = (s) => {
@@ -27,7 +27,6 @@ const s2ab = (s) => {
     const view = new Uint8Array(buf);
     for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
     return buf;
-
 }
 
 const formatData = (data) => {

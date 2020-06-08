@@ -210,6 +210,6 @@ const ApplyForm = (props) => {
                 <button className='ApplyForm-savetBtn' type="submit">SAVE</button>
             </Form>
         </div >
-    )
+    );
 };
 export default ApplyForm;
