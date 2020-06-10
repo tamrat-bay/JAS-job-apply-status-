@@ -6,7 +6,8 @@
     color: white;
 }
 
-.SearchBar button , .SearchBar_formButtons div{
+.SearchBar button,
+.SearchBar_formButtons div{
     width: 100px;
     height: 35px;
     margin: 0 5px;
@@ -24,7 +25,8 @@
     align-items: center;
 }
 
-.SearchBar button:hover, .SearchBar_formButtons div:hover{
+.SearchBar button:hover,
+.SearchBar_formButtons div:hover{
     color: red;
 }
 
@@ -87,12 +89,12 @@
 }
 
 .ApplyTable_Addnew button{
-    padding: 10px;
     background-color: #313839;
     border: none;
     color: white;
     width: 170px;
     height: 40px;
+    padding: 10px;
     font-size: 1.2em;
     border-radius: 5px;
     letter-spacing: 1px;
@@ -104,19 +106,17 @@
 
 .ApplyTable_Addnew i{
     color: #faf872c4;
-     font-size: 20px;
+    font-size: 20px;
 }
 
 @media screen and (max-width: 991px) {
- .SearchBar_formButtons{ 
+    
+    .SearchBar_formButtons{ 
         flex-direction: row;
         height: 100%;
         width: 265px;
-    } 
-    .ApplyTable_Addnew button {
-        width: 120px;
-        height: 35px;
     }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -124,6 +124,10 @@
     .ApplyTable_Addnew button {
         width: 90px;
         height: 30px;
+        font-size: 0.7em;
+    }
+
+    .ApplyTable_Addnew i {
         font-size: 1em;
     }
 }
