@@ -116,21 +116,21 @@ const SearchBar = (props) => {
                 <OverlayTrigger rootClose overlay={<Tooltip id="addNew">Add New Job Apply</Tooltip>}>
                     <button onClick={setAddNewFlag}>
                         <i className="fas fa-plus-square"></i>
-                        NEW
+                        <span>NEW</span>
                         </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnCsv">Download as CSV file</Tooltip>}>
                     <button onClick={() => objToSheet(allJobApplies, 'csv')}>
                         <i className="fas fa-download"></i>
-                            CSV
+                        <span>CSV</span>
                     </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnXlsx">Download as XLSX file</Tooltip>}>
                     <button onClick={() => objToSheet(allJobApplies, 'xlsx')}>
                         <i className="fas fa-download"></i>
-                             XLSX
+                        <span>XLSX</span>
                     </button>
                 </OverlayTrigger>
             </div>

@@ -7,7 +7,6 @@
 }
 
 .SearchBar button , .SearchBar_formButtons div{
-    color: white;
     width: 100px;
     height: 35px;
     margin: 0 5px;
@@ -70,15 +69,42 @@
     margin-left: 0rem!important;
 }
 
-.SearchBar i {
-    color: #faf872c4;
-}
-
 .SearchBar_formButtons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 75px;
+}
+
+.ApplyTable_Addnew {
+    background-color: #84a9ac;
+    padding: 1em 0;
+    margin: 10px 0;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ApplyTable_Addnew button{
+    padding: 10px;
+    background-color: #313839;
+    border: none;
+    color: white;
+    width: 170px;
+    height: 40px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ApplyTable_Addnew i{
+    color: #faf872c4;
+     font-size: 20px;
 }
 
 @media screen and (max-width: 991px) {
@@ -90,5 +116,14 @@
     .ApplyTable_Addnew button {
         width: 120px;
         height: 35px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .ApplyTable_Addnew button {
+        width: 90px;
+        height: 30px;
+        font-size: 1em;
     }
 }
