@@ -108,16 +108,20 @@ const ApplyTable = () => {
             company: searchValues.company ? searchValues.company : ''
         };
 
+        //search by company name and status
         if (searchBy.companyCheck && searchBy.statusCheck) {
-            let companies = allJobApplies.filter(j => j.company === searchBy.company);
+            let companies = allJobApplies.filter(j => j.company.toLowerCase() === searchBy.company.toLowerCase());
             let byCompanieAndStatus = companies.filter(j => j.status.current === searchBy.status);
 
             setDisplayList(byCompanieAndStatus);
+
+            //search by company name
         } else if (searchBy.companyCheck) {
-            let byCompanies = allJobApplies.filter(j => j.company === searchBy.company);
-
-
+            let byCompanies = allJobApplies.filter(j => j.company.toLowerCase() === searchBy.company.toLowerCase());
+             
             setDisplayList(byCompanies);
+
+            //search by status
         } else if (searchBy.statusCheck) {
             let byStatus = allJobApplies.filter(j => j.status.current === searchBy.status);
 
