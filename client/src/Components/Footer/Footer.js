@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
+import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+
 import "./Footer.css";
 
 
 const Footer = () => {
-    return (
 
+    const { isUserLogged } = useContext(IsUserLoggedContext);
+
+    return (
         <footer id="footer" className="footer-1">
             <div className="main-footer widgets-dark typo-light">
                 <div className="container">
@@ -15,7 +19,7 @@ const Footer = () => {
                             <div className="widget subscribe no-box">
                                 <h5 className="widget-title">Job Apply Status <span></span></h5>
                                 <p>Manage your job applies today!  For free!</p>
-                            
+
                             </div>
                         </div>
                         <div className="col-xs-12 col-sm-6 col-md-3">
@@ -32,7 +36,11 @@ const Footer = () => {
                             <div className="widget no-box">
                                 <h5 className="widget-title">Get Started<span></span></h5>
                                 <p className="get-started-p">Access your apllies and more.</p>
+                            { !isUserLogged ?
                                 <Button as={Link} className="btn" to="/signup">Sign Up Now</Button>
+                                :
+                                null 
+                            }
                             </div>
                         </div>
                         <div className="col-xs-12 col-sm-6 col-md-3">

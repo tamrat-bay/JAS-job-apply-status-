@@ -118,10 +118,12 @@ footer ul {
 }
 
 footer .btn:hover,
+footer .btn,
 footer .btn:focus,
 footer .btn.active {
 	background: #204051;
 	color: #fff;
 	box-shadow: 0 7.5px 30px rgba(0, 0, 0, 0.1);
 	transition: all 250ms ease-in-out 0s;
+	border: none;
 }

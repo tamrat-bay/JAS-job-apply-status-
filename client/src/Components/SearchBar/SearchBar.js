@@ -86,12 +86,10 @@ const SearchBar = (props) => {
                                 <input
                                     type="checkbox"
                                     id='statusCheck'
-
                                     onChange={formik.handleChange}
                                     value={formik.values.statusCheck}
                                     name="statusCheck"
                                 />
-                                {/* Search by Status */}
                             </div>
                             <select id="status"
                                 name="status"
@@ -119,20 +117,21 @@ const SearchBar = (props) => {
                     <button onClick={setAddNewFlag}>
                         <i className="fas fa-plus-square"></i>
                         NEW
-                        </button>
+                    </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnCsv">Download as CSV file</Tooltip>}>
                     <button onClick={() => objToSheet(allJobApplies, 'csv')}>
                         <i className="fas fa-download"></i>
                             CSV
-                            </button>
+                    </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnXlsx">Download as XLSX file</Tooltip>}>
                     <button onClick={() => objToSheet(allJobApplies, 'xlsx')}>
                         <i className="fas fa-download"></i>
-                             XLSX</button>
+                             XLSX
+                    </button>
                 </OverlayTrigger>
             </div>
         </div>

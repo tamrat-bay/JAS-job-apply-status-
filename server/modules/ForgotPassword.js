@@ -2,7 +2,6 @@ const User = require('../models/User');
 const ResetRequest = require('../models/ResetRequest');
 const sendEmail = require('./SendEmail').sendEmail
 const bcrypt = require('bcrypt');
-
 const crypto = require("crypto");
 
 

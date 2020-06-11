@@ -43,7 +43,7 @@ function login(req, res) {
                         //create and assign token
                         let TOKEN_SECRET = "anythingiwant" //todo - make this an env var later
                         const token = jwt.sign({ _id: id }, TOKEN_SECRET);
-                        res.header('auth-token', token).send({ name, id, email, image: 'What?', token });
+                        res.header('auth-token', token).send({ name, id, email,token });
                     } else {
                         return res.status(403).send('incorrect password');
                     };
