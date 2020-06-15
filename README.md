@@ -1,6 +1,6 @@
 # Introduction
 Job apply status manager.            
-live link: https://www.jas.cloudns.cl/
+Link: https://www.jas.cloudns.cl/
 
 ## Technologies
 - CSS3
