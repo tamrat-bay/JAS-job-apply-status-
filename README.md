@@ -1,5 +1,5 @@
 ## Introduction
-job apply status manger 
+job apply status manger.
 live link: https://www.jas.cloudns.cl/
 
 ## Technologies
