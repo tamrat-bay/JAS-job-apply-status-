@@ -1,17 +1,20 @@
-# Introduction
+## Introduction
 job apply status manger 
-live link: https://avshalom-mogos.github.io/flappyBird-js
+live link: https://www.jas.cloudns.cl/
 
 ## Technologies
-- HTML5
 - CSS3
-- JavaScript
+- React
+- Nodejs
+- Express
 
 ## Illustration
 <img src="https://raw.githubusercontent.com/Avshalom-Mogos/portfolio/master/src/assests/GIFs/jas.gif"/>
 
 ## How to use?
-- press Space or tap the screen to make the bird fly. You needs to pass the pipes without touching them.
+- register to manage your applies.
 
 ## Functionalities
-start/restart the game, make the bird fly.
+- CRUD applies.
+- Search by name or status.
+- Export applies to excel/csv file.
