@@ -1,5 +1,5 @@
 # Introduction
-Job apply status manager.
+Job apply status manager.            
 live link: https://www.jas.cloudns.cl/
 
 ## Technologies
@@ -17,4 +17,4 @@ live link: https://www.jas.cloudns.cl/
 ## Functionalities
 - CRUD applies.
 - Search by name or status.
-- Export applies to excel/csv file.
+- Export applies to xlsx/csv file.
