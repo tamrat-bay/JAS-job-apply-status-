@@ -1,5 +1,5 @@
-## Introduction
-job apply status manger.
+# Introduction
+Job apply status manager.
 live link: https://www.jas.cloudns.cl/
 
 ## Technologies
