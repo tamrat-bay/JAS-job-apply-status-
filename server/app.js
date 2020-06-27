@@ -1,7 +1,8 @@
+const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const { VerifyToken } = require('./modules/VerifyToken');
 const ApplyHelper = require('./modules/ApplyHelper');
 const ForgotPassword = require('./modules/ForgotPassword');
@@ -50,8 +51,15 @@ app.post('/forgotPassword/:email', (req, res) => {
 app.patch('/reset', (req, res) => {
     return ForgotPassword.resetPassword(req, res);
 });
-// app.delete('/reset', (req, res) => {
-//     return ForgatPassword.resetPassword(req, res);
-// });
+
+
+//deployment
+if (process.env.NODE_ENV === 'production') {
+    const root = path.join(__dirname, '..', 'client', 'build');
+    app.use(express.static(root));
+    app.get('*', (req, res) => {
+        res.sendFile('index.html', { root });
+    });
+};
 
 app.listen(port, () => console.log('app is listening on port: ' + port));
