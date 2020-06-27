@@ -1,6 +1,7 @@
 import React from 'react';
-import './About.css'
 import AboutProfile from './AboutProfile';
+import './About.css'
+
 
  const profiles = [
         {
@@ -29,17 +30,16 @@ import AboutProfile from './AboutProfile';
             facebook:'https://www.facebook.com/tamrat.bayeh'
            } 
     }
+];
 
-    ]
 const About = () => {
-   
+
     return (
         <div className='About'>
             <div className="About_profiles">
               {profiles.map(p =>  <AboutProfile key={p.name} profile={p} /> )}
             </div>
         </div>
-    )
-}
-
-export default About
+    );
+};
+export default About;

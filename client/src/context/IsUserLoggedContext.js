@@ -10,6 +10,6 @@ const IsUserLoggedProvider = (props) => {
       {props.children}
     </IsUserLoggedContext.Provider>
   );
-}
+};
 
 export { IsUserLoggedProvider, IsUserLoggedContext}

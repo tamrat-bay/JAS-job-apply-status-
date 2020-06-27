@@ -1,8 +1,8 @@
 import React from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import { objToSheet } from '../../utils/ObjToXLSX';
-import './SearchBar.css'
+import { objToSheet } from '../../utils/ObjToSheet';
+import './SearchBar.css';
 
 
 const SearchBar = (props) => {
@@ -24,7 +24,6 @@ const SearchBar = (props) => {
         }
         ,
         onSubmit: values => {
-            // console.log("form value Search bar", values);
             handleSubmit(values);
         },
     });
@@ -68,7 +67,6 @@ const SearchBar = (props) => {
                                 {/* Search by Company Name */}
                             </div>
                             <input id="company"
-                                // className="form-control form-control-sm ml-3"
                                 onChange={formik.handleChange}
                                 value={formik.values.company}
                                 name="company"
@@ -116,25 +114,25 @@ const SearchBar = (props) => {
                 <OverlayTrigger rootClose overlay={<Tooltip id="addNew">Add New Job Apply</Tooltip>}>
                     <button onClick={setAddNewFlag}>
                         <i className="fas fa-plus-square"></i>
-                        NEW
-                    </button>
+                        <span>NEW</span>
+                        </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnCsv">Download as CSV file</Tooltip>}>
                     <button onClick={() => objToSheet(allJobApplies, 'csv')}>
                         <i className="fas fa-download"></i>
-                            CSV
+                        <span>CSV</span>
                     </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnXlsx">Download as XLSX file</Tooltip>}>
                     <button onClick={() => objToSheet(allJobApplies, 'xlsx')}>
                         <i className="fas fa-download"></i>
-                             XLSX
+                        <span>XLSX</span>
                     </button>
                 </OverlayTrigger>
             </div>
         </div>
-    )
+    );
 };
 export default SearchBar;

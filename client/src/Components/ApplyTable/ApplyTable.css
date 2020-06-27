@@ -91,31 +91,6 @@
    justify-content: space-around;
 }
 
-.ApplyTable_Addnew {
-    background-color: #84a9ac;
-    padding: 1em 0;
-    margin: 10px 0;
-    box-shadow: 1px 1px 3px black;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.ApplyTable_Addnew button{
-    background-color: #313839;
-    border: none;
-    color: white;
-    width: 170px;
-    height: 40px;
-    font-size: 1.2em;
-    border-radius: 5px;
-    letter-spacing: 1px;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
 .ApplyTable_delete_buttons button{
     color: white;
     border: 1px solid white;
@@ -169,11 +144,6 @@
 }
 
 @media screen and (max-width: 991px) {
-
-    .ApplyTable_Addnew button {
-        width: 120px;
-        height: 35px;
-    }
     
     .ApplyTable table i {
         font-size: 1rem;
@@ -186,12 +156,3 @@
         font-size: .8rem;
     }
 } 
-
-@media screen and (max-width: 450px) {
-
-    .ApplyTable_Addnew button {
-        width: 90px;
-        height: 30px;
-        font-size: 1em;
-    }
-}

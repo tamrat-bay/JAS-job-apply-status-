@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
 import NewApply from '../NewApply/NewApply';
 import UpdateApply from '../UpdateApply/UpdateApply';
 import MoreDetails from '../MoreDetails/MoreDetails';
@@ -6,8 +6,8 @@ import SearchBar from '../SearchBar/SearchBar';
 import TableRowData from './TableRowData';
 import { Redirect } from 'react-router-dom';
 import { Container, Table } from 'react-bootstrap';
-import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
-import useToggle from '../../hooks/useToggleState'
+import { IsUserLoggedContext } from '../../context/IsUserLoggedContext';
+import useToggle from '../../hooks/useToggleState';
 import axios from 'axios';
 import './ApplyTable.css';
 
@@ -16,7 +16,6 @@ const ApplyTable = () => {
 
     const [allJobApplies, setAllJobApplies] = useState([]);
     const [displayList, setDisplayList] = useState([]);
-    // const [searchValues, setSearchValues] = useState({});
     const [singleApplyData, setSingleApplyData] = useState({});
     const [filterFlag, setFilterFlag] = useState(false)
     const [addNewFlag, setAddNewFlag] = useToggle(false);
@@ -41,7 +40,6 @@ const ApplyTable = () => {
                 if (res.status === 200) {
 
                     setAllJobApplies([...res.data]);
-                    // setDisplayList([...res.data]) ;
                 };
             })
             .catch(error =>
@@ -55,7 +53,6 @@ const ApplyTable = () => {
         temp.push(data);
 
         setAllJobApplies(temp);
-        // setDisplayList(temp);
         setAddNewFlag();
     };
 
@@ -73,17 +70,17 @@ const ApplyTable = () => {
     const getMoreDetails = (data) => {
 
         setSingleApplyData(data);
-        // console.log('more details', data);
         setMoreDetailsFlag();
     };
 
     const deleteApply = () => {
-        const { id } = singleApplyData;
+
+        const { _id } = singleApplyData;
         const { token } = JSON.parse(localStorage.jas_login);
 
         axios({
             method: 'delete',
-            url: `/jobapply/${id}`,
+            url: `/jobapply/${_id}`,
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -95,7 +92,7 @@ const ApplyTable = () => {
                     const index = temp.findIndex(apply => apply._id === singleApplyData._id);
                     temp.splice(index, 1);
                     setAllJobApplies(temp);
-                    // setDisplayList(temp);
+
                     setDeleteFlag()
                 };
             })
@@ -111,21 +108,23 @@ const ApplyTable = () => {
             company: searchValues.company ? searchValues.company : ''
         };
 
+        //search by company name and status
         if (searchBy.companyCheck && searchBy.statusCheck) {
-            let companies = allJobApplies.filter(j => j.company === searchBy.company);
+            let companies = allJobApplies.filter(j => j.company.toLowerCase() === searchBy.company.toLowerCase());
             let byCompanieAndStatus = companies.filter(j => j.status.current === searchBy.status);
-            // console.log("byCompanieAndStatus");
 
             setDisplayList(byCompanieAndStatus);
-        } else if (searchBy.companyCheck) {
-            let byCompanies = allJobApplies.filter(j => j.company === searchBy.company);
-            // console.log("byCompanies", allJobApplies);
-            // console.log("byCompanies", byCompanies);
 
+            //search by company name
+        } else if (searchBy.companyCheck) {
+            let byCompanies = allJobApplies.filter(j => j.company.toLowerCase() === searchBy.company.toLowerCase());
+             
             setDisplayList(byCompanies);
+
+            //search by status
         } else if (searchBy.statusCheck) {
             let byStatus = allJobApplies.filter(j => j.status.current === searchBy.status);
-            // console.log("byStatus")
+
             setDisplayList(byStatus);
         } else {
             setFilterFlag(false);
@@ -140,59 +139,58 @@ const ApplyTable = () => {
     }, [isUserLogged, updateFlag]);
 
 
-
-    if (!isUserLogged) return <Redirect to="/" />;
+    if (!isUserLogged) return <Redirect to='/' />;
 
     return (
-        <div className="ApplyTable">
+        <div className='ApplyTable'>
             <Container>
 
-                {moreDetailsFlag ? 
+                {moreDetailsFlag ?
 
-                <MoreDetails 
-                  data={singleApplyData}
-                  close={setMoreDetailsFlag} 
-                /> 
-                : 
-                ''}
+                    <MoreDetails
+                        data={singleApplyData}
+                        close={setMoreDetailsFlag}
+                    />
+                    :
+                    ''}
 
                 {
                     addNewFlag ?
                         <NewApply
-                         addNewApply={addNewApply}
-                         closeMe={setAddNewFlag}
+                            addNewApply={addNewApply}
+                            closeMe={setAddNewFlag}
                         />
                         : ''
                 }
 
                 {
-                    updateFlag ? 
-                    <UpdateApply
-                        initialValues={singleApplyData}
-                        updateApply={updateApply}
-                        closeMe={setUpdateFlag}
-                    /> 
-                    : 
-                    ''}
+                    updateFlag ?
+                        <UpdateApply
+                            initialValues={singleApplyData}
+                            updateApply={updateApply}
+                            closeMe={setUpdateFlag}
+                        />
+                        :
+                        ''}
 
                 {
-                 deleteFlag ?
-                    <>
-                        <div className="ApplyTable_delete">
-                            <i className="far fa-times-circle"></i>
-                            <h2>Are you sure?</h2>
-                            <span>
-                                <p> Do you really want to delete this apply? ({singleApplyData.company}).</p>
-                                <p>This process cannot be undone.</p>
-                            </span>
-                            <div className='ApplyTable_delete_buttons'>
-                                <button className='ApplyTable_delete_buttons_delete' onClick={deleteApply}>Delete</button>
-                                <button className='ApplyTable_delete_buttons_cancel' onClick={setDeleteFlag}>Cancel</button>
+                    deleteFlag ?
+                        <>
+                            <div className='ApplyTable_delete'>
+                                <i className='far fa-times-circle'></i>
+                                <h2>Are you sure?</h2>
+                                <span>
+                                    <p> Do you really want to delete this apply? ({singleApplyData.company}).</p>
+                                    <p>This process cannot be undone.</p>
+                                </span>
+                                <div className='ApplyTable_delete_buttons'>
+                                    <button className='ApplyTable_delete_buttons_delete' onClick={deleteApply}>Delete</button>
+                                    <button className='ApplyTable_delete_buttons_cancel' onClick={setDeleteFlag}>Cancel</button>
+                                </div>
                             </div>
-                        </div>
-                        <div className='ApplyTable-dim-background'></div>
-                    </>
-                        : 
+                            <div className='ApplyTable-dim-background'></div>
+                        </>
+                        :
                         ''
                 }
 
@@ -235,7 +233,8 @@ const ApplyTable = () => {
                                 allJobApplies.map((j, i) =>
                                     <TableRowData
                                         key={i}
-                                        job={j} index={i}
+                                        index={i}
+                                        job={j}
                                         setDeleteFlag={setDeleteFlag}
                                         setUpdateFlag={setUpdateFlag}
                                         setSingleApplyData={setSingleApplyData}
@@ -249,7 +248,6 @@ const ApplyTable = () => {
                 </Table>
             </Container>
         </div>
-    )
+    );
 };
 export default ApplyTable;
-

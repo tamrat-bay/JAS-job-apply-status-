@@ -20,7 +20,6 @@ const TableRowData = (props) => {
         setDeleteFlag();
     };
 
-
     return (
         <tr>
             <td>{job.date}</td>
@@ -43,6 +42,6 @@ const TableRowData = (props) => {
                 More Details
             </td>
         </tr>
-    )
+    );
 };
 export default memo(TableRowData);

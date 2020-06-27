@@ -1,7 +1,6 @@
 .About{
   min-height: calc( 100vh - (68.72px + 55.7px ));    
   padding: 20px;
-  padding: 20px;
   display: flex;
   align-items: center;
 }
