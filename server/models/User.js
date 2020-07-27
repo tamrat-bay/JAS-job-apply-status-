@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     password: String,
     applies: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'apply'
+        ref: 'Apply'
     }]
 }, { timestamps: true });
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);

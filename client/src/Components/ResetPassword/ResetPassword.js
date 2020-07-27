@@ -13,7 +13,7 @@ const ResetPassword = (props) => {
 
     const handleSubmit = (values) => {
         if ((values.password === values.confirmPassword) && values.password.length) {
-            axios.patch('/reset', values)
+            axios.patch('/forgotpassword/reset', values)
                 .then((response) => {
                     if (response.status === 204) {
                         setResetFlag();
