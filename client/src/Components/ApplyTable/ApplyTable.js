@@ -43,7 +43,7 @@ const ApplyTable = () => {
                 };
             })
             .catch(error =>
-                console.log(error.response.data)
+                console.error(error)
             );
     };
 

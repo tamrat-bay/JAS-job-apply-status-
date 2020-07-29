@@ -36,5 +36,5 @@ POST http://localhost:5000/forgotpassword/tamrat3@gmail.com
 Content-Type: application/json
 
 ###
-PATCH  http://localhost:5000/reset/95d9db237e1c593eacf1a208ed2f8f39
+PATCH  http://localhost:5000/forgotpassword/reset/95d9db237e1c593eacf1a208ed2f8f39
 Content-Type: application/json

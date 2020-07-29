@@ -33,7 +33,7 @@ const Signup = () => {
     const formik = useFormik({
       initialValues:
       {
-       userName: '',
+       name: '',
        email: '',
        password: '',
        confirmPassword: ''
@@ -86,9 +86,9 @@ const Signup = () => {
               <Form.Control 
                 onChange={handleChange} 
                 minLength="3" 
-                name="userName" 
+                name="name" 
                 type="text" 
-                placeholder="User name" 
+                placeholder="Name" 
                 autoComplete="false"
                 required 
               />

@@ -1,11 +1,14 @@
 const nodemailer = require("nodemailer");
-const jasEmail = require('../emailInfo.json')
+const jasEmail = require('../emailInfo.json');
+
+// console.log(jas);
 
 // async..await is not allowed in global scope, must use a wrapper
 async function sendEmail(request) {
   const { email, id } = request;
   // console.log('useremail and id', email,id);
-  // console.log('jasEmail', jasEmail);
+  console.log('jasEmailjasEmailjasEmailjasEmailjasEmailjasEmailjasEmail');
+  console.log(jasEmail);
 
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
@@ -37,6 +40,4 @@ async function sendEmail(request) {
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
 
-// sendEmail().catch(console.error);
-
-module.exports.sendEmail = sendEmail
+module.exports.sendEmail = sendEmail;

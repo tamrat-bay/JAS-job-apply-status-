@@ -1,9 +1,11 @@
+const experss = require('express');
+const router = experss.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 
-function register(req, res) {
+router.post('/register', (req, res) => {
     const { name, email, password } = req.body;
 
     //check if the user exist in the db
@@ -25,12 +27,11 @@ function register(req, res) {
             return res.status(400).send('User already exsist');
         };
     });
-};
+});
 
 
-function login(req, res) {
+router.post('/login', (req, res) => {
     const { email, password } = req.body;
-
     //check if the user exist in the db
     User.findOne({ email }, (err, user) => {
         if (err) return res.status(400).send(err);
@@ -53,8 +54,6 @@ function login(req, res) {
             return res.status(400).send('User not found');
         };
     })
-};
+});
 
-//exports
-module.exports.register = register;
-module.exports.login = login;
+module.exports = router;
