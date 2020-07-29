@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
+import { useObserver } from "mobx-react";
+import { useJasStore } from "../../context/JasStoreContext";
 
 import "./Footer.css";
 
 
 const Footer = () => {
 
-    const { isUserLogged } = useContext(IsUserLoggedContext);
-
-    return (
+    const jasStore  = useJasStore()
+    return useObserver(() =>
         <footer id="footer" className="footer-1">
             <div className="main-footer widgets-dark typo-light">
                 <div className="container">
@@ -36,7 +36,7 @@ const Footer = () => {
                             <div className="widget no-box">
                                 <h5 className="widget-title">Get Started<span></span></h5>
                                 <p className="get-started-p">Access your apllies and more.</p>
-                            { !isUserLogged ?
+                            { !jasStore.isUserLogged ?
                                 <Button as={Link} className="btn" to="/signup">Sign Up Now</Button>
                                 :
                                 null 

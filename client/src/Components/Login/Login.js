@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { Redirect, Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggleState';
-import { IsUserLoggedContext } from '../../context/IsUserLoggedContext';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { useObserver } from "mobx-react";
+import { useJasStore } from "../../context/JasStoreContext";
 import './Login.css';
 
 
@@ -15,7 +16,7 @@ const Login = () => {
 
     const [validationFlag, setValidationFlag] = useToggle(false);
     const [loginFlag, setloginFlag] = useToggle(false);
-    const { setisUserLogged } = useContext(IsUserLoggedContext);
+    const jasStore  = useJasStore()
 
     const handleSubmit = (values) => {
 
@@ -26,7 +27,7 @@ const Login = () => {
                     const { name, id, email, image, token } = response.data;
                     const user = { name, id, email, image, token };
                     localStorage.jas_login = JSON.stringify(user);
-                    setisUserLogged(true);
+                    jasStore.setIsUserLogged()
                     setloginFlag();
                 } else {
                     setValidationFlag();
@@ -59,11 +60,10 @@ const Login = () => {
     };
 
 
-    if (loginFlag) return <Redirect to='/applies' />;
-
-    return (
+    return useObserver(() => {
+        if (loginFlag) return <Redirect to='/applies' />;
+        return (
         <div className='Login'>
-
             <Form
                 onSubmit={formik.handleSubmit}
                 className='Login_form'>
@@ -118,7 +118,7 @@ const Login = () => {
                     </Col>
                 </Form.Group>
             </Form>
-        </div>
-    );
+        </div>)
+    });
 };
 export default Login;

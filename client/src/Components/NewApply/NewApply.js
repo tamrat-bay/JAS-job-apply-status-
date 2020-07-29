@@ -1,9 +1,9 @@
 import React from 'react';
 import ApplyForm from '../ApplyForm/ApplyForm';
-
+import { useJasStore } from "../../context/JasStoreContext";
 
 const NewApply = (props) => {
-
+    const jasStore  = useJasStore();
     const newApply = {
         date: '',
         company: '',
@@ -21,6 +21,7 @@ const NewApply = (props) => {
             "Technical interview": { contactName: '', contactPhone: '', contactPosition: '', statusDescription: '' }
         },
     };
+    jasStore.setSingleApplyData(newApply);
 
     const axiosInfo = {
         method: 'post',
@@ -31,7 +32,6 @@ const NewApply = (props) => {
 
     return <ApplyForm
         title='New'
-        initialValues={newApply}
         axiosInfo={axiosInfo}
         closeMe={props.closeMe}
     />;

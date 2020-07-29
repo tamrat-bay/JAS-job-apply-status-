@@ -115,7 +115,7 @@ const SearchBar = (props) => {
                     <button onClick={setAddNewFlag}>
                         <i className="fas fa-plus-square"></i>
                         <span>NEW</span>
-                        </button>
+                    </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnCsv">Download as CSV file</Tooltip>}>

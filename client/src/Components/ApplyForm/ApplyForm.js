@@ -2,13 +2,17 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { Form, Col } from 'react-bootstrap';
 import axios from "axios";
+import { useObserver } from "mobx-react";
+import { useJasStore } from "../../context/JasStoreContext";
 import './ApplyForm.css';
 
 
 const ApplyForm = (props) => {
 
-    const { title, initialValues, axiosInfo, closeMe } = props;
-
+    const { title, axiosInfo, closeMe } = props;
+    const jasStore  = useJasStore();
+    let initialValues = jasStore.singleApplyData;
+    
     const formik = useFormik({
         initialValues,
         onSubmit: values => {
@@ -32,7 +36,7 @@ const ApplyForm = (props) => {
     };
 
 
-    return (
+    return  useObserver(() =>
         <div className='ApplyForm'>
             <div className='ApplyForm-header'>
                 <h2>{title} Job Apply</h2>

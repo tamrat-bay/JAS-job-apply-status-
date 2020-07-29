@@ -1,4 +1,6 @@
 import React, { memo } from 'react';
+import { useObserver } from "mobx-react";
+import { useJasStore } from "../../context/JasStoreContext";
 
 const TableRowData = (props) => {
 
@@ -7,20 +9,20 @@ const TableRowData = (props) => {
         setDeleteFlag,
         setUpdateFlag,
         getMoreDetails,
-        setSingleApplyData
     } = props;
+    const jasStore  = useJasStore();
 
     const handleUpdate = (job) => {
-        setSingleApplyData(job);
+        jasStore.setSingleApplyData(job);
         setUpdateFlag();
     };
 
     const handleDelete = (job) => {
-        setSingleApplyData(job);
+        jasStore.setSingleApplyData(job);
         setDeleteFlag();
     };
 
-    return (
+    return useObserver(() =>
         <tr>
             <td>{job.date}</td>
             <td>{job.company}</td>

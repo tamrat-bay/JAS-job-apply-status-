@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { Form, Col } from 'react-bootstrap';
+import { useObserver } from "mobx-react";
+import { useJasStore } from "../../context/JasStoreContext";
 import './MoreDetails.css';
 
 
 const MoreDetails = (props) => {
 
-    const { data, close } = props;
-
-    const [currentStatus, setCurrentStatus] = useState(data.status.current);
-
+    const { close } = props;
+    const jasStore = useJasStore();
+    const [currentStatus, setCurrentStatus] = useState(jasStore.singleApplyData.status.current);
+    
     const handleChange = e => setCurrentStatus(e.target.value);
 
-    return (
+    return useObserver(() =>
         <div className='MoreDetails' >
             <div className='MoreDetails-header'>
                 <h2>More details</h2>
@@ -24,24 +26,24 @@ const MoreDetails = (props) => {
                     <ul>
                         <li>
                             <strong>CV version: </strong>
-                            <span>{data.cvversion}.</span>
+                            <span>{jasStore.singleApplyData.cvversion}.</span>
                         </li>
                         <li>
                             <strong>Company location: </strong>
-                            <span>{data.location}.</span>
+                            <span>{jasStore.singleApplyData.location}.</span>
                         </li>
                         <li>
                             <strong>Company size: </strong>
-                            <span>{data.companySize}.</span>
+                            <span>{jasStore.singleApplyData.companySize}.</span>
 
                         </li>
                         <li>
                             <strong>Job description: </strong>
-                            <span>{data.jobDescription}.</span>
+                            <span>{jasStore.singleApplyData.jobDescription}.</span>
                         </li>
                         <li>
                             <strong>Answered: </strong>
-                            <span>{data.isAnswered ? "Yes" : "No"}.</span>
+                            <span>{jasStore.singleApplyData.isAnswered ? "Yes" : "No"}.</span>
                         </li>
                     </ul>
                 </div>
@@ -78,7 +80,7 @@ const MoreDetails = (props) => {
                                             <Form.Group as={Col}>
                                                 <Form.Label>Contact Name</Form.Label>
                                                 <Form.Control
-                                                    value={data.status[currentStatus].contactName}
+                                                    value={jasStore.singleApplyData.status[currentStatus].contactName}
                                                     readOnly
                                                     placeholder="Name"
                                                 >
@@ -87,7 +89,7 @@ const MoreDetails = (props) => {
                                             <Form.Group as={Col}>
                                                 <Form.Label>Contact Phone</Form.Label>
                                                 <Form.Control
-                                                    value={data.status[currentStatus].contactPhone}
+                                                    value={jasStore.singleApplyData.status[currentStatus].contactPhone}
                                                     readOnly
                                                     placeholder="Phone"
                                                 >
@@ -98,7 +100,7 @@ const MoreDetails = (props) => {
                                             <Form.Group as={Col}>
                                                 <Form.Label>Contact Position</Form.Label>
                                                 <Form.Control
-                                                    value={data.status[currentStatus].contactPosition}
+                                                    value={jasStore.singleApplyData.status[currentStatus].contactPosition}
                                                     readOnly
                                                     placeholder="Position"
                                                 >
@@ -109,7 +111,7 @@ const MoreDetails = (props) => {
                                     <div>
                                         <Form.Label>How it went</Form.Label>
                                         <Form.Control as='textarea'
-                                            value={data.status[currentStatus].statusDescription}
+                                            value={jasStore.singleApplyData.status[currentStatus].statusDescription}
                                             readOnly
                                             placeholder="How did it go?"
                                         >

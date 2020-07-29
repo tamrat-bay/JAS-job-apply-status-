@@ -1,14 +1,14 @@
-import React,{ useContext } from 'react'
+import React from 'react'
 import NavbarAfterLogin from './NavbarAfterLogin';
 import NavbarBeforeLogin from './NavbarBeforeLogin';
-import { IsUserLoggedContext } from '../../context/IsUserLoggedContext'
-
+import { useObserver } from "mobx-react";
+import { useJasStore } from "../../context/JasStoreContext";
 
 const NavbarComp = () => { 
-   const { isUserLogged } = useContext(IsUserLoggedContext);
-
-  return (
-    isUserLogged ? <NavbarAfterLogin  /> :
+  const jasStore  = useJasStore();
+  
+  return useObserver(() =>
+    jasStore.isUserLogged ? <NavbarAfterLogin  /> :
     <NavbarBeforeLogin />
   )
 };

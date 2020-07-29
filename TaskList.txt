@@ -1,11 +1,6 @@
-1) fix bug with search bar - use formik (QA)
-2) add fromik to login signup forgot password - AVSH.
-3) STYLING:{
-    navabr:TAM,
-    searcbar:TAM,
-    table:Avsh,
-    froms:AVSH
-}.
+1) mobx - login - single apply data
+2) backend validation - // joi
+3)
 4) REFACTOR apply table!!!
 
 

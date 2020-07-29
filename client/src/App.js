@@ -8,7 +8,7 @@ import Signup from './Components/Signup/Signup';
 import ApplyTable from './Components/ApplyTable/ApplyTable';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import ResetPassword from './Components/ResetPassword/ResetPassword';
-import { IsUserLoggedProvider } from './context/IsUserLoggedContext'
+// import { IsUserLoggedProvider } from './context/IsUserLoggedContext'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className='App'>
       <BrowserRouter>
-        <IsUserLoggedProvider>
+        {/* <IsUserLoggedProvider> */}
           <NavBar />
           <Switch>
             <Route exact path='/' component={Home} />
@@ -31,7 +31,7 @@ const App = () => {
             <Route exact path='/forgotpassword' component={ForgotPassword} />
           </Switch>
           <Footer />
-        </IsUserLoggedProvider>
+        {/* </IsUserLoggedProvider> */}
       </BrowserRouter>
     </div>
   );

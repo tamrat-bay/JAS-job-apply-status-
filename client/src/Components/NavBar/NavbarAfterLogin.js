@@ -1,20 +1,20 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { IsUserLoggedContext } from '../../context/IsUserLoggedContext';
-
+import { useObserver } from "mobx-react";
+import { useJasStore } from "../../context/JasStoreContext";
 
 const NavbarAfterLogin = () => {
-    const { setisUserLogged } = useContext(IsUserLoggedContext);
     const [expanded, setExpanded] = useState(false);
     const user = JSON.parse(localStorage.jas_login);
+    const jasStore  = useJasStore()
 
     const logout = () => {
         localStorage.clear();
-        setisUserLogged(false);
+        jasStore.setIsUserLogged()
     };
 
-    return (
+    return useObserver(() =>
         <div className='Navbar'>
             <Navbar bg='dark' variant='dark' expand='lg' expanded={expanded}>
                 <Navbar.Brand as={Link} to='/'>JAS</Navbar.Brand>
