@@ -1,7 +1,8 @@
-1) mobx - login - single apply data
-2) backend validation - // joi
-3)
-4) REFACTOR apply table!!!
+1) REFACTOR apply table!!!
+2) backend validation - // Mongoose schema
+3) GitHub job API / 
+4) mobx/ state and function refactor 
+5) interview tips & videos / popular job searching websites / Testimonials 
 
 
 

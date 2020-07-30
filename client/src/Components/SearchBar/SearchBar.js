@@ -2,6 +2,8 @@ import React from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { objToSheet } from '../../utils/ObjToSheet';
+import { useObserver } from "mobx-react";
+import { useJasStore } from "../../context/JasStoreContext";
 import './SearchBar.css';
 
 
@@ -10,9 +12,8 @@ const SearchBar = (props) => {
     const {
         filterApllies,
         setFilterFlag,
-        setAddNewFlag,
-        allJobApplies
     } = props;
+    const jasStore = useJasStore();
 
     const formik = useFormik({
         initialValues:
@@ -48,7 +49,7 @@ const SearchBar = (props) => {
         filterApllies(values);
     };
 
-    return (
+    return useObserver(() =>
         <div className="SearchBar">
             <div className="SearchBar-container">
                 <form
@@ -112,21 +113,21 @@ const SearchBar = (props) => {
 
             <div className="ApplyTable_Addnew">
                 <OverlayTrigger rootClose overlay={<Tooltip id="addNew">Add New Job Apply</Tooltip>}>
-                    <button onClick={setAddNewFlag}>
+                    <button onClick={jasStore.setAddNewFlag}>
                         <i className="fas fa-plus-square"></i>
                         <span>NEW</span>
                     </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnCsv">Download as CSV file</Tooltip>}>
-                    <button onClick={() => objToSheet(allJobApplies, 'csv')}>
+                    <button onClick={() => objToSheet(jasStore.allJobApplies, 'csv')}>
                         <i className="fas fa-download"></i>
                         <span>CSV</span>
                     </button>
                 </OverlayTrigger>
 
                 <OverlayTrigger overlay={<Tooltip id="dwnXlsx">Download as XLSX file</Tooltip>}>
-                    <button onClick={() => objToSheet(allJobApplies, 'xlsx')}>
+                    <button onClick={() => objToSheet(jasStore.allJobApplies, 'xlsx')}>
                         <i className="fas fa-download"></i>
                         <span>XLSX</span>
                     </button>

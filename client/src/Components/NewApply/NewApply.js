@@ -3,7 +3,7 @@ import ApplyForm from '../ApplyForm/ApplyForm';
 import { useJasStore } from "../../context/JasStoreContext";
 
 const NewApply = (props) => {
-    const jasStore  = useJasStore();
+    const jasStore = useJasStore();
     const newApply = {
         date: '',
         company: '',
@@ -27,13 +27,13 @@ const NewApply = (props) => {
         method: 'post',
         url: `/jobapply/${JSON.parse(localStorage.jas_login).id}`,
         headers: { Authorization: `Bearer ${JSON.parse(localStorage.jas_login).token}` },
-        resolveFunction: props.addNewApply
+        resolveFunction: jasStore.addNewApply
     };
 
     return <ApplyForm
         title='New'
         axiosInfo={axiosInfo}
-        closeMe={props.closeMe}
+        closeMe={jasStore.setAddNewFlag}
     />;
 };
 export default NewApply;
