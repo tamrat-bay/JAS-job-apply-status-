@@ -26,7 +26,7 @@ router.post('/:userId', verifyToken, (req, res) => {
         date
     } = req.body
     const { userId } = req.params;
-    Apply.create({ newApply }, function (err, apply) {
+    Apply.create( newApply , function (err, apply) {
         if (err) return res.status(500).send(`server problem - ${err}`);
         User.findOne({ _id: userId }, function (err, foundUser) {
             if (err) return res.status(404).send(err);

@@ -22,6 +22,7 @@ const TableRowData = (props) => {
         setDeleteFlag();
     };
 
+    
     return useObserver(() =>
         <tr>
             <td>{job.date}</td>

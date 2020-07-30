@@ -16,7 +16,7 @@ const Login = () => {
 
     const [validationFlag, setValidationFlag] = useToggle(false);
     const [loginFlag, setloginFlag] = useToggle(false);
-    const jasStore  = useJasStore()
+    const jasStore  = useJasStore();
 
     const handleSubmit = (values) => {
 
